@@ -6,4 +6,4 @@ Unity Version: Unity 2017.2.f3
 
 Assets Used: 
 
-<a href="https://finalbossblues.itch.io/pixel-shooter-towers-asset-pack">alt="Pixel Shooter and Towers Asset Pack" width="498"/></a>
+<a href="https://finalbossblues.itch.io/pixel-shooter-towers-asset-pack">"Pixel Shooter and Towers Asset Pack"/></a>
