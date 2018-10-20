@@ -1,7 +1,7 @@
 # Riko: The Adventurer 
 A Top Down 2D RPG game made with Unity3D
 
-Unity Version: Unity 2017.2.f3
+Unity Version: Unity 2017.2.0f3
 
 [Preview]
 
