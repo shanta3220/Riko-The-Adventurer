@@ -1,0 +1,1 @@
+The weapons are sprites that are to be used with the character sprites. They can be overlaid on the characters so the characters can hold guns.
