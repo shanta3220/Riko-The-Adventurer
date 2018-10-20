@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Riko: The Adventurer 
 A 2D Top Down RPG game made with Unity3D
 
@@ -19,5 +18,3 @@ Assets Used:
 
 <a href="https://finalbossblues.itch.io/dark-dimension-tileset">Dark Dimension Tileset</a>
 =======
-# Riko-The-Adventurer
->>>>>>> parent of ee30476... Merge branch 'master' of https://github.com/shanta3220/Riko---The-Adventurer
