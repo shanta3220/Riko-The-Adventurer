@@ -5,7 +5,7 @@ Unity Version: Unity 2017.2.0f3
 
 [Preview]
 
-[![Image from Gyazo](https://i.gyazo.com/37ac59cf292d783de26ab5e27695b140.gif)](https://gyazo.com/37ac59cf292d783de26ab5e27695b140)
+[![Image from Gyazo](https://i.gyazo.com/e64b1b2f08e79e3ce39330fc5c3f20ea.gif)](https://gyazo.com/e64b1b2f08e79e3ce39330fc5c3f20ea)
 
 Assets Used: 
 
