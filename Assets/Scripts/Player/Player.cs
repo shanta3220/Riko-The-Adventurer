@@ -28,8 +28,12 @@ public class Player : MonoBehaviour {
         moveDelta = new Vector3(x,y,0);
         if(!isPlayerAdvanced)
             PlayerMovement(moveDelta.x);
-        else /*PlayerMovement(x,y);*/
-        PlayerFaceEnemyAnim(target);
+        else PlayerMovement(x,y);
+       
+        /*if (hasTarget) {
+            PlayerFaceEnemyAnim(target);
+        }*/
+        
 
         //making sure we can move the player upward or downward by casting a box there beforehand
         hit = Physics2D.BoxCast(transform.position,boxCollider.size,0,new Vector2(0,moveDelta.y),Mathf.Abs(moveDelta.y*Time.deltaTime),LayerMask.GetMask("Actor","Blocking"));

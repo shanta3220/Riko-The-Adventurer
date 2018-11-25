@@ -44,6 +44,9 @@ TagManager:
   - name: Floor
     uniqueID: 3009818305
     locked: 0
+  - name: Interactable
+    uniqueID: 3164013465
+    locked: 0
   - name: Foreground
     uniqueID: 1803986221
     locked: 0
