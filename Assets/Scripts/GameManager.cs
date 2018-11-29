@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 
     public Player player;
     //public Weapon weapon;
-    public FloatingTextManager floatingTextManager;
+ 
     public int pesos;
     public int experience;
 
@@ -28,18 +28,17 @@ public class GameManager : MonoBehaviour {
         instance = this;
         //sceneloaded event is fires which call savestate
         SceneManager.sceneLoaded += LoadState;
-       
-            
         DontDestroyOnLoad(gameObject);
 	}
 	
     //floatingText;
 	
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration) {
-        floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+         FloatingTextManager.instance.Show(msg, fontSize, color, position, motion, duration);
 
     }
 
+  
     /// <summary>
     /// int preferedSkin,
     /// int pesosAmount,

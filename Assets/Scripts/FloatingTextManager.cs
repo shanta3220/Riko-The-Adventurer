@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class FloatingTextManager : MonoBehaviour {
 
-    public GameObject textContainer;
+   // public GameObject textContainer;
     public GameObject textPrefab;
 
     private List<FloatingText> floatingTexts = new List<FloatingText>();
 
+    public static FloatingTextManager instance;
+
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+    }
 
     private void Update() {
         foreach (FloatingText txt in floatingTexts)
@@ -22,7 +28,7 @@ public class FloatingTextManager : MonoBehaviour {
         if(txt == null) {
             txt = new FloatingText();
             txt.go = Instantiate(textPrefab);
-            txt.go.transform.SetParent(textContainer.transform);
+            txt.go.transform.SetParent(transform);
             txt.txt = txt.go.GetComponent<Text>();
             floatingTexts.Add(txt);
         }
@@ -43,6 +49,8 @@ public class FloatingTextManager : MonoBehaviour {
 
     }
 
-
+    public void CleanList() {
+        floatingTexts.Clear();
+    }
 
 }
