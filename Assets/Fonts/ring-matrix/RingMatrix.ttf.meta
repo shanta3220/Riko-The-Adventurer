@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2571e71f515affa4db3d99b9134cfa58
+timeCreated: 1543527735
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ring Matrix
+  fontNames:
+  - Ring Matrix
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

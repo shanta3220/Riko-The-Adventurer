@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 
     public Player player;
     //public Weapon weapon;
+    public FloatingTextManager floatingTextManager;
     public int pesos;
     public int experience;
 
@@ -32,11 +33,12 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 	}
 	
+    //floatingText;
 	
-  
-	void Update () {
-		
-	}
+    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration) {
+        floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+
+    }
 
     /// <summary>
     /// int preferedSkin,

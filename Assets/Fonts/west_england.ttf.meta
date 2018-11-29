@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8015ff80168997c4c9471c100f8f0a6b
+timeCreated: 1543527735
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: West_england
+  fontNames:
+  - West_england
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

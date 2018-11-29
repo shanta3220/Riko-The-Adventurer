@@ -1348,7 +1348,7 @@ Tilemap:
   - first: {x: 4, y: -4, z: 0}
     second:
       m_TileIndex: 1
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 28
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1492,7 +1492,7 @@ Tilemap:
   - first: {x: 12, y: 2, z: 0}
     second:
       m_TileIndex: 12
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 27
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1519,7 +1519,7 @@ Tilemap:
   - first: {x: -5, y: 4, z: 0}
     second:
       m_TileIndex: 0
-      m_TileSpriteIndex: 9
+      m_TileSpriteIndex: 26
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1528,7 +1528,7 @@ Tilemap:
   - first: {x: -4, y: 4, z: 0}
     second:
       m_TileIndex: 10
-      m_TileSpriteIndex: 10
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1573,7 +1573,7 @@ Tilemap:
   - first: {x: -4, y: 5, z: 0}
     second:
       m_TileIndex: 9
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1930,8 +1930,8 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: e73fb56e1d952df45955879b61a785eb, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300044, guid: 6880fd47d8d82ea41beb563e9e19eccc, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 83056177a8c48e2448189bd340ed27be, type: 3}
   - m_RefCount: 8
@@ -1940,16 +1940,16 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 1645a3cc86a4a9e47bd030f304af2927, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: 91916e5205725ab419f2f66b51fb6b8b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: a3a306b7f03a6c549b5b488bb5e34e0d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: a51a1379116bea74781cb571afb73b53, type: 3}
   - m_RefCount: 16
     m_Data: {fileID: 21300000, guid: 9dcc62c724bbc694788720b127660b94, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 56be5182af5973d4ebee5587121f5211, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 81739ba6846802a4f815c70d550fef7d, type: 3}
+    m_Data: {fileID: 21300000, guid: a3a306b7f03a6c549b5b488bb5e34e0d, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: d63f595f0a86f2d4a81c2d6e452bded6, type: 3}
   - m_RefCount: 2
@@ -1959,7 +1959,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: de0caa2e2391be146a60ec9ea5637dea, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 2a56f9d794d9e0b4fa19a789a1fe4376, type: 3}
+    m_Data: {fileID: 21300000, guid: 81739ba6846802a4f815c70d550fef7d, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 81e3994ffcda3254e92f1b9827af18e0, type: 3}
   - m_RefCount: 1
@@ -1980,12 +1980,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: e640cd4b1e560c447af2ad01c496bf9d, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300000, guid: dfd1ec4b3171e944289420d8b788f2f3, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 56be5182af5973d4ebee5587121f5211, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300044, guid: 6880fd47d8d82ea41beb563e9e19eccc, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 2a56f9d794d9e0b4fa19a789a1fe4376, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 67
     m_Data:
@@ -2235,6 +2235,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 747d9e9107ad8304b85dfa39402e88dc, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &309567352 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114755509271038140, guid: 747d9e9107ad8304b85dfa39402e88dc,
+    type: 2}
+  m_PrefabInternal: {fileID: 309567351}
+  m_Script: {fileID: 11500000, guid: 2cb10509c5d99a44ca4564504bd93c90, type: 3}
 --- !u!1 &682619969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,7 +2879,7 @@ MonoBehaviour:
   weaponSprites: []
   weaponPrices: 
   xpTable: 
-  player: {fileID: 0}
+  player: {fileID: 309567352}
   pesos: 0
   experience: 0
 --- !u!4 &1363170186
