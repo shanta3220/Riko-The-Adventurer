@@ -5,7 +5,7 @@ Unity Version: Unity 2017.2.0f3
 
 Work Prgroess: 
 =======
- [![Progress Doc]https://docs.google.com/document/d/1BAU6ePVSBbnA3I9jF8qtLeWp-sl7pRVnzZzvEoePOgs/edit?usp=sharing)]
+ [![Progress Doc](https://docs.google.com/document/d/1BAU6ePVSBbnA3I9jF8qtLeWp-sl7pRVnzZzvEoePOgs/edit?usp=sharing)]
 
 [Preview]
 
