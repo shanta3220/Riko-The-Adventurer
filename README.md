@@ -4,7 +4,9 @@ A 2D Top Down RPG game made with Unity3D
 Unity Version: Unity 2017.2.0f3
 
 
-Work Prgroess: <a href="https://docs.google.com/document/d/1BAU6ePVSBbnA3I9jF8qtLeWp-sl7pRVnzZzvEoePOgs/edit?usp=sharing">Progress Document</a>
+Work Prgroess: 
+<a href="https://docs.google.com/document/d/1BAU6ePVSBbnA3I9jF8qtLeWp-sl7pRVnzZzvEoePOgs/edit?usp=sharing">Progress Document</a>
+
 [Preview]
 
 [![Image from Gyazo](https://i.gyazo.com/37ac59cf292d783de26ab5e27695b140.gif)](https://gyazo.com/37ac59cf292d783de26ab5e27695b140)
