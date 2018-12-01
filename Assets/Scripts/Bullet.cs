@@ -6,7 +6,7 @@ public class Bullet : Collidable {
     //damageStructure
     public int damagePoint = 1;
     public float pushForce = 2.0f;
-
+    public float zRot;
     //upgrade
 
     public int weaponLevel = 0;
@@ -15,6 +15,11 @@ public class Bullet : Collidable {
     protected override void Start() {
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    protected override void Update() {
+        base.Update();
+
     }
 
 }
