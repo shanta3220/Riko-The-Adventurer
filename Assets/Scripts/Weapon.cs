@@ -24,4 +24,5 @@ public class Weapon : MonoBehaviour {
         gunSpriteChanger.GunDiagDown.sprite = GunDiagDown;
     }
 
+   
 }
