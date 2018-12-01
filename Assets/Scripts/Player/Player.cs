@@ -8,12 +8,20 @@ public class Player : MonoBehaviour {
     private Vector3 moveDelta;
     private Animator anim;
     private RaycastHit2D hit;
-
+   
     public Transform target;
 
     public bool hasTarget;
     bool isWalking;
-	private void Start () {
+
+    private float camRayLength = 150f;
+    private int floorMask = 10;
+    public Weapon weapon;
+    //public Joystick movementJoystick, shootJoystick;
+
+    protected float coolDown = 0.5f;
+    protected float lastShoot;
+    private void Start () {
 
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -22,13 +30,17 @@ public class Player : MonoBehaviour {
     private void FixedUpdate() {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        //isWalking = x != 0 || y != 0 ? true : false;
-        
+       // isWalking = x != 0 || y != 0 ? true : false;
         //reset moveDelta
         moveDelta = new Vector3(x,y,0);
-        if(!isPlayerAdvanced)
+        TurningPC();
+        if (!isPlayerAdvanced)
             PlayerMovement(moveDelta.x);
-        else PlayerMovement(x,y);
+        else {
+            TurningPC();
+           /* if (x != 0 || y != 0)
+               PlayerMovement(x, y);*/
+        }
        
         /*if (hasTarget) {
             PlayerFaceEnemyAnim(target);
@@ -48,6 +60,16 @@ public class Player : MonoBehaviour {
             transform.Translate(moveDelta.x * Time.deltaTime,0,0);
         }
     }
+
+    void Update() {
+        if (Input.GetMouseButton(0)) {
+            if (Time.time - lastShoot > coolDown) {
+                lastShoot = Time.time;
+                weapon.Shoot();
+            }
+        }
+    }
+
     //n3k's
     private void PlayerMovement(float x) {
         //swap sprite direction whether moving left or right and animation
@@ -65,18 +87,19 @@ public class Player : MonoBehaviour {
     }
 
    
-    private void PlayerMovement(float x, float y) {
-        //swap sprite direction whether moving left or right and animation
+    private void FaceDirecion(float x, float y) {
+        x = Mathf.RoundToInt(x);
+        y = Mathf.RoundToInt(y);
         if (x > 0) {
             transform.localScale = Vector3.one;
         }
-  
+
         else if (x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
-          
         }
+
+        // anim.SetBool("IsWalking", isWalking);
         x = Mathf.Abs(x);
-       // anim.SetBool("IsWalking", isWalking);
         anim.SetFloat("FaceX", x);
         anim.SetFloat("FaceY", y);
 
@@ -108,6 +131,31 @@ public class Player : MonoBehaviour {
         anim.SetFloat("FaceX", x);
         anim.SetFloat("FaceY", y);
     }
+
+    private void TurningPC() {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y).normalized;
+        //transform.up = direction;
+        FaceDirecion(direction.x, direction.y);
+
+    }
+
+    /*public void TurningMobile() {
+
+        if (shootJoystick.Horizontal != 0 || shootJoystick.Vertical != 0) {
+            isShooting = true;
+            transform.forward = new Vector3(shootJoystick.Horizontal, 0f, shootJoystick.Vertical);
+        }
+        else if (movementJoystick.Horizontal != 0 || movementJoystick.Vertical != 0) {
+            transform.forward = new Vector3(horizontal, 0f, vertical);
+            isShooting = false;
+        }
+        else {
+            isShooting = false;
+        }
+    }*/
+
 
 
 }

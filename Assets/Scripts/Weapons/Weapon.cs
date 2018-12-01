@@ -8,9 +8,9 @@ public class Weapon : MonoBehaviour {
     //damage States
     public int damagePoint = 1;
     public float pushForce = 2.0f;
-
-    private float coolDown = 0.5f;
-    private float lastShoot;
+    public float rotateAngle = 0;
+    protected float coolDown = 0.5f;
+    protected float lastShoot;
     protected Transform bulletSpawnPoint;
     protected GunSpriteChanger gunSpriteChanger;
 
@@ -19,8 +19,9 @@ public class Weapon : MonoBehaviour {
         bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;
     }
 
-    protected virtual void Shoot() {
-        Debug.Log("Shoot");
+    public virtual void Shoot() {
+        // Debug.Log("Shoot");
+        
     }
 
     protected virtual void ChangeSprites() {
