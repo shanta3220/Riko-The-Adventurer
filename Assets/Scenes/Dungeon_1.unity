@@ -165,12 +165,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c8bb148b2e57c4f901320ec243f403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
   GunSide: {fileID: 0}
   GunUp: {fileID: 0}
   GunDown: {fileID: 0}
   GunDiagUp: {fileID: 0}
   GunDiagDown: {fileID: 0}
+  Bullet: {fileID: 0}
+  damagePoint: 1
+  pushForce: 2
 --- !u!1 &322779539
 GameObject:
   m_ObjectHideFlags: 0
