@@ -6,28 +6,34 @@ public class Bullet : Collidable {
     //damageStructure
     public int damagePoint = 1;
     public float pushForce = 2.0f;
-    public float zRot;
+   
     //upgrade
-    private Rigidbody rBody;
+    private Rigidbody2D rBody;
     public int weaponLevel = 0;
-    public float bulletSpeed = 1;
+    public float bulletSpeed = 5;
     public bool canMove;
-    public Transform bulletSpawnPoint;
-    private SpriteRenderer spriteRenderer;
+    public float zRot;
 
-    public Vector2 direction;
+    private SpriteRenderer spriteRenderer;
+    private Animator anim;
     protected override void Start() {
         base.Start();
+        rBody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        Destroy(gameObject, 1f);
     }
 
     
     private void FixedUpdate() {
-        if(canMove)
-            rBody.AddForce(bulletSpawnPoint.up * bulletSpeed*Time.deltaTime);
+        if (canMove)
+            rBody.AddForce(transform.right * bulletSpeed);
     }
 
-    public void SetSpawnPoint(Transform spawnPoint) {
-        bulletSpawnPoint = spawnPoint;
+    protected override void OnCollide(Collider2D col) {
+        base.OnCollide(col);
+        if (col.tag == "Blocking")
+            anim.SetInteger("Anim", 1);
+            
     }
 
 }

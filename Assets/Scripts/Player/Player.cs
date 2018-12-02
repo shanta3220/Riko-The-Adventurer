@@ -7,24 +7,24 @@ public class Player : MonoBehaviour {
     private BoxCollider2D boxCollider;
     private Vector3 moveDelta;
     private Animator anim;
+    private Animator shootAnim;
     private RaycastHit2D hit;
+
    
     public Transform target;
 
     public bool hasTarget;
     bool isWalking;
-
-    private float camRayLength = 150f;
-    private int floorMask = 10;
     public Weapon weapon;
     //public Joystick movementJoystick, shootJoystick;
 
-    protected float coolDown = 0.5f;
+    protected float coolDown = 0.2f;
     protected float lastShoot;
     private void Start () {
 
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        shootAnim = GetComponent<GunSpriteChanger>().bulletSpawnPoint.GetComponent<Animator>();
     }
 
     private void FixedUpdate() {
@@ -34,13 +34,13 @@ public class Player : MonoBehaviour {
         //reset moveDelta
         moveDelta = new Vector3(x,y,0);
         TurningPC();
-        if (!isPlayerAdvanced)
+        /*if (!isPlayerAdvanced)
             PlayerMovement(moveDelta.x);
         else {
             TurningPC();
            /* if (x != 0 || y != 0)
-               PlayerMovement(x, y);*/
-        }
+               PlayerMovement(x, y);
+        }*/
        
         /*if (hasTarget) {
             PlayerFaceEnemyAnim(target);
@@ -65,6 +65,7 @@ public class Player : MonoBehaviour {
         if (Input.GetMouseButton(0)) {
             if (Time.time - lastShoot > coolDown) {
                 lastShoot = Time.time;
+                shootAnim.SetTrigger("Shoot");
                 weapon.Shoot();
             }
         }
@@ -86,10 +87,20 @@ public class Player : MonoBehaviour {
 
     }
 
-   
+
+    private void TurningPC() {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y).normalized;
+        //transform.up = direction;
+        FaceDirecion(direction.x, direction.y);
+
+    }
+
     private void FaceDirecion(float x, float y) {
         x = Mathf.RoundToInt(x);
         y = Mathf.RoundToInt(y);
+       
         if (x > 0) {
             transform.localScale = Vector3.one;
         }
@@ -97,12 +108,11 @@ public class Player : MonoBehaviour {
         else if (x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-
+        weapon.rotateAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
         // anim.SetBool("IsWalking", isWalking);
         x = Mathf.Abs(x);
         anim.SetFloat("FaceX", x);
         anim.SetFloat("FaceY", y);
-
     }
 
   
@@ -111,13 +121,15 @@ public class Player : MonoBehaviour {
         float x, y;
         //Vector2 localMove = transform.InverseTransformDirection(target.position).normalized;
         Vector2 localMove = (target.position - transform.position).normalized;
-        if (localMove.x > -0.5 && localMove.x < 0.5)
+        x = Mathf.RoundToInt(localMove.x);
+        y = Mathf.RoundToInt(localMove.y);
+       /* if (localMove.x > -0.5 && localMove.x < 0.5)
             x = 0;
         else x = Mathf.Sign(localMove.x);
 
         if (localMove.y > -0.5 && localMove.y < 0.5)
             y = 0;
-        else y = Mathf.Sign(localMove.y);
+        else y = Mathf.Sign(localMove.y);*/
 
         if (x > 0) {
             transform.localScale = Vector3.one;
@@ -132,14 +144,7 @@ public class Player : MonoBehaviour {
         anim.SetFloat("FaceY", y);
     }
 
-    private void TurningPC() {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y).normalized;
-        //transform.up = direction;
-        FaceDirecion(direction.x, direction.y);
-
-    }
+ 
 
     /*public void TurningMobile() {
 

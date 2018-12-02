@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour {
     protected virtual void Start() {
         gunSpriteChanger = transform.parent.GetComponent<GunSpriteChanger>();
         bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;
+        //ChangeSprites();
     }
 
     public virtual void Shoot() {
@@ -39,6 +40,10 @@ public class Weapon : MonoBehaviour {
                 Shoot();
             }
         }
+    }
+
+   public virtual void GetDirection(Vector3 dirFromMeToMouse) {
+
     }
 
 }

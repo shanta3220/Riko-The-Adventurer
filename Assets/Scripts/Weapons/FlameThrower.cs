@@ -7,7 +7,6 @@ public class FlameThrower : Weapon {
 
 	protected override void Start () {
         base.Start();
-       
     }
     protected override void Update() {
         /*if (Input.GetMouseButton(0)) {
@@ -20,12 +19,11 @@ public class FlameThrower : Weapon {
 
 
     public override void Shoot() {
-        Instantiate(Bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        //Bullet.GetComponent<Rigidbody2D>().AddForce(bulletSpawnPoint.up * bulletSpeed);
-        Bullet.GetComponent<Bullet>().SetSpawnPoint(bulletSpawnPoint);
-        Bullet.GetComponent<Bullet>().canMove = true;
-        Bullet.transform.rotation = Quaternion.Euler(rotateAngle * Vector3.forward);
-        Debug.Log("New One");
+        Quaternion bulletAngle = Quaternion.Euler(rotateAngle * Vector3.forward);
+        Instantiate(Bullet, bulletSpawnPoint.position, bulletAngle);
+        Bullet.GetComponent<Rigidbody2D>().AddForce(bulletSpawnPoint.up * bulletSpeed);
+       
+       // Bullet.GetComponent<Bullet>().canMove = true;
 
     }
 

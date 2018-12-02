@@ -31,6 +31,6 @@ public class Collidable : MonoBehaviour {
     }
 
     protected virtual void OnCollide(Collider2D col) {
-        Debug.Log(col.name);
+
     }
 }
