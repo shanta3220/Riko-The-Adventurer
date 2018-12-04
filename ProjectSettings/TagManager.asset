@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Blocking
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - 
   - 
   - Blocking
+  - Player
   - Actor
-  - Floor
   - Bullet
   - 
   - 

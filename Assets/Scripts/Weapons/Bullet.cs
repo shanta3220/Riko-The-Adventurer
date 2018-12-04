@@ -30,10 +30,26 @@ public class Bullet : Collidable {
     }
 
     protected override void OnCollide(Collider2D col) {
-        base.OnCollide(col);
         if (col.tag == "Blocking")
             anim.SetInteger("Anim", 1);
-            
+        
+        if (col.tag == "Enemy") {
+            //create a new damage object then we will send it to the enemy we hit
+             Damage dmg = new Damage {
+                damageAmount = damagePoint,
+                origin = transform.position,
+                pushForce = pushForce
+            };
+            col.SendMessage("ReceiveDamage", dmg);
+            anim.SetInteger("Anim", 1);
+
+        }
     }
+
+  /*  void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.tag == "Enemy") {
+            Debug.Log(col.gameObject.name);
+        }
+    }*/
 
 }
