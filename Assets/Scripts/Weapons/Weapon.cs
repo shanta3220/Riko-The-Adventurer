@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class Weapon : MonoBehaviour {
     //required sprites
     public Sprite GunSide, GunUp, GunDown, GunDiagUp, GunDiagDown;
@@ -17,6 +16,7 @@ public class Weapon : MonoBehaviour {
     protected virtual void Start() {
         gunSpriteChanger = transform.parent.GetComponent<GunSpriteChanger>();
         bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;
+     
         //ChangeSprites();
     }
 
@@ -34,16 +34,21 @@ public class Weapon : MonoBehaviour {
     }
 
     protected virtual void Update() {
-        if (Input.GetMouseButton(0)) {
+        if(Input.GetMouseButton(0)) {
             if(Time.time - lastShoot > coolDown) {
                 lastShoot = Time.time;
                 Shoot();
             }
         }
+        
     }
 
-   public virtual void GetDirection(Vector3 dirFromMeToMouse) {
+    public virtual void GetDirection(Vector3 dirFromMeToMouse) {
 
     }
+    
 
+    private void OnCollisionEnter2D(Collision2D other) {
+        
+    }
 }

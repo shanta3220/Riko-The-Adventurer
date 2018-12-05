@@ -23,7 +23,6 @@ public class Bullet : Collidable {
         Destroy(gameObject, 1f);
     }
 
-    
     private void FixedUpdate() {
         if (canMove)
             rBody.AddForce(transform.right * bulletSpeed);

@@ -1,65 +1,33 @@
 ﻿using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
-public class Player : Fighter {
 
-    public bool isPlayerAdvanced;
 
-    private BoxCollider2D boxCollider;
-    private Vector3 moveDelta;
-    private Animator anim;
+public class Player : Mover {
+
+    //target to shoot
+    public Transform target;
+    public bool hasTarget;
+    public Weapon weapon;
+
     private Animator shootAnim;
-    private RaycastHit2D hit;
 
    
-    public Transform target;
-
-    public bool hasTarget;
-    bool isWalking;
-    public Weapon weapon;
     //public Joystick movementJoystick, shootJoystick;
-
     protected float coolDown = 0.2f;
     protected float lastShoot;
-    private void Start () {
 
-        boxCollider = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+    protected override void Start() {
+        base.Start();
         shootAnim = GetComponent<GunSpriteChanger>().bulletSpawnPoint.GetComponent<Animator>();
     }
+
 
     private void FixedUpdate() {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-       // isWalking = x != 0 || y != 0 ? true : false;
-        //reset moveDelta
-        moveDelta = new Vector3(x,y,0);
-        TurningPC();
-        /*if (!isPlayerAdvanced)
-            PlayerMovement(moveDelta.x);
-        else {
-            TurningPC();
-           /* if (x != 0 || y != 0)
-               PlayerMovement(x, y);
-        }*/
-       
-        /*if (hasTarget) {
-            PlayerFaceEnemyAnim(target);
-        }*/
-        
-
-        //making sure we can move the player upward or downward by casting a box there beforehand
-        hit = Physics2D.BoxCast(transform.position,boxCollider.size,0,new Vector2(0,moveDelta.y),Mathf.Abs(moveDelta.y*Time.deltaTime),LayerMask.GetMask("Actor","Blocking"));
-        if(hit.collider == null) {
-            //moving the player
-            transform.Translate(0,moveDelta.y * Time.deltaTime,0);
-        }
-        
-        hit = Physics2D.BoxCast(transform.position,boxCollider.size,0,new Vector2(moveDelta.x,0),Mathf.Abs(moveDelta.x*Time.deltaTime),LayerMask.GetMask("Actor","Blocking"));
-        if(hit.collider == null) {
-            //moving the player
-            transform.Translate(moveDelta.x * Time.deltaTime,0,0);
-        }
+        UpdateMotor(new Vector3(x, y, 0));
     }
+
 
     void Update() {
         if (Input.GetMouseButton(0)) {
@@ -71,20 +39,10 @@ public class Player : Fighter {
         }
     }
 
-    //n3k's
-    private void PlayerMovement(float x) {
-        //swap sprite direction whether moving left or right and animation
-        if (x > 0) {
-            transform.localScale = Vector3.one;
-            anim.SetInteger("Anim", 1);
-        }
 
-        else if (x < 0) {
-            transform.localScale = new Vector3(-1, 1, 1);
-            anim.SetInteger("Anim", 1);
-        }
-        else anim.SetInteger("Anim", 0);
-
+    protected override void UpdateMotor(Vector3 input) {
+        base.UpdateMotor(input);
+        TurningPC();
     }
 
 
@@ -92,12 +50,11 @@ public class Player : Fighter {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y).normalized;
-        //transform.up = direction;
-        FaceDirecion(direction.x, direction.y);
+        Animate(direction.x, direction.y);
 
     }
 
-    private void FaceDirecion(float x, float y) {
+    private void Animate(float x, float y) {
         x = Mathf.RoundToInt(x);
         y = Mathf.RoundToInt(y);
        
@@ -108,7 +65,8 @@ public class Player : Fighter {
         else if (x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        weapon.rotateAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+        if(weapon.enabled)
+            weapon.rotateAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
         // anim.SetBool("IsWalking", isWalking);
         x = Mathf.Abs(x);
         anim.SetFloat("FaceX", x);
@@ -144,7 +102,7 @@ public class Player : Fighter {
         anim.SetFloat("FaceY", y);
     }
 
- 
+
 
     /*public void TurningMobile() {
 
@@ -161,6 +119,18 @@ public class Player : Fighter {
         }
     }*/
 
+   /* private void OldPlayerSwitch() {
+        /*if (!isPlayerAdvanced)
+          Animate(moveDelta.x);
+      else {
+          TurningPC();
+         /* if (x != 0 || y != 0)
+             Animate(x, y);
+      }*/
 
+        /*if (hasTarget) {
+            PlayerFaceEnemyAnim(target);
+        }
 
-}
+    }*/
+    }
