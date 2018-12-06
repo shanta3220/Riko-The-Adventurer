@@ -16,11 +16,12 @@ public class Bullet : Collidable {
 
     private SpriteRenderer spriteRenderer;
     private Animator anim;
+
     protected override void Start() {
         base.Start();
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        Destroy(gameObject, 1f);
+        
     }
 
     private void FixedUpdate() {
@@ -29,8 +30,11 @@ public class Bullet : Collidable {
     }
 
     protected override void OnCollide(Collider2D col) {
-        if (col.tag == "Blocking")
+        if (col.tag == "Blocking"){
             anim.SetInteger("Anim", 1);
+            Destroy(gameObject, 0.2f);
+        }
+            
         
         if (col.tag == "Enemy") {
             //create a new damage object then we will send it to the enemy we hit
@@ -41,6 +45,7 @@ public class Bullet : Collidable {
             };
             col.SendMessage("ReceiveDamage", dmg);
             anim.SetInteger("Anim", 1);
+            Destroy(gameObject, 0.2f);
 
         }
     }

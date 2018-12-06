@@ -41,8 +41,22 @@ public class Player : Mover {
 
 
     protected override void UpdateMotor(Vector3 input) {
-        base.UpdateMotor(input);
+        moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed,0);
+        isRunning = input.x != 0 || input.y != 0 ? true : false;
         TurningPC();
+        //making sure we can move the player upward or downward by casting a box there beforehand
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if (hit.collider == null) {
+            //moving the player
+            transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
+        }
+
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if (hit.collider == null) {
+            //moving the player
+            transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+        }
+        
     }
 
 
@@ -65,6 +79,11 @@ public class Player : Mover {
         else if (x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+
+        //add push vector, if any
+        moveDelta += pushDirection;
+        //reduce pushForce everyframe, based on recoveryspeed
+        pushDirection = Vector3.Lerp(pushDirection,Vector3.zero,PushRecoverySpeed);
         if(weapon.enabled)
             weapon.rotateAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
         // anim.SetBool("IsWalking", isWalking);

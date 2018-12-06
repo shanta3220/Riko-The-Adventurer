@@ -11,7 +11,7 @@ public class Enemy : Mover {
     public float chaseLength = 1;
     public ContactFilter2D filter;
     private bool isChasing;
-    private bool collidingWithPlayer;
+    private bool collidingWithPlayer;//for animating
     private Transform playerTransform;
     private Vector3 startingPosition;
 
@@ -38,7 +38,7 @@ public class Enemy : Mover {
             if(isChasing){
                 if(!collidingWithPlayer){
                     motion = (playerTransform.position - transform.position).normalized;
-                    UpdateMotor(motion );
+                    UpdateMotor(motion);
                 }
             }
             else{

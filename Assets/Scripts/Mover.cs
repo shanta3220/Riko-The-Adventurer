@@ -48,6 +48,9 @@ public abstract class Mover : Fighter {
         else if (x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+        moveDelta += pushDirection;
+        //reduce pushForce everyframe, based on recoveryspeed
+        pushDirection = Vector3.Lerp(pushDirection,Vector3.zero,PushRecoverySpeed);
         anim.SetBool("IsRunning", isRunning);
     }
 
