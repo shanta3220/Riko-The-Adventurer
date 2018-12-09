@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6880fd47d8d82ea41beb563e9e19eccc
-timeCreated: 1540035411
+timeCreated: 1544367224
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -27,6 +27,8 @@ TextureImporter:
     21300040: crate_0
     21300042: crate2
     21300044: bg
+    21300046: MenuButton
+    21300048: Menu_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -421,7 +423,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Menu_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 63
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
