@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour {
     protected Transform bulletSpawnPoint;
     protected GunSpriteChanger gunSpriteChanger;
 
-    protected virtual void Start() {
+    protected virtual void Awake() {
         gunSpriteChanger = transform.parent.GetComponent<GunSpriteChanger>();
         bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;
      
@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour {
         gunSpriteChanger.GunDown.sprite = GunDown;
         gunSpriteChanger.GunDiagUp.sprite = GunDiagUp;
         gunSpriteChanger.GunDiagDown.sprite = GunDiagDown;
+        transform.parent.GetComponent<Player>().weapon = this;
     }
 
     protected virtual void Update() {

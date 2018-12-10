@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     //Resources
     public List<Sprite> playerSprites;
@@ -15,13 +16,15 @@ public class GameManager : MonoBehaviour {
 
     public Player player;
     //public Weapon weapon;
- 
-    public int pesos;
+
+    public int gold;
     public int experience;
 
 
-    private void Awake () {
-        if (instance != null) {
+    private void Awake()
+    {
+        if (instance != null)
+        {
             Destroy(gameObject);
             return;
         }
@@ -29,16 +32,17 @@ public class GameManager : MonoBehaviour {
         //sceneloaded event is fires which call savestate
         SceneManager.sceneLoaded += LoadState;
         DontDestroyOnLoad(gameObject);
-	}
-	
+    }
+
     //floatingText;
-	
-    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration) {
-         FloatingTextManager.instance.Show(msg, fontSize, color, position, motion, duration);
+
+    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    {
+        FloatingTextManager.instance.Show(msg, fontSize, color, position, motion, duration);
 
     }
 
-  
+
     /// <summary>
     /// int preferedSkin,
     /// int pesosAmount,
@@ -46,10 +50,11 @@ public class GameManager : MonoBehaviour {
     /// int weaponLevel
     /// </summary>
     //save state
-    public void SaveState() {
+    public void SaveState()
+    {
         string s = "";
         s += "0" + "|";
-        s += pesos.ToString() + "|";
+        s += gold.ToString() + "|";
         s += experience.ToString();
         s += "0";//weaponLevel
 
@@ -60,16 +65,24 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    public void LoadState(Scene scene, LoadSceneMode mode) {
+    public void LoadState(Scene scene, LoadSceneMode mode)
+    {
         if (!PlayerPrefs.HasKey("Setting"))
             return;
         string[] data = PlayerPrefs.GetString("Setting").Split('|');
 
         //Change PlayerScreen
         // amount of pessos
-        pesos = int.Parse(data[1]);
+        gold = int.Parse(data[1]);
         experience = int.Parse(data[2]);
         //change weapon level
         Debug.Log("Load State");
+    }
+
+    //Upgrade Weapon
+    public bool TryUpgradeWeapon()
+    {
+        //is the weapon max level
+        return false;
     }
 }

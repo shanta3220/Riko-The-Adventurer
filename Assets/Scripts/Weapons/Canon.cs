@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class FlameThrower : Weapon {
+public class Canon : Weapon {
 
     public float bulletSpeed = 5;
  
@@ -15,6 +17,7 @@ public class FlameThrower : Weapon {
 
     private void OnEnable() {
         ChangeSprites();
+		
     }
     protected override void Update() {
       

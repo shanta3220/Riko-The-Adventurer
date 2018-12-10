@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61087365723984124}
   - component: {fileID: 95921132425066602}
   m_Layer: 11
-  m_Name: flamethrower_bullet
+  m_Name: canon_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1208095908852676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1606, y: -0.0657, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -80,7 +80,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.11, y: 0.08}
+    oldSize: {x: 0.06, y: 0.06}
     newSize: {x: 0.26, y: 0.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 1803986221
   m_SortingLayer: 3
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 3dd983039c453e14cb7d30dfcb73f988, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15b950b4b2721634eb0613fb5d4e018f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
