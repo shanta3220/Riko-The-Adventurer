@@ -39,9 +39,9 @@ public class Bullet : Collidable {
         if (col.tag == "Enemy") {
             //create a new damage object then we will send it to the enemy we hit
              Damage dmg = new Damage {
-                damageAmount = damagePoint,
+                damageAmount = GameManager.instance.weapon.damagePoint[GameManager.instance.weapon.weaponLevel],
                 origin = transform.position,
-                pushForce = pushForce
+                pushForce = GameManager.instance.weapon.pushForce[GameManager.instance.weapon.weaponLevel]
             };
             col.SendMessage("ReceiveDamage", dmg);
             anim.SetInteger("Anim", 1);

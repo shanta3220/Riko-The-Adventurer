@@ -1,22 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
-public class Canon : Weapon {
+public class Laser : Weapon {
 
     public float bulletSpeed = 5;
- 
-	protected override void Awake() {
-        base.Awake();
-    }
 
+    protected override void Awake() {
+        base.Awake();
+
+    }
 
     private void OnEnable() {
         ChangeSprites();
-    }
 
-    protected override void Update() {
-      
     }
 
     public override void Shoot() {
@@ -24,6 +20,4 @@ public class Canon : Weapon {
         Instantiate(Bullet, bulletSpawnPoint.position, bulletAngle);
         Bullet.GetComponent<Rigidbody2D>().AddForce(bulletSpawnPoint.up * bulletSpeed);
     }
-
-
 }

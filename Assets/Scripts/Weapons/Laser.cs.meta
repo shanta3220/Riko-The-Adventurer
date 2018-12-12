@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 3a905e07128331a4ca4cadb88fcdadc9
+timeCreated: 1544622511
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GunSide: {fileID: 21300000, guid: e733976557925974dae00e1b9ba8dd52, type: 3}
+  - GunUp: {fileID: 21300000, guid: ba8e40fa81c99c947918548065694f93, type: 3}
+  - GunDown: {fileID: 21300000, guid: 939b56d7188949440bc283c64e6d9828, type: 3}
+  - GunDiagUp: {fileID: 21300000, guid: 662d6cffd477a1c448c77d23973a9e25, type: 3}
+  - GunDiagDown: {fileID: 21300000, guid: 7021cb94bdcd5224d8f7b9e80a491559, type: 3}
+  - Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

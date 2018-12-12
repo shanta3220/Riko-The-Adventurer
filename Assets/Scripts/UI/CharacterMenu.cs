@@ -43,16 +43,16 @@ public class CharacterMenu : MonoBehaviour
     //Ceapon upgrade
     public void OnUpgradeClick()
     {
-
+        if(GameManager.instance.TryUpgradeWeapon())
+            UpdateMenu();
     }
 
     //update character Information
-
     public void UpdateMenu()
     {
         //weapon
-        currentWeaponImage.sprite = GameManager.instance.weaponSprites[0];
-        upgradeCostText.text = "NOT IMPLEMENTED";
+        currentWeaponImage.sprite = GameManager.instance.weaponSprite;
+        upgradeCostText.text = GameManager.instance.weapon.weaponPrinces[GameManager.instance.weapon.weaponLevel].ToString();
         //meta
         hitpointText.text = GameManager.instance.player.health.ToString();
         goldText.text = GameManager.instance.gold.ToString();

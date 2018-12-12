@@ -1,0 +1,366 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1546627033859328}
+  m_IsPrefabParent: 1
+--- !u!1 &1546627033859328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4598915261361338}
+  - component: {fileID: 114520406739868880}
+  - component: {fileID: 114942121516290926}
+  - component: {fileID: 114397668065913378}
+  - component: {fileID: 114546373676342080}
+  - component: {fileID: 114196383138936630}
+  - component: {fileID: 114608958362857858}
+  - component: {fileID: 114817267202493940}
+  - component: {fileID: 114317286614640322}
+  - component: {fileID: 114019854245673514}
+  - component: {fileID: 114512691396346954}
+  m_Layer: 0
+  m_Name: Datacontroller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4598915261361338
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114019854245673514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3e1b3de5b55c145a887fc34363a3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 892b3f254ea94a148aadd9745fbe9cdc, type: 3}
+  GunUp: {fileID: 21300000, guid: a802d33de249cf74ba9388d41ad1ac5a, type: 3}
+  GunDown: {fileID: 21300000, guid: def5049e480cde043967f4dd53f822aa, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: b6dc4bc02d1cf044bb5b6670d4f5acbc, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: 7d12ea656de041348b9664512d5db464, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114196383138936630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a905e07128331a4ca4cadb88fcdadc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: e733976557925974dae00e1b9ba8dd52, type: 3}
+  GunUp: {fileID: 21300000, guid: ba8e40fa81c99c947918548065694f93, type: 3}
+  GunDown: {fileID: 21300000, guid: 939b56d7188949440bc283c64e6d9828, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 662d6cffd477a1c448c77d23973a9e25, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: 7021cb94bdcd5224d8f7b9e80a491559, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114317286614640322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ab111a583da884e923153138c6d18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 11cf0eb87c4806f44b0a4daa5ffb1513, type: 3}
+  GunUp: {fileID: 21300000, guid: 823eed43230dea44bac5386f12b2ffe9, type: 3}
+  GunDown: {fileID: 21300000, guid: 093aee4d4f39e1e40bda2088cd2f539f, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 78deceae8c615d349b2a2a5cfad30432, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: d2c7638e4edc9bc4e918e672dd480698, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114397668065913378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8d637f67e2c7748ae039920e0c2083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: beb030a973fe11b438214e84c5a630f2, type: 3}
+  GunUp: {fileID: 21300000, guid: 429a96ff123d9fc4fb96d4615ee5d59f, type: 3}
+  GunDown: {fileID: 21300000, guid: ff049ca9cc23ca04bb2b64d5b8cdd1d0, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 27a8e293a7b786548b3188d1c774ffab, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: 1ba58336c5e632c42aea5cdd01370773, type: 3}
+  weaponID: 0
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114512691396346954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87665e5bf66c24e46ab114633c7f44fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 676c549ef7344be47bbf2578e2a1e078, type: 3}
+  GunUp: {fileID: 21300000, guid: 4d1e7ffd1dc498846a64f24c3c68d243, type: 3}
+  GunDown: {fileID: 21300000, guid: 415ba26110d5b814681901efc929b284, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: f57f662406053d74386aaa1eee705962, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: 170f86618d2b3c84291300dc4ac0cef3, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114520406739868880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f8b9738233a084c84a51133f683c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    gold: 0
+    experience: 0
+    notCollectedWeapons:
+    - {fileID: 114942121516290926}
+    - {fileID: 114546373676342080}
+    - {fileID: 114196383138936630}
+    - {fileID: 114608958362857858}
+    - {fileID: 114817267202493940}
+    - {fileID: 114317286614640322}
+    - {fileID: 114019854245673514}
+    - {fileID: 114512691396346954}
+    collectedWeapons:
+    - {fileID: 114397668065913378}
+    weaponSelected: 0
+    weaponLevel: 
+--- !u!114 &114546373676342080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9b1d745bdba264284f81855d282559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 9af631b21b2d8804b93313991ac2ba55, type: 3}
+  GunUp: {fileID: 21300000, guid: 4c729145385ebe549b33d134e34d0acb, type: 3}
+  GunDown: {fileID: 21300000, guid: 462850469634138478d0de5eb9c12c17, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 73b943549f82084448bcf440a6651c7f, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: c187f697a47586946bd5a16022d427c5, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114608958362857858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07e24fcff6891146ac1288407d09f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 552379c93e3ddd94d838e5a75bba023c, type: 3}
+  GunUp: {fileID: 21300000, guid: 860047646abfa6a43a9b66f169b6c502, type: 3}
+  GunDown: {fileID: 21300000, guid: 98bb5d4abfb55db4791384b18d7d8bf5, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: bd6a0e4f334915a4881607b4c62647c7, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: 6b59c6e43092615448736a0a246787b9, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114817267202493940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fa994b3c69cc34d893fdfd941d7ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: acc468ff07f73c04bb243987f406d543, type: 3}
+  GunUp: {fileID: 21300000, guid: 2bbb07c881883294e91f3adcdf266008, type: 3}
+  GunDown: {fileID: 21300000, guid: 0fe23300fc262f3479e7ed25fcd2b330, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 0913d3012a74e3d45847237f46b5f7a5, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: e95452f741dbd3148ae56abbbe975e9d, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5
+--- !u!114 &114942121516290926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546627033859328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b62f4e736297145b308323ff022a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 47176252476579b48a44492b80093a5e, type: 3}
+  GunUp: {fileID: 21300000, guid: b68b0f3b6f753514db5df2052473f784, type: 3}
+  GunDown: {fileID: 21300000, guid: bcba8d13349f04e46868e560c9a12ee6, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 9e51cda82319e6447a123745696e3e96, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: 7847b15eaf11f6f448919a98bd797ac9, type: 3}
+  weaponID: -1
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 0
+  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpeed: 5

@@ -7,8 +7,8 @@ public class Player : Mover {
     //target to shoot
     public Transform target;
     public bool hasTarget;
+    public GameObject weaponContainer;
     public Weapon weapon;
-
     private Animator shootAnim;
 
    
