@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+
 public class GameManager : MonoBehaviour
 {
 
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     //public List<int> weaponPrices;
     public List<int> xpTable;
     //only changing animators change the player skins
-    public AnimatorController[] playerSkins = new AnimatorController[3];
+    public RuntimeAnimatorController[] playerSkins = new RuntimeAnimatorController[3];
 
     //References
 
@@ -66,11 +66,13 @@ public class GameManager : MonoBehaviour
 
     public bool TryUnlockSkin(int skinNumber, int skinPrice) {
         //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
+        if (data.skins[skinNumber])
+            return true;
         if (gold >= skinPrice) {
             gold -= skinPrice;
             data.skins[skinNumber] = true;
             data.selectedSkin = skinNumber;
-            player.GetComponent<Animator>().runtimeAnimatorController = playerSkins[skinNumber];
+            player.ChangeSkin(skinNumber);
             return true;
         }
         return false;
@@ -85,7 +87,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadData() {
-        player.GetComponent<Animator>().runtimeAnimatorController = playerSkins[data.selectedSkin];
+        player.ChangeSkin(data.selectedSkin);
         gold = data.gold;
         experience = data.experience;
         int i = 0;
@@ -146,6 +148,10 @@ public class GameManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void QuitGame() {
+        Application.Quit();
     }
 
     /*/// <summary>

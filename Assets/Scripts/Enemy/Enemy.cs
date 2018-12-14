@@ -16,7 +16,7 @@ public class Enemy : Mover {
     private Vector3 startingPosition;
 
     //hitbox - its weapon
-    private BoxCollider2D hitBox;//additional boxCollider
+    //private BoxCollider2D hitBox;//additional boxCollider
     private Collider2D[] hits = new Collider2D[10];
 
     private Vector3 motion;
@@ -25,7 +25,7 @@ public class Enemy : Mover {
         base.Start();
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
-        hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>();
+       // hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>();
     }
     
     private void FixedUpdate() {

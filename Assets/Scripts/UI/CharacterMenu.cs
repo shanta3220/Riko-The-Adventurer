@@ -15,11 +15,9 @@ public class CharacterMenu : MonoBehaviour {
 
 
     public int currentCharacterSelection = 0;
-    private Animator anim;
     private int[] skinPrices = { 0, 300, 1000 };
 
     private void Start() {
-        anim = GameManager.instance.player.GetComponent<Animator>();
         Invoke("DeleyValue", 0.5f);
     }
 
@@ -84,7 +82,7 @@ public class CharacterMenu : MonoBehaviour {
         //if is unlocked
         if (GameManager.instance.data.skins[currentCharacterSelection]) {
             characterSelectorText.text = "Selected";
-            anim.runtimeAnimatorController = GameManager.instance.playerSkins[currentCharacterSelection];
+            GameManager.instance.player.ChangeSkin(currentCharacterSelection);
             GameManager.instance.data.selectedSkin = currentCharacterSelection;
         }
         else {

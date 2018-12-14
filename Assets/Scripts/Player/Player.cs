@@ -84,8 +84,8 @@ public class Player : Mover {
         moveDelta += pushDirection;
         //reduce pushForce everyframe, based on recoveryspeed
         pushDirection = Vector3.Lerp(pushDirection,Vector3.zero,PushRecoverySpeed);
-        if(weapon.enabled)
-            weapon.rotateAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+       /* if(weapon.enabled)
+            weapon.rotateAngle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;*/
         // anim.SetBool("IsWalking", isWalking);
         x = Mathf.Abs(x);
         anim.SetFloat("FaceX", x);
@@ -121,7 +121,9 @@ public class Player : Mover {
         anim.SetFloat("FaceY", y);
     }
 
-
+    public void ChangeSkin(int skinId) {
+        anim.runtimeAnimatorController = GameManager.instance.playerSkins[skinId];
+    }
 
     /*public void TurningMobile() {
 
