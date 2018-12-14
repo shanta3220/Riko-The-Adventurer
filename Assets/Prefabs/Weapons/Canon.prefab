@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1728815652049410}
+  m_IsPrefabParent: 1
+--- !u!1 &1728815652049410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4039973882385596}
+  - component: {fileID: 114416863384652412}
+  m_Layer: 0
+  m_Name: Canon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4039973882385596
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1728815652049410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114416863384652412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1728815652049410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b62f4e736297145b308323ff022a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 47176252476579b48a44492b80093a5e, type: 3}
+  GunUp: {fileID: 21300000, guid: b68b0f3b6f753514db5df2052473f784, type: 3}
+  GunDown: {fileID: 21300000, guid: bcba8d13349f04e46868e560c9a12ee6, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 9e51cda82319e6447a123745696e3e96, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: 7847b15eaf11f6f448919a98bd797ac9, type: 3}
+  weaponID: 0
+  isFromDataController: 1
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 1
+  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpawnPoint: {fileID: 0}
+  gunSpriteChanger: {fileID: 0}
+  bulletSpeed: 5

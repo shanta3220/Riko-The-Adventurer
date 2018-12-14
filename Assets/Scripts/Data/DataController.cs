@@ -17,7 +17,8 @@ public class DataController : MonoBehaviour {
             Destroy(gameObject);
         }
 
-       // RefreshData();
+
+        // RefreshData();
     }
 
     public void RefreshData() {
@@ -46,5 +47,7 @@ public class DataController : MonoBehaviour {
     private void OnApplicationQuit() {
         SaveData();
     }
+
+   
 
 }

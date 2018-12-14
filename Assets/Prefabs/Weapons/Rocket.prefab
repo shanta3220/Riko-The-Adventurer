@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1906144337882910}
+  m_IsPrefabParent: 1
+--- !u!1 &1906144337882910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4714762479199628}
+  - component: {fileID: 114972572120965144}
+  m_Layer: 0
+  m_Name: Rocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4714762479199628
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906144337882910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114972572120965144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906144337882910}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ab111a583da884e923153138c6d18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSide: {fileID: 21300000, guid: 11cf0eb87c4806f44b0a4daa5ffb1513, type: 3}
+  GunUp: {fileID: 21300000, guid: 823eed43230dea44bac5386f12b2ffe9, type: 3}
+  GunDown: {fileID: 21300000, guid: 093aee4d4f39e1e40bda2088cd2f539f, type: 3}
+  GunDiagUp: {fileID: 21300000, guid: 78deceae8c615d349b2a2a5cfad30432, type: 3}
+  GunDiagDown: {fileID: 21300000, guid: d2c7638e4edc9bc4e918e672dd480698, type: 3}
+  weaponID: 0
+  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponLevel: 1
+  Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.6
+  - 2.8
+  - 3
+  - 3.2
+  - 3.4
+  rotateAngle: 0
+  bulletSpawnPoint: {fileID: 0}
+  gunSpriteChanger: {fileID: 0}
+  bulletSpeed: 5

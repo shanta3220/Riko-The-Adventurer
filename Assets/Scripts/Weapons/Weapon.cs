@@ -5,7 +5,6 @@ public class Weapon : MonoBehaviour {
     //required sprites
     public Sprite GunSide, GunUp, GunDown, GunDiagUp, GunDiagDown;
     public int weaponID;
-    public bool isFromDataController;//to add the component
     public List<int> weaponPrinces = new List<int>(){35,70,135,200,275,400};
     public int weaponLevel = 1;
     public GameObject Bullet;
@@ -15,16 +14,14 @@ public class Weapon : MonoBehaviour {
     public float rotateAngle = 0;
     protected float coolDown = 0.5f;
     protected float lastShoot;
-    protected Transform bulletSpawnPoint;
-    protected GunSpriteChanger gunSpriteChanger;
+    public Transform bulletSpawnPoint;
+    public GunSpriteChanger gunSpriteChanger;
     protected int damageStartValue = 1;
-
+    
     protected virtual void Awake() {
-        if (isFromDataController)
-            return;
         gunSpriteChanger = transform.parent.GetComponent<GunSpriteChanger>();
         bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;
-     
+        
         //ChangeSprites();
     }
 
@@ -32,20 +29,17 @@ public class Weapon : MonoBehaviour {
         /*if (!GameManager.instance.weaponSprites.Contains(GunSide))
             GameManager.instance.weaponSprites.Add(GunSide); */
         GameManager.instance.weaponSprite = GunSide;
-
+        
     }
 
     public void ChangeSprites() {
-        if (isFromDataController)
-            return;
-        if (DataController.instance.data.weaponSelected != weaponID)
+        if (GameManager.instance.data.weaponSelected != weaponID)
             return;
         gunSpriteChanger.GunSide.sprite = GunSide;
         gunSpriteChanger.GunUp.sprite = GunUp;
         gunSpriteChanger.GunDown.sprite = GunDown;
         gunSpriteChanger.GunDiagUp.sprite = GunDiagUp;
         gunSpriteChanger.GunDiagDown.sprite = GunDiagDown;
-        Debug.Log(DataController.instance.data.weaponSelected);
         if (transform.parent.GetComponent<Player>().weapon != null && transform.parent.GetComponent<Player>().weapon != this)
             transform.parent.GetComponent<Player>().weapon.enabled = false;
         transform.parent.GetComponent<Player>().weapon = this;
@@ -73,7 +67,7 @@ public class Weapon : MonoBehaviour {
 
     public virtual void UpgradeWeapon() {
         weaponLevel++;
-        DataController.instance.data.collectedWeapons[weaponID].weaponLevel = weaponLevel;
+      
     }
 
     public void SetSettings(Weapon newWep) {
@@ -86,7 +80,6 @@ public class Weapon : MonoBehaviour {
         newWep.Bullet = Bullet;
         newWep.weaponID = weaponID;
         newWep.weaponLevel = weaponLevel;
-
 
     }
 }

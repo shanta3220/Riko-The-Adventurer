@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: afd1b39a109c9ab41864b7333f88aff7
-timeCreated: 1540048962
+timeCreated: 1544731552
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -103,7 +103,7 @@ TextureImporter:
       name: side_down_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 1
         width: 16
         height: 21
@@ -117,7 +117,7 @@ TextureImporter:
       name: side_down_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 20
         y: 1
         width: 16
         height: 21
@@ -131,7 +131,7 @@ TextureImporter:
       name: side_down_2
       rect:
         serializedVersion: 2
-        x: 38
+        x: 39
         y: 1
         width: 16
         height: 21
@@ -145,7 +145,7 @@ TextureImporter:
       name: side_down_3
       rect:
         serializedVersion: 2
-        x: 57
+        x: 58
         y: 1
         width: 16
         height: 21

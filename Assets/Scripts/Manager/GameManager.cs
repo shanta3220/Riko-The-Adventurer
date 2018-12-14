@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
@@ -11,7 +12,8 @@ public class GameManager : MonoBehaviour
     public Sprite weaponSprite;
     //public List<int> weaponPrices;
     public List<int> xpTable;
-    public static GameManager instance;
+    //only changing animators change the player skins
+    public AnimatorController[] playerSkins = new AnimatorController[3];
 
     //References
 
@@ -20,7 +22,8 @@ public class GameManager : MonoBehaviour
 
     public int gold;
     public int experience;
-    [HideInInspector]
+    public GameData data;
+    public static GameManager instance;
 
 
     private void Awake()
@@ -32,9 +35,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-       
+        data = DataController.instance.data;
         LoadData();
-        //weapon = player.weapon;
     }
 
     //floatingText;
@@ -47,13 +49,14 @@ public class GameManager : MonoBehaviour
     //Upgrade Weapon
     public bool TryUpgradeWeapon()
     {
-        weapon = player.weapon;
+        //weapon = player.weapon;
         //is the weapon max level
         if (weapon.weaponPrinces.Count == weapon.weaponLevel)
             return false;
         //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
         else if(gold >= weapon.weaponPrinces[weapon.weaponLevel]){
             gold -= weapon.weaponPrinces[weapon.weaponLevel];
+            data.weaponLevel[weapon.weaponID] = weapon.weaponLevel;
             weapon.UpgradeWeapon();
             return true;
         }
@@ -61,74 +64,88 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void SaveData() {
+    public bool TryUnlockSkin(int skinNumber, int skinPrice) {
+        //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
+        if (gold >= skinPrice) {
+            gold -= skinPrice;
+            data.skins[skinNumber] = true;
+            data.selectedSkin = skinNumber;
+            player.GetComponent<Animator>().runtimeAnimatorController = playerSkins[skinNumber];
+            return true;
+        }
+        return false;
+    }
 
-        DataController.instance.data.gold = gold;
-        DataController.instance.data.experience = experience;
-        DataController.instance.data.weaponSelected = weapon.weaponID;
-        DataController.instance.SaveData();
+    public void SaveData() {
+        data.gold = gold;
+        data.experience = experience;
+        data.weaponSelected = weapon.weaponID;
+        data.weaponLevel[weapon.weaponID] = weapon.weaponLevel;
+        DataController.instance.SaveData(data);
     }
 
     public void LoadData() {
-        GameData data = DataController.instance.data;
+        player.GetComponent<Animator>().runtimeAnimatorController = playerSkins[data.selectedSkin];
         gold = data.gold;
         experience = data.experience;
         int i = 0;
         //checking collected weapons
         foreach(Weapon wp in data.collectedWeapons) {
-            wp.weaponID = i;
             Weapon wep = player.weaponContainer.AddComponent(wp.GetType()) as Weapon;
-            CloneWeapon(wp, wep);
+            wep.weaponLevel = data.weaponLevel[i];
+            wep.weaponID = i;
+            wep.enabled = IsSelectedWeapon(wep);
             i++;
         }
+
         //setting the default weapon
-        if(data.weaponSelected == 0) {
+        if (data.weaponSelected == 0) {
             player.weaponContainer.GetComponent<FlameThrower>().enabled = true;
         }
     }
 
     public void UnlockWeapon() {
-        GameData data = DataController.instance.data;
         Weapon wep = data.notCollectedWeapons[Random.Range(0, data.notCollectedWeapons.Count)];
-        wep.enabled = true;
         data.collectedWeapons.Add(wep);
         data.notCollectedWeapons.Remove(wep);
-        wep.weaponID = data.collectedWeapons.Count - 1;
-        data.collectedWeapons[data.collectedWeapons.Count - 1].weaponID = data.collectedWeapons.Count - 1;
         //adding new weapon
-        data.weaponSelected = wep.weaponID;
+       // weapon.enabled = false;
         Weapon playerWep = player.weaponContainer.AddComponent(wep.GetType()) as Weapon;
-        CloneWeapon(wep, playerWep);
-        SaveData();
+        playerWep.weaponID = data.collectedWeapons.Count - 1;
+        data.weaponSelected = data.collectedWeapons.Count - 1;
+        playerWep.ChangeSprites();
     }
 
     public void SwitchWeapon() {
-        GameData data = DataController.instance.data;
+ 
         if (weapon.weaponID == data.collectedWeapons.Count - 1) {
+            //weapon.enabled = false;
             data.weaponSelected = 0;
             Weapon wep = player.weaponContainer.GetComponent(data.collectedWeapons[0].GetType()) as Weapon;
+            weaponSprite = wep.GunSide;
             wep.enabled = true;
+            wep.ChangeSprites();
         }
         else {
+            //weapon.enabled = false;
             data.weaponSelected = weapon.weaponID + 1;
             Weapon wep = player.weaponContainer.GetComponent(data.collectedWeapons[weapon.weaponID + 1].GetType()) as Weapon;
+            weaponSprite = wep.GunSide;
             wep.enabled = true;
+            wep.ChangeSprites();
         }
     }
     public void OnDestroy() {
+       
         SaveData();
     }
 
-    private void CloneWeapon(Weapon originalWeapon, Weapon cloneWeapon) {
-        GameData data = DataController.instance.data;
-        originalWeapon.SetSettings(cloneWeapon);
-        originalWeapon.enabled = false;
-        if (cloneWeapon.weaponID == data.weaponSelected) {
-            cloneWeapon.enabled = true;
-            cloneWeapon.ChangeSprites();
+    private bool IsSelectedWeapon(Weapon weapon) {
+        if (weapon.weaponID == data.weaponSelected) {
+            weapon.ChangeSprites();
+            return true;
         }
-        else cloneWeapon.enabled = false;
-
+        return false;
     }
 
     /*/// <summary>
