@@ -16,9 +16,7 @@ public class DataController : MonoBehaviour {
         else {
             Destroy(gameObject);
         }
-
-
-        // RefreshData();
+        RefreshData();
     }
 
     public void RefreshData() {

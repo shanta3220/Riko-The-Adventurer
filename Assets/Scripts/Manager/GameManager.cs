@@ -30,9 +30,6 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
 
-    private void OnEnable() {
-        DataController.instance.RefreshData();
-    }
     private void Start() {
         
         weaponContainer = player.weaponContainer.transform;
@@ -170,6 +167,7 @@ public class GameManager : MonoBehaviour
         data.weaponLevel[weapon.weaponID] = weapon.weaponLevel;
         DataController.instance.SaveData(data);
     }
+
     // Load data
     public void LoadData() {
         player.ChangeSkin(data.selectedSkin);

@@ -11,11 +11,14 @@ public abstract class Mover : Fighter {
     protected float ySpeed = 0.75f;
     protected float xSpeed = 1f;
 
+    private void Awake() {
+        anim = GetComponent<Animator>();
+    }
+
     protected virtual void Start() {
 
         boxCollider = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
-        
+
     }
 
     protected virtual void UpdateMotor(Vector3 input) {
