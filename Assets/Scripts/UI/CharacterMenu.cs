@@ -7,6 +7,7 @@ public class CharacterMenu : MonoBehaviour {
     //Text field
     public Text levelText, hitpointText, goldText, upgradeCostText, xpText;
     public Text characterSelectorText;
+    public Text damagePointText, pushForceText;
     public Button characterSelectorButton;
     //logic field
     public Image CharacterSelectionImage;
@@ -61,11 +62,28 @@ public class CharacterMenu : MonoBehaviour {
         //meta
         hitpointText.text = GameManager.instance.player.health.ToString();
         goldText.text = GameManager.instance.gold.ToString();
-        levelText.text = "NOT IMPLEMENTED";
+        levelText.text = GameManager.instance.GetCurrentLevel().ToString();
+        damagePointText.text = GameManager.instance.GetCurrentWeaponDamage().ToString();
+        pushForceText.text = GameManager.instance.GetCurrentWeaponPushForce().ToString();
 
         //XP Bar
-        xpText.text = "NOT IMPLEMENTED";
-        xpBar.localScale = new Vector2(0.5f, 1f);
+        int currentLevel = GameManager.instance.GetCurrentLevel();
+        //if max level
+        if (currentLevel == GameManager.instance.xpTable.Count) {
+            xpText.text = GameManager.instance.experience.ToString() + "Total Experience Points";//displaying total xp
+            xpBar.localScale = new Vector2(1f, 1f);
+        }
+        else {
+            int previousLevelXp = GameManager.instance.GetXpFromLevel(currentLevel - 1);
+            int currentLevelXp = GameManager.instance.GetXpFromLevel(currentLevel);
+
+            int diff = currentLevelXp - previousLevelXp;
+            int currentXpIntoLevel = GameManager.instance.experience - previousLevelXp;
+            float completationRatio = (float)currentXpIntoLevel / (float)diff;
+            xpText.text = currentXpIntoLevel.ToString() + "/" + diff;
+            xpBar.localScale = new Vector2(completationRatio, 1f);
+        }
+       
         
     }
 

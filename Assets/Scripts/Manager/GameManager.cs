@@ -8,24 +8,22 @@ public class GameManager : MonoBehaviour
 
     //Resources
     public List<Sprite> playerSprites;
-    // public List<Sprite> weaponSprites;
     public Sprite weaponSprite;
-    //public List<int> weaponPrices;
     public List<int> xpTable;
     //only changing animators change the player skins
     public RuntimeAnimatorController[] playerSkins = new RuntimeAnimatorController[3];
 
     //References
-
     public Player player;
-    public Weapon weapon;
-
     public int gold;
     public int experience;
+    [HideInInspector]
+    public Weapon weapon;
     public GameData data;
-    public static GameManager instance;
     public List<Weapon> collectedWeapons;
     private Transform weaponContainer;
+   
+    public static GameManager instance;
     private void Awake()
     {
         if (instance == null)
@@ -39,7 +37,7 @@ public class GameManager : MonoBehaviour
         data = DataController.instance.data;
         LoadData();
     }
-
+    
     //floatingText;
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
@@ -47,7 +45,22 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //Upgrade Weapon
+    //Unlock Characters
+    public bool TryUnlockSkin(int skinNumber, int skinPrice) {
+        if (data.skins[skinNumber])
+            return true;
+        //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
+        if (gold >= skinPrice) {
+            gold -= skinPrice;
+            data.skins[skinNumber] = true;
+            data.selectedSkin = skinNumber;
+            player.ChangeSkin(skinNumber);
+            return true;
+        }
+        return false;
+    }
+
+    //Weapon System
     public bool TryUpgradeWeapon()
     {
         //is the weapon max level
@@ -62,48 +75,6 @@ public class GameManager : MonoBehaviour
         return false;
         
     }
-
-    public bool TryUnlockSkin(int skinNumber, int skinPrice) {
-        //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
-        if (data.skins[skinNumber])
-            return true;
-        if (gold >= skinPrice) {
-            gold -= skinPrice;
-            data.skins[skinNumber] = true;
-            data.selectedSkin = skinNumber;
-            player.ChangeSkin(skinNumber);
-            return true;
-        }
-        return false;
-    }
-
-    public void SaveData() {
-        data.gold = gold;
-        data.experience = experience;
-        data.weaponSelected = weapon.weaponID;
-        data.weaponLevel[weapon.weaponID] = weapon.weaponLevel;
-        DataController.instance.SaveData(data);
-    }
-
-    public void LoadData() {
-        player.ChangeSkin(data.selectedSkin);
-        gold = data.gold;
-        experience = data.experience;
-        int i = 0;
-        //checking collected weapons
-        foreach(int dataWepID in data.collectedWeapons) {
-            Weapon wep = CheckWeapons(dataWepID, i);
-            collectedWeapons.Add(wep);
-            wep.enabled = IsSelectedWeapon(wep);
-            i++;
-        }
-        //setting the default weapon
-        /*if (data.weaponSelected == 0) {
-            weaponContainer.GetChild(0).GetComponent<FlameThrower>().enabled = true;
-            weaponContainer.GetChild(0).GetComponent<FlameThrower>().ChangeSprites();
-        }*/
-    }
-
     public void UnlockWeapon() {
         int dataID = data.notCollectedWeapons[Random.Range(0, data.notCollectedWeapons.Count)];
         data.collectedWeapons.Add(dataID);
@@ -114,7 +85,6 @@ public class GameManager : MonoBehaviour
         playerWep.enabled = true;
         playerWep.ChangeSprites();
     }
-
     public void SwitchWeapon() {
  
         if (weapon.weaponID == collectedWeapons.Count - 1) {
@@ -132,13 +102,7 @@ public class GameManager : MonoBehaviour
             wep.ChangeSprites();
         }
     }
-    public void OnDestroy() {
-
-        SaveData();
-        //PlayerPrefs.SetString("MySettingsEditor", "");
-        //PlayerPrefs.SetString("MySettings", "");
-    }
-
+    //if weapon is lastselected weapon before closing game enable else disable
     private bool IsSelectedWeapon(Weapon weapon) {
         if (weapon.weaponID == data.weaponSelected) {
             weapon.ChangeSprites();
@@ -146,7 +110,86 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
+    //checking collected weapons, if weapon is collected then give it a ID
+    public Weapon CheckWeapons(int dataWepID, int newID) {
+        Weapon temp = weaponContainer.GetChild(dataWepID).GetComponent<Weapon>();
+        temp.weaponID = newID;
+        temp.weaponLevel = data.weaponLevel[newID];
+        temp.enabled = IsSelectedWeapon(temp);
+        return temp;
+    }
+    public int GetCurrentWeaponDamage() {
+        return weapon.damagePoint[weapon.weaponLevel];
+    }
+    public float GetCurrentWeaponPushForce() {
+        return weapon.pushForce[weapon.weaponLevel];
+    }
 
+    //experience system
+    public int GetCurrentLevel() {
+        int r = 0;
+        int add = 0;
+        while (experience >= add) {
+            add += xpTable[r];
+            r++;
+            if (r == xpTable.Count)// max level
+                return r;
+        }
+        return r;
+    }
+    public int GetXpFromLevel(int level) {
+        int r = 0;
+        int xp = 0;
+
+        while (r < level) {
+            xp += xpTable[r];
+            r++;
+        }
+
+        return xp;
+    }
+    public void GrantXp(int xp) {
+        int currentLevel = GetCurrentLevel();
+        experience += xp;
+        if (currentLevel < GetCurrentLevel())
+            OnLevelUp();
+    }
+
+    public void OnLevelUp() {
+        ShowText("Level Up!", 25, Color.green, player.transform.position, Vector3.up * 50, 1.0f);
+        player.OnLevelUp();
+    }
+   
+    // Save  Data
+    public void SaveData() {
+        data.gold = gold;
+        data.experience = experience;
+        data.weaponSelected = weapon.weaponID;
+        data.weaponLevel[weapon.weaponID] = weapon.weaponLevel;
+        DataController.instance.SaveData(data);
+    }
+    // Load data
+    public void LoadData() {
+        player.ChangeSkin(data.selectedSkin);
+        gold = data.gold;
+        experience = data.experience;
+        int i = 0;
+        //checking collected weapons, i is the sequential id of collected weapons
+        //dataWepID is the child number of the wepcontainer that has weapon script
+        foreach (int dataWepID in data.collectedWeapons) {
+            Weapon wep = CheckWeapons(dataWepID, i);
+            collectedWeapons.Add(wep);
+            wep.enabled = IsSelectedWeapon(wep);
+            i++;
+        }
+        int getCurrentLevel = GetCurrentLevel();
+        if (getCurrentLevel > 1) {
+            //player health based on experience, -1 because level 1 counts as well to increase health
+            player.SetLevelHealth(getCurrentLevel - 1);
+        }
+       
+    }
+    
     public void QuitGame() {
         Application.Quit();
     }
@@ -155,13 +198,14 @@ public class GameManager : MonoBehaviour
         SaveData();
     }
 
-    public Weapon CheckWeapons(int wepID, int newID) {
-        Weapon temp = weaponContainer.GetChild(wepID).GetComponent<Weapon>();
-        temp.weaponID = newID;
-        temp.weaponLevel = data.weaponLevel[newID];
-        temp.enabled = IsSelectedWeapon(temp);
-        return temp;
+    public void OnDestroy() {
+
+        SaveData();
+        //PlayerPrefs.SetString("MySettingsEditor", "");
+        //PlayerPrefs.SetString("MySettings", "");
     }
+
+
 
     /*/// <summary>
 /// int preferedSkin,

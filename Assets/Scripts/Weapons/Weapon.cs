@@ -12,24 +12,13 @@ public class Weapon : MonoBehaviour {
     public int[] damagePoint = {1,2,3,4,5,6,7};
     public float[] pushForce = {2.0f,2.2f,2.6f,2.8f,3.0f,3.2f,3.4f};
     public float rotateAngle = 0;
-    protected float coolDown = 0.5f;
-    protected float lastShoot;
     public Transform bulletSpawnPoint;
     public GunSpriteChanger gunSpriteChanger;
     protected int damageStartValue = 1;
     
-    protected virtual void Awake() {
-        /*gunSpriteChanger = transform.parent.GetComponent<GunSpriteChanger>();
-        bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;*/
-        
-    }
+    protected virtual void Awake() { }
 
-    protected virtual void Start() {
-        /*if (!GameManager.instance.weaponSprites.Contains(GunSide))
-            GameManager.instance.weaponSprites.Add(GunSide); */
-        GameManager.instance.weaponSprite = GunSide;
-        
-    }
+    protected virtual void Start() { }
 
     public void ChangeSprites() {
         if (GameManager.instance.data.weaponSelected != weaponID)
@@ -42,20 +31,15 @@ public class Weapon : MonoBehaviour {
         if (gunSpriteChanger.GetComponent<Player>().weapon != null && gunSpriteChanger.GetComponent<Player>().weapon != this)
             gunSpriteChanger.GetComponent<Player>().weapon.enabled = false;
         gunSpriteChanger.GetComponent<Player>().weapon = this;
-        if (GameManager.instance != null)
+        if (GameManager.instance != null) {
             GameManager.instance.weapon = this;
+            GameManager.instance.weaponSprite = GunSide;
+        }
+          
 
     }
 
-    protected virtual void Update() {
-        /*if(Input.GetMouseButton(0)) {
-            if(Time.time - lastShoot > coolDown) {
-                lastShoot = Time.time;
-                Shoot();
-            }
-        }*/
-        
-    }
+    protected virtual void Update() { }
 
     public virtual void Shoot() { }
 

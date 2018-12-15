@@ -71,15 +71,13 @@ public class Player : Mover {
     private void Animate(float x, float y) {
         x = Mathf.RoundToInt(x);
         y = Mathf.RoundToInt(y);
-       
+
         if (x > 0) {
             transform.localScale = Vector3.one;
         }
-
         else if (x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-
         //add push vector, if any
         moveDelta += pushDirection;
         //reduce pushForce everyframe, based on recoveryspeed
@@ -96,26 +94,17 @@ public class Player : Mover {
 
     private void PlayerFaceEnemyAnim(Transform target) {
         float x, y;
-        //Vector2 localMove = transform.InverseTransformDirection(target.position).normalized;
         Vector2 localMove = (target.position - transform.position).normalized;
         x = Mathf.RoundToInt(localMove.x);
         y = Mathf.RoundToInt(localMove.y);
-       /* if (localMove.x > -0.5 && localMove.x < 0.5)
-            x = 0;
-        else x = Mathf.Sign(localMove.x);
-
-        if (localMove.y > -0.5 && localMove.y < 0.5)
-            y = 0;
-        else y = Mathf.Sign(localMove.y);*/
 
         if (x > 0) {
             transform.localScale = Vector3.one;
         }
-
         else if (x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-       // anim.SetBool("IsWalking", isWalking);
+
         x = Mathf.Abs(x);
         anim.SetFloat("FaceX", x);
         anim.SetFloat("FaceY", y);
@@ -123,6 +112,18 @@ public class Player : Mover {
 
     public void ChangeSkin(int skinId) {
         anim.runtimeAnimatorController = GameManager.instance.playerSkins[skinId];
+    }
+   
+    public void OnLevelUp() {
+        //increasing health
+        maxHealth++;
+        health = maxHealth;
+    }
+
+    public void SetLevelHealth(int level) {
+        //increase the health based on your level
+        for (int i = 0; i < level; i++)
+            OnLevelUp();
     }
 
     /*public void TurningMobile() {
@@ -140,18 +141,18 @@ public class Player : Mover {
         }
     }*/
 
-   /* private void OldPlayerSwitch() {
-        /*if (!isPlayerAdvanced)
-          Animate(moveDelta.x);
-      else {
-          TurningPC();
-         /* if (x != 0 || y != 0)
-             Animate(x, y);
-      }*/
+    /* private void OldPlayerSwitch() {
+         /*if (!isPlayerAdvanced)
+           Animate(moveDelta.x);
+       else {
+           TurningPC();
+          /* if (x != 0 || y != 0)
+              Animate(x, y);
+       }*/
 
-        /*if (hasTarget) {
-            PlayerFaceEnemyAnim(target);
-        }
-
-    }*/
+    /*if (hasTarget) {
+        PlayerFaceEnemyAnim(target);
     }
+
+}*/
+}
