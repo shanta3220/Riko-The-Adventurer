@@ -22,17 +22,19 @@ public class GameManager : MonoBehaviour
     public GameData data;
     public List<Weapon> collectedWeapons;
     private Transform weaponContainer;
-   
     public static GameManager instance;
+
     private void Awake()
     {
         if (instance == null)
             instance = this;
-        DataController.instance.RefreshData();
-
     }
 
+    private void OnEnable() {
+        DataController.instance.RefreshData();
+    }
     private void Start() {
+        
         weaponContainer = player.weaponContainer.transform;
         data = DataController.instance.data;
         LoadData();
