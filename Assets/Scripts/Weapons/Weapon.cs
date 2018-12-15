@@ -19,10 +19,9 @@ public class Weapon : MonoBehaviour {
     protected int damageStartValue = 1;
     
     protected virtual void Awake() {
-        gunSpriteChanger = transform.parent.GetComponent<GunSpriteChanger>();
-        bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;
+        /*gunSpriteChanger = transform.parent.GetComponent<GunSpriteChanger>();
+        bulletSpawnPoint = gunSpriteChanger.bulletSpawnPoint;*/
         
-        //ChangeSprites();
     }
 
     protected virtual void Start() {
@@ -40,9 +39,9 @@ public class Weapon : MonoBehaviour {
         gunSpriteChanger.GunDown.sprite = GunDown;
         gunSpriteChanger.GunDiagUp.sprite = GunDiagUp;
         gunSpriteChanger.GunDiagDown.sprite = GunDiagDown;
-        if (transform.parent.GetComponent<Player>().weapon != null && transform.parent.GetComponent<Player>().weapon != this)
-            transform.parent.GetComponent<Player>().weapon.enabled = false;
-        transform.parent.GetComponent<Player>().weapon = this;
+        if (gunSpriteChanger.GetComponent<Player>().weapon != null && gunSpriteChanger.GetComponent<Player>().weapon != this)
+            gunSpriteChanger.GetComponent<Player>().weapon.enabled = false;
+        gunSpriteChanger.GetComponent<Player>().weapon = this;
         if (GameManager.instance != null)
             GameManager.instance.weapon = this;
 
@@ -67,7 +66,8 @@ public class Weapon : MonoBehaviour {
 
     public virtual void UpgradeWeapon() {
         weaponLevel++;
-      
+        GameManager.instance.data.weaponLevel[weaponID] = weaponLevel;
+
     }
 
     public void SetSettings(Weapon newWep) {

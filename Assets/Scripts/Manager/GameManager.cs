@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     public int experience;
     public GameData data;
     public static GameManager instance;
-
-
+    public List<Weapon> collectedWeapons;
+    private Transform weaponContainer;
     private void Awake()
     {
         if (instance == null)
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
+        weaponContainer = player.weaponContainer.transform;
         data = DataController.instance.data;
         LoadData();
     }
@@ -49,14 +50,12 @@ public class GameManager : MonoBehaviour
     //Upgrade Weapon
     public bool TryUpgradeWeapon()
     {
-        //weapon = player.weapon;
         //is the weapon max level
         if (weapon.weaponPrinces.Count == weapon.weaponLevel)
             return false;
         //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
         else if(gold >= weapon.weaponPrinces[weapon.weaponLevel]){
             gold -= weapon.weaponPrinces[weapon.weaponLevel];
-            data.weaponLevel[weapon.weaponID] = weapon.weaponLevel;
             weapon.UpgradeWeapon();
             return true;
         }
@@ -92,54 +91,52 @@ public class GameManager : MonoBehaviour
         experience = data.experience;
         int i = 0;
         //checking collected weapons
-        foreach(Weapon wp in data.collectedWeapons) {
-            Weapon wep = player.weaponContainer.AddComponent(wp.GetType()) as Weapon;
-            wep.weaponLevel = data.weaponLevel[i];
-            wep.weaponID = i;
+        foreach(int dataWepID in data.collectedWeapons) {
+            Weapon wep = CheckWeapons(dataWepID, i);
+            collectedWeapons.Add(wep);
             wep.enabled = IsSelectedWeapon(wep);
             i++;
         }
-
         //setting the default weapon
-        if (data.weaponSelected == 0) {
-            player.weaponContainer.GetComponent<FlameThrower>().enabled = true;
-        }
+        /*if (data.weaponSelected == 0) {
+            weaponContainer.GetChild(0).GetComponent<FlameThrower>().enabled = true;
+            weaponContainer.GetChild(0).GetComponent<FlameThrower>().ChangeSprites();
+        }*/
     }
 
     public void UnlockWeapon() {
-        Weapon wep = data.notCollectedWeapons[Random.Range(0, data.notCollectedWeapons.Count)];
-        data.collectedWeapons.Add(wep);
-        data.notCollectedWeapons.Remove(wep);
-        //adding new weapon
-       // weapon.enabled = false;
-        Weapon playerWep = player.weaponContainer.AddComponent(wep.GetType()) as Weapon;
-        playerWep.weaponID = data.collectedWeapons.Count - 1;
-        data.weaponSelected = data.collectedWeapons.Count - 1;
+        int dataID = data.notCollectedWeapons[Random.Range(0, data.notCollectedWeapons.Count)];
+        data.collectedWeapons.Add(dataID);
+        data.notCollectedWeapons.Remove(dataID);
+        Weapon playerWep = CheckWeapons(dataID, collectedWeapons.Count);
+        data.weaponSelected = collectedWeapons.Count;
+        collectedWeapons.Add(playerWep);
+        playerWep.enabled = true;
         playerWep.ChangeSprites();
     }
 
     public void SwitchWeapon() {
  
-        if (weapon.weaponID == data.collectedWeapons.Count - 1) {
-            //weapon.enabled = false;
+        if (weapon.weaponID == collectedWeapons.Count - 1) {
             data.weaponSelected = 0;
-            Weapon wep = player.weaponContainer.GetComponent(data.collectedWeapons[0].GetType()) as Weapon;
-            weaponSprite = wep.GunSide;
+            Weapon wep = collectedWeapons[0];
             wep.enabled = true;
+            weaponSprite = wep.GunSide;
             wep.ChangeSprites();
         }
         else {
-            //weapon.enabled = false;
             data.weaponSelected = weapon.weaponID + 1;
-            Weapon wep = player.weaponContainer.GetComponent(data.collectedWeapons[weapon.weaponID + 1].GetType()) as Weapon;
-            weaponSprite = wep.GunSide;
+            Weapon wep = collectedWeapons[weapon.weaponID + 1] as Weapon;
             wep.enabled = true;
+            weaponSprite = wep.GunSide;
             wep.ChangeSprites();
         }
     }
     public void OnDestroy() {
-       
+
         SaveData();
+        //PlayerPrefs.SetString("MySettingsEditor", "");
+        //PlayerPrefs.SetString("MySettings", "");
     }
 
     private bool IsSelectedWeapon(Weapon weapon) {
@@ -152,6 +149,18 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame() {
         Application.Quit();
+    }
+
+    public void ClearData() {
+        SaveData();
+    }
+
+    public Weapon CheckWeapons(int wepID, int newID) {
+        Weapon temp = weaponContainer.GetChild(wepID).GetComponent<Weapon>();
+        temp.weaponID = newID;
+        temp.weaponLevel = data.weaponLevel[newID];
+        temp.enabled = IsSelectedWeapon(temp);
+        return temp;
     }
 
     /*/// <summary>

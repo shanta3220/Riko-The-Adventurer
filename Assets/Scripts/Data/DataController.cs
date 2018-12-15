@@ -22,32 +22,54 @@ public class DataController : MonoBehaviour {
     }
 
     public void RefreshData() {
-        string jsonData = PlayerPrefs.GetString("MySettings");
-        JsonUtility.FromJsonOverwrite(jsonData, data);
+        if (Application.isEditor) {
+            string jsonData = PlayerPrefs.GetString("MySettingsEditor");
+            JsonUtility.FromJsonOverwrite(jsonData, data);
+        }
+        else {
+            string jsonData = PlayerPrefs.GetString("MySettings");
+            JsonUtility.FromJsonOverwrite(jsonData, data);
+        }
     }
 
     public void SaveData() {
-
-        //Convert to Json
-        string jsonData = JsonUtility.ToJson(data);
-        //Save Json string
-        PlayerPrefs.SetString("MySettings", jsonData);
-        PlayerPrefs.Save();
+        if (Application.isEditor) {
+            //Convert to Json
+            string jsonData = JsonUtility.ToJson(data);
+            //Save Json string
+            PlayerPrefs.SetString("MySettingsEditor", jsonData);
+            PlayerPrefs.Save();
+        }
+        else {
+            //Convert to Json
+            string jsonData = JsonUtility.ToJson(data);
+            //Save Json string
+            PlayerPrefs.SetString("MySettings", jsonData);
+            PlayerPrefs.Save();
+        }
     }
 
     public void SaveData(GameData data) {
-
-        //Convert to Json
-        string jsonData = JsonUtility.ToJson(data);
-        //Save Json string
-        PlayerPrefs.SetString("MySettings", jsonData);
-        PlayerPrefs.Save();
+        if (Application.isEditor) {
+            //Convert to Json
+            string jsonData = JsonUtility.ToJson(data);
+            //Save Json string
+            PlayerPrefs.SetString("MySettingsEditor", jsonData);
+            PlayerPrefs.Save();
+        }
+        else {
+            //Convert to Json
+            string jsonData = JsonUtility.ToJson(data);
+            //Save Json string
+            PlayerPrefs.SetString("MySettings", jsonData);
+            PlayerPrefs.Save();
+        }
     }
 
     private void OnApplicationQuit() {
-        SaveData();
+        //SaveData();
     }
 
-   
+    
 
 }
