@@ -17826,6 +17826,16 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212509487308466798, guid: 229d662dfac8cc8418053d1f11ff14e8,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95446630848892052, guid: 229d662dfac8cc8418053d1f11ff14e8,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c592cf6ef3ecacc45a1c064291db394c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 229d662dfac8cc8418053d1f11ff14e8, type: 2}
   m_IsPrefabParent: 0

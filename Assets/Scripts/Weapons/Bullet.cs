@@ -21,7 +21,7 @@ public class Bullet : Collidable {
         base.Start();
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        
+        Destroy(gameObject, 5f);
     }
 
     private void FixedUpdate() {
