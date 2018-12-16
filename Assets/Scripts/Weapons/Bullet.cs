@@ -31,14 +31,16 @@ public class Bullet : Collidable {
 
     protected override void OnCollide(Collider2D col) {
         if (col.tag == "Blocking"){
+            rBody.velocity = Vector2.zero;
             anim.SetInteger("Anim", 1);
             Destroy(gameObject, 0.2f);
         }
             
         
         if (col.tag == "Enemy") {
+            rBody.velocity = Vector2.zero;
             //create a new damage object then we will send it to the enemy we hit
-             Damage dmg = new Damage {
+            Damage dmg = new Damage {
                 damageAmount = GameManager.instance.weapon.damagePoint[GameManager.instance.weapon.weaponLevel],
                 origin = transform.position,
                 pushForce = GameManager.instance.weapon.pushForce[GameManager.instance.weapon.weaponLevel]

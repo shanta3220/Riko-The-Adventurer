@@ -35,7 +35,6 @@ public class Weapon : MonoBehaviour {
             GameManager.instance.weapon = this;
             GameManager.instance.weaponSprite = GunSide;
         }
-          
 
     }
 

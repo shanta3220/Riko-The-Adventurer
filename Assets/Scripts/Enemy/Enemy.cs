@@ -31,7 +31,7 @@ public class Enemy : Mover {
     private void FixedUpdate() {
 
         //is the player in range?
-        if(Vector3.Distance(playerTransform.position,startingPosition)< chaseLength){
+        if(Vector3.Distance(playerTransform.position,startingPosition)<chaseLength){
             if(Vector3.Distance(playerTransform.position,startingPosition)<triggerLength){
                   isChasing = true;
             }
@@ -39,22 +39,24 @@ public class Enemy : Mover {
                 if(!collidingWithPlayer){
                     motion = (playerTransform.position - transform.position).normalized;
                     UpdateMotor(motion);
+                  
                 }
             }
-            else{
+            /*else{
                 //going back to where we were
                 motion = startingPosition - transform.position;
                 UpdateMotor(motion);
-            }
+            }*/
             
         }
         else{
             //reseting
             motion = startingPosition - transform.position;
             UpdateMotor(motion);
-            isChasing = false; 
+            isChasing = false;
+            Debug.Log(motion);
         }
-        if( Vector3.Distance(transform.position,startingPosition) <= 0.05f)
+        if(Vector3.Distance(transform.position,startingPosition) <= 0.05f)
             UpdateMotor(Vector3.zero);
         //overlaps
         collidingWithPlayer = false;

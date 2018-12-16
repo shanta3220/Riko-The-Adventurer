@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9bbae5744d739784b9c2efad9e5d27ea
+timeCreated: 1544959368
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SDS_8x8
+  fontNames:
+  - SDS_8x8
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

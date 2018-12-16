@@ -126,6 +126,16 @@ public class Player : Mover {
             OnLevelUp();
     }
 
+    public void Heal(int healAmount) {
+        if (health == maxHealth)
+            return;
+        health += healAmount;
+        if (health > maxHealth)
+            health = maxHealth;
+        GameManager.instance.ShowText("+" + healAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 50, 1.0f);
+
+    }
+
     /*public void TurningMobile() {
 
         if (shootJoystick.Horizontal != 0 || shootJoystick.Vertical != 0) {
