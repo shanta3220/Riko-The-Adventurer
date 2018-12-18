@@ -54,7 +54,6 @@ public class Enemy : Mover {
             motion = startingPosition - transform.position;
             UpdateMotor(motion);
             isChasing = false;
-            Debug.Log(motion);
         }
         if(Vector3.Distance(transform.position,startingPosition) <= 0.05f)
             UpdateMotor(Vector3.zero);

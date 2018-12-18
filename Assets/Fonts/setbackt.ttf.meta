@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 31c9f903819a49c49a6713c5ef5d57c4
+timeCreated: 1545162030
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Setback TT (BRK)
+  fontNames:
+  - Setback TT (BRK)
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

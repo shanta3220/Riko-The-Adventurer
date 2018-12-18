@@ -14,7 +14,6 @@ public class CharacterMenu : MonoBehaviour {
     public Image currentWeaponImage;
     public RectTransform xpBar;
 
-
     public int currentCharacterSelection = 0;
     private int[] skinPrices = { 0, 300, 1000 };
 
@@ -76,7 +75,6 @@ public class CharacterMenu : MonoBehaviour {
         else {
             int previousLevelXp = GameManager.instance.GetXpFromLevel(currentLevel - 1);
             int currentLevelXp = GameManager.instance.GetXpFromLevel(currentLevel);
-
             int diff = currentLevelXp - previousLevelXp;
             int currentXpIntoLevel = GameManager.instance.experience - previousLevelXp;
             float completationRatio = (float)currentXpIntoLevel / (float)diff;

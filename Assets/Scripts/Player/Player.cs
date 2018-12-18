@@ -110,6 +110,12 @@ public class Player : Mover {
         anim.SetFloat("FaceY", y);
     }
 
+    protected override void ReceiveDamage(Damage dmg) {
+        base.ReceiveDamage(dmg);
+        GameManager.instance.OnHealthChange();
+    }
+
+
     public void ChangeSkin(int skinId) {
         anim.runtimeAnimatorController = GameManager.instance.playerSkins[skinId];
     }
@@ -133,6 +139,7 @@ public class Player : Mover {
         if (health > maxHealth)
             health = maxHealth;
         GameManager.instance.ShowText("+" + healAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 50, 1.0f);
+        GameManager.instance.OnHealthChange();
 
     }
 

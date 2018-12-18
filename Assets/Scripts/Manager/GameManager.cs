@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     //References
     public Player player;
+    public RectTransform healthBar;
     public int gold;
     public int experience;
     [HideInInspector]
@@ -157,8 +158,16 @@ public class GameManager : MonoBehaviour
     public void OnLevelUp() {
         ShowText("Level Up!", 25, Color.green, player.transform.position, Vector3.up * 50, 1.0f);
         player.OnLevelUp();
+        OnHealthChange();
     }
-   
+    
+    //player health bar
+
+    public void OnHealthChange() {
+        float ratio = (float)player.health / player.maxHealth;
+        healthBar.localScale = new Vector2(ratio, 1);
+    }
+
     // Save  Data
     public void SaveData() {
         data.gold = gold;

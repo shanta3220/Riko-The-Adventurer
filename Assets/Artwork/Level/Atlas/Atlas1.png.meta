@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6880fd47d8d82ea41beb563e9e19eccc
-timeCreated: 1544367224
+timeCreated: 1545132278
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -195,20 +195,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 116
-        y: 82
-        width: 8
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: fire_1
-      rect:
-        serializedVersion: 2
-        x: 132
         y: 82
         width: 8
         height: 21
@@ -438,6 +424,20 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fire_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 82
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
