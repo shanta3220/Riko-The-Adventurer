@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Blocking
   - Enemy
+  - IgnoreBullet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Player
   - Actor
   - Bullet
-  - 
+  - BulletIgnore
   - 
   - 
   - 

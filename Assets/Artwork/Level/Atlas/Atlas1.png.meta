@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6880fd47d8d82ea41beb563e9e19eccc
-timeCreated: 1545132278
+timeCreated: 1545254643
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,8 @@ TextureImporter:
     21300044: bg
     21300046: MenuButton
     21300048: Menu_0
+    21300050: Boss_One_Eye
+    21300052: enemy_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -436,6 +438,34 @@ TextureImporter:
         y: 82
         width: 8
         height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss_One_Eye
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

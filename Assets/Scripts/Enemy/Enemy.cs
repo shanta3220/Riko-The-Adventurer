@@ -42,11 +42,11 @@ public class Enemy : Mover {
                   
                 }
             }
-            /*else{
+            else{
                 //going back to where we were
                 motion = startingPosition - transform.position;
                 UpdateMotor(motion);
-            }*/
+            }
             
         }
         else{

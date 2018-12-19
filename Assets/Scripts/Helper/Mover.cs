@@ -8,11 +8,12 @@ public abstract class Mover : Fighter {
     protected RaycastHit2D hit;
     protected bool isRunning;
 
-    protected float ySpeed = 0.75f;
-    protected float xSpeed = 1f;
-
+    public float ySpeed = 0.75f;
+    public float xSpeed = 1f;
+    private float localScaleSize;
     private void Awake() {
         anim = GetComponent<Animator>();
+        localScaleSize = transform.localScale.x;
     }
 
     protected virtual void Start() {
@@ -45,16 +46,17 @@ public abstract class Mover : Fighter {
             return;
         //swap sprite direction whether moving left or right and animation
         if (x > 0) {
-            transform.localScale = Vector3.one;
+            transform.localScale = Vector3.one * localScaleSize;
         }
 
         else if (x < 0) {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-localScaleSize, localScaleSize, localScaleSize);
         }
         moveDelta += pushDirection;
         //reduce pushForce everyframe, based on recoveryspeed
         pushDirection = Vector3.Lerp(pushDirection,Vector3.zero,PushRecoverySpeed);
-        anim.SetBool("IsRunning", isRunning);
+        if(anim != null)
+            anim.SetBool("IsRunning", isRunning);
     }
 
 

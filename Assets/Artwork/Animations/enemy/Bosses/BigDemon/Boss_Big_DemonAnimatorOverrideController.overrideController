@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Boss_Big_DemonAnimatorOverrideController
+  m_Controller: {fileID: 9100000, guid: 8e134de15a5b8ed45a53be750bd660cb, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 33076a3fe8f039540ab115bc4da7026c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7c6fc5057385fe347a5c71b0ae8829a2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 75e8ef18d8f2390468e31f94ca17ad21, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 333dda96c535d57409580e979a6125b9, type: 2}
