@@ -292,8 +292,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723793784295368}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.40126252, y: 0.83176225, z: 0.015380859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4661181801223202}
@@ -658,6 +658,8 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 9ae2e1bb8a4d416429d96c6746e8852e, type: 2}
   - {fileID: 9100000, guid: 5aa301cb41795bd479497f4e53d07efb, type: 2}
   player: {fileID: 0}
+  healthBar: {fileID: 0}
+  deathMenuAnimator: {fileID: 0}
   gold: 35
   experience: 3
   weapon: {fileID: 0}

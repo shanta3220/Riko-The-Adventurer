@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     //References
     public Player player;
     public RectTransform healthBar;
+    public Animator deathMenuAnimator;
     public int gold;
     public int experience;
     [HideInInspector]
@@ -166,6 +167,15 @@ public class GameManager : MonoBehaviour
     public void OnHealthChange() {
         float ratio = (float)player.health / player.maxHealth;
         healthBar.localScale = new Vector2(ratio, 1);
+    }
+
+    //Death Menu And Respawn
+    public void Respawn() {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void RestartLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // Save  Data

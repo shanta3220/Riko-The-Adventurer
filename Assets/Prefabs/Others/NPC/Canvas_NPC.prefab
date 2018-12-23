@@ -359,7 +359,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hello Welcome to the land of Underworld. You can unlock other characters
+  m_Text: Hello! Welcome to the land of Underworld. You can unlock other characters
     with your gold if you haven't done it already!
 --- !u!114 &114970945584548814
 MonoBehaviour:
@@ -610,7 +610,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1521834363282228}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0

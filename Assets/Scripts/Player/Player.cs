@@ -11,6 +11,7 @@ public class Player : Mover {
     public Weapon weapon;
     private Animator shootAnim;
 
+    private bool isAlive = true;
    
     //public Joystick movementJoystick, shootJoystick;
     protected float coolDown = 0.2f;
@@ -25,12 +26,14 @@ public class Player : Mover {
     private void FixedUpdate() {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        UpdateMotor(new Vector3(x, y, 0));
+        if(isAlive)
+            UpdateMotor(new Vector3(x, y, 0));
     }
 
 
     void Update() {
-        if (Input.GetMouseButton(0)) {
+
+        if (Input.GetMouseButton(0) && isAlive) {
             if (Time.time - lastShoot > coolDown) {
                 lastShoot = Time.time;
                 shootAnim.SetTrigger("Shoot");
@@ -111,6 +114,8 @@ public class Player : Mover {
     }
 
     protected override void ReceiveDamage(Damage dmg) {
+        if (!isAlive)
+            return;
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHealthChange();
     }
@@ -143,6 +148,18 @@ public class Player : Mover {
 
     }
 
+    protected override void Death() {
+        GameManager.instance.deathMenuAnimator.SetTrigger("Show");
+        isAlive = false;
+    }
+
+    private void Respawn() {
+        pushDirection = Vector3.zero;
+        lastImmune = Time.time;
+        Heal(maxHealth);
+        isAlive = true;
+
+    }
     /*public void TurningMobile() {
 
         if (shootJoystick.Horizontal != 0 || shootJoystick.Vertical != 0) {
