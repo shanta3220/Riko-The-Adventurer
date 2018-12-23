@@ -17,9 +17,12 @@ public class Player : Mover {
     protected float coolDown = 0.2f;
     protected float lastShoot;
 
+    private CameraShake screenShake;
+
     protected override void Start() {
         base.Start();
         shootAnim = GetComponent<GunSpriteChanger>().bulletSpawnPoint.GetComponent<Animator>();
+        screenShake = Camera.main.GetComponent<CameraShake>();
     }
 
 
@@ -37,6 +40,7 @@ public class Player : Mover {
             if (Time.time - lastShoot > coolDown) {
                 lastShoot = Time.time;
                 shootAnim.SetTrigger("Shoot");
+                screenShake.ShakeIt(coolDown);
                 weapon.Shoot();
             }
         }

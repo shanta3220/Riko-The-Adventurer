@@ -21,10 +21,13 @@ public class Enemy : Mover {
 
     private Vector3 motion;
 
+    private SpriteRenderer sr;
+
     protected override void Start(){
         base.Start();
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
+        sr = GetComponent<SpriteRenderer>();
        // hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>();
     }
     
@@ -72,10 +75,22 @@ public class Enemy : Mover {
         
     }
 
+    protected override void ReceiveDamage(Damage dmg) {
+        base.ReceiveDamage(dmg);
+        Hurt();
+    }
     protected override void Death(){
         Destroy(gameObject);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+"+ xpValue+" xp",30, Color.magenta,transform.position, Vector3.up * 40, 1.0f);
     }
 
+    private void Hurt() {
+        sr.color = Color.magenta;
+        Invoke("RestoreColor", 0.2f);
+    }
+
+    private void RestoreColor() {
+        sr.color = Color.white;
+    }
 }

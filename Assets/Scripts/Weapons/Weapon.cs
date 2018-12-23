@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour {
     public List<int> weaponPrinces = new List<int>(){35,70,135,200,275,400};
     public int weaponLevel = 1;
     public GameObject Bullet;
+    public GameObject emptyShells;
     //damage States
     public int[] damagePoint = {1,2,3,4,5,6,7};
     public float[] pushForce = {2.0f,2.2f,2.6f,2.8f,3.0f,3.2f,3.4f};
