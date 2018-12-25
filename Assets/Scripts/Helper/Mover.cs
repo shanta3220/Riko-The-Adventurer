@@ -10,7 +10,7 @@ public abstract class Mover : Fighter {
 
     public float ySpeed = 0.75f;
     public float xSpeed = 1f;
-    private float localScaleSize;
+    protected float localScaleSize;
     private void Awake() {
         anim = GetComponent<Animator>();
         localScaleSize = transform.localScale.x;
@@ -41,7 +41,7 @@ public abstract class Mover : Fighter {
         }
     }
 
-    protected void Animate(float x) {
+    protected virtual void Animate(float x) {
         if (gameObject.tag == "Player")
             return;
         //swap sprite direction whether moving left or right and animation

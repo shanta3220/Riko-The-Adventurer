@@ -42,7 +42,6 @@ public class Enemy : Mover {
                 if(!collidingWithPlayer){
                     motion = (playerTransform.position - transform.position).normalized;
                     UpdateMotor(motion);
-                  
                 }
             }
             else{
@@ -58,6 +57,7 @@ public class Enemy : Mover {
             UpdateMotor(motion);
             isChasing = false;
         }
+
         if(Vector3.Distance(transform.position,startingPosition) <= 0.05f)
             UpdateMotor(Vector3.zero);
         //overlaps
