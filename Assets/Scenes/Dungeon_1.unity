@@ -465,6 +465,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 114914875751188530, guid: 38ed6cbaaa0a8f54a9144bf1e0c92728,
+        type: 2}
+      propertyPath: enemyProjectileSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914875751188530, guid: 38ed6cbaaa0a8f54a9144bf1e0c92728,
+        type: 2}
+      propertyPath: numberofProjectiles
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38ed6cbaaa0a8f54a9144bf1e0c92728, type: 2}
   m_IsPrefabParent: 0

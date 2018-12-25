@@ -5,9 +5,6 @@ using UnityEngine;
 public enum RangedType {
     horizontal, Vertical, Stationary
 };
-public enum BulletType {
-    Stationary, Slow
-};
 
 public class EnemyRanged : Mover {
 
@@ -19,8 +16,6 @@ public class EnemyRanged : Mover {
     //delays to control how frequent enemy moves or attacks
     public Vector2 delayAttack = new Vector2(2,5); //x=mindelay, y= maxdelay
     public Vector2 delayChangePosition = new Vector2(1, 4); //x=mindelay, y= maxdelay
-    public GameObject enemyProjectTile;
-    public BulletType bulletType;
 
     private Transform playerTransform;
     private Vector3 startingPosition;
@@ -39,7 +34,7 @@ public class EnemyRanged : Mover {
     private Vector3 pos1, pos2;
 
     private Transform spawnPoint;
-    private float enemyProjectileSpeed = 2;
+    private EnemyShoot enemyShoot;
 
     protected override void Start() {
         base.Start();
@@ -63,6 +58,7 @@ public class EnemyRanged : Mover {
             targetPosition = pos2;
         }
         spawnPoint = transform.GetChild(2).transform;
+        enemyShoot = GetComponent<EnemyShoot>();
     }
 
     private void FixedUpdate() {
@@ -149,23 +145,8 @@ public class EnemyRanged : Mover {
     }
 
     public void Shoot() {
+
         Vector2 direction = (playerTransform.position - spawnPoint.position).normalized;
-        Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-        
-        
-        if(bulletType == BulletType.Slow) {
-            for(int i = 0; i<5; i++) {
-                float randomVal = i * Random.Range(i,5);
-                Vector3 offset = new Vector3(randomVal*Time.deltaTime, randomVal * Time.deltaTime, 0);
-                GameObject projectile = Instantiate(enemyProjectTile, spawnPoint.position + offset, rotation);
-                projectile.GetComponent<Rigidbody2D>().velocity = direction * enemyProjectileSpeed / 2;
-                projectile.GetComponent<EnemyProjectile>().isSlowType = true;
-            }
-        }
-      
-        else {
-            GameObject projectile = Instantiate(enemyProjectTile, spawnPoint.position, rotation);
-            projectile.GetComponent<Rigidbody2D>().velocity = direction * enemyProjectileSpeed;
-        }
+        enemyShoot.Shoot(direction, spawnPoint.position);
     }
 }
