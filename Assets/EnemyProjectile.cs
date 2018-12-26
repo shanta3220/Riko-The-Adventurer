@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyProjectile : Collidable {
     public bool isSlowType;
+    public int damagePoint = 2;
+    public float pushForce = 2.0f;
     //references
     private Rigidbody2D rBody;
     private Animator anim;
@@ -30,9 +32,9 @@ public class EnemyProjectile : Collidable {
             rBody.velocity = Vector2.zero;
             //create a new damage object then we will send it to the enemy we hit
             Damage dmg = new Damage {
-                damageAmount = GameManager.instance.weapon.damagePoint[GameManager.instance.weapon.weaponLevel],
+                damageAmount = damagePoint,
                 origin = transform.position,
-                pushForce = GameManager.instance.weapon.pushForce[GameManager.instance.weapon.weaponLevel]
+                pushForce = pushForce
             };
             col.SendMessage("ReceiveDamage", dmg);
             anim.SetInteger("Anim", 1);

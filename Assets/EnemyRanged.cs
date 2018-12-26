@@ -11,12 +11,13 @@ public class EnemyRanged : Mover {
     
     public float enemyTriggerLength = 4f;
     public float enemyAttackingLength = 5;
+    public int xpValue = 1;
     public RangedType rangeType;
     public bool playerInRange;
     //delays to control how frequent enemy moves or attacks
     public Vector2 delayAttack = new Vector2(2,5); //x=mindelay, y= maxdelay
     public Vector2 delayChangePosition = new Vector2(1, 4); //x=mindelay, y= maxdelay
-
+    public AudioClip enemyHurt;
     private Transform playerTransform;
     private Vector3 startingPosition;
     private Vector3 targetPosition;
@@ -35,6 +36,9 @@ public class EnemyRanged : Mover {
 
     private Transform spawnPoint;
     private EnemyShoot enemyShoot;
+    private SpriteRenderer sr;
+
+    private AudioSource audioS;
 
     protected override void Start() {
         base.Start();
@@ -59,6 +63,8 @@ public class EnemyRanged : Mover {
         }
         spawnPoint = transform.GetChild(2).transform;
         enemyShoot = GetComponent<EnemyShoot>();
+        sr = GetComponent<SpriteRenderer>();
+        audioS = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate() {
@@ -145,8 +151,32 @@ public class EnemyRanged : Mover {
     }
 
     public void Shoot() {
-
         Vector2 direction = (playerTransform.position - spawnPoint.position).normalized;
         enemyShoot.Shoot(direction, spawnPoint.position);
+    }
+
+    protected override void ReceiveDamage(Damage dmg) {
+        base.ReceiveDamage(dmg);
+        Hurt();
+        PlayAudio();
+    }
+
+    protected override void Death() {
+        Destroy(gameObject);
+        GameManager.instance.GrantXp(xpValue);
+        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+    }
+
+    private void Hurt() {
+        sr.color = Color.magenta;
+        Invoke("RestoreColor", 0.2f);
+    }
+
+    private void RestoreColor() {
+        sr.color = Color.white;
+    }
+
+    private void PlayAudio() {
+        audioS.Play();
     }
 }

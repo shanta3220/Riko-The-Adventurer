@@ -35,6 +35,7 @@ public class Bullet : Collidable {
                 origin = transform.position,
                 pushForce = GameManager.instance.weapon.pushForce[GameManager.instance.weapon.weaponLevel]
             };
+            GetComponent<BoxCollider2D>().enabled = false;
             col.SendMessage("ReceiveDamage", dmg);
             anim.SetInteger("Anim", 1);
             Destroy(gameObject, 0.2f);

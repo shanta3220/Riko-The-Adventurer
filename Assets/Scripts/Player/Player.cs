@@ -42,6 +42,7 @@ public class Player : Mover {
                 shootAnim.SetTrigger("Shoot");
                 screenShake.ShakeIt(coolDown);
                 weapon.Shoot();
+                weapon.PlayShootAudio();
             }
         }
     }

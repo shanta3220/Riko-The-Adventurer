@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BittenVonKrumpenAnimatorOverrideController
+  m_Controller: {fileID: 9100000, guid: a7818b6dbb7ebb941b10d05832cb8b7d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 6ba08785a2dd6a2408f09e144ce8ee8c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 83a5eccb262ef304099fd17e66a2c24e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 150d5000b01a7dd49bed7bd3cbca9951, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5f68601f61f5d244e9db6664859033de, type: 2}

@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour {
     public float rotateAngle = 0;
     public Transform bulletSpawnPoint;
     public GunSpriteChanger gunSpriteChanger;
+    public AudioSource audioS;
     protected int damageStartValue = 1;
     
     protected virtual void Awake() { }
@@ -24,6 +25,7 @@ public class Weapon : MonoBehaviour {
     public void ChangeSprites() {
         if (GameManager.instance.data.weaponSelected != weaponID)
             return;
+        audioS = GetComponent<AudioSource>();
         gunSpriteChanger.GunSide.sprite = GunSide;
         gunSpriteChanger.GunUp.sprite = GunUp;
         gunSpriteChanger.GunDown.sprite = GunDown;
@@ -65,5 +67,9 @@ public class Weapon : MonoBehaviour {
         newWep.weaponID = weaponID;
         newWep.weaponLevel = weaponLevel;
 
+    }
+
+    public void PlayShootAudio() {
+        audioS.Play();
     }
 }
