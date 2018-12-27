@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyProjectile : Collidable {
     public bool isSlowType;
     public int damagePoint = 2;
+    public int[] damagePoints = { 1, 2, 3, 4, 5, 6, 7, 8 };
     public float pushForce = 2.0f;
     //references
     private Rigidbody2D rBody;
@@ -32,7 +33,7 @@ public class EnemyProjectile : Collidable {
             rBody.velocity = Vector2.zero;
             //create a new damage object then we will send it to the enemy we hit
             Damage dmg = new Damage {
-                damageAmount = damagePoint,
+                damageAmount = damagePoints[GameManager.instance.GetCurrentLevel()],
                 origin = transform.position,
                 pushForce = pushForce
             };

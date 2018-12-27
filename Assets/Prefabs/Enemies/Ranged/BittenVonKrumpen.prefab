@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434305015432092}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0139995, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.432, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4885064425299002}
@@ -110,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820001962818390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.308, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.962, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4885064425299002}
@@ -123,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083322877908148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8568, y: -2.2335, z: 0}
+  m_LocalPosition: {x: -1.038, y: 0.039, z: 0}
   m_LocalScale: {x: 0.56, y: 0.56, z: 1}
   m_Children:
   - {fileID: 4180099036640870}
@@ -169,7 +169,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d46227682f42d3646b939e97ccb96874, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 2
   Loop: 0
   Mute: 0
@@ -273,7 +273,9 @@ MonoBehaviour:
   xSpeed: 0.75
   enemyTriggerLength: 2
   enemyAttackingLength: 3
-  xpValue: 1
+  healthLength: 070000000f0000001e0000002d0000003200000046000000640000007d000000
+  xpValue: 3
+  goldValue: 20
   rangeType: 2
   playerInRange: 0
   delayAttack: {x: 2, y: 5}
@@ -328,7 +330,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1130953831
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 780fb6a622b225742af398005e2974e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

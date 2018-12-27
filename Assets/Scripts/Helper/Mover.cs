@@ -7,10 +7,11 @@ public abstract class Mover : Fighter {
     protected Animator anim;
     protected RaycastHit2D hit;
     protected bool isRunning;
-
+    public int[] healthLength = { 5, 10, 15, 25, 30, 50, 70};
     public float ySpeed = 0.75f;
     public float xSpeed = 1f;
     protected float localScaleSize;
+
     private void Awake() {
         anim = GetComponent<Animator>();
         localScaleSize = transform.localScale.x;
@@ -19,11 +20,9 @@ public abstract class Mover : Fighter {
     protected virtual void Start() {
 
         boxCollider = GetComponent<BoxCollider2D>();
-
     }
 
     protected virtual void UpdateMotor(Vector3 input) {
-
         moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed,0);
         isRunning = input.x != 0 || input.y != 0 ? true : false;
         Animate(moveDelta.x);
@@ -60,4 +59,9 @@ public abstract class Mover : Fighter {
     }
 
 
+    public void SetLevelHealth(int currentPlayerLevel) {
+        //increasing health
+        maxHealth = healthLength[currentPlayerLevel];
+        health = maxHealth;
+    }
 }

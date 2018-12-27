@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public List<Weapon> collectedWeapons;
     private Transform weaponContainer;
     public static GameManager instance;
-
+    public int playerCurrentLevel;
     private void Awake()
     {
         if (instance == null)
@@ -162,7 +162,8 @@ public class GameManager : MonoBehaviour
 
     public void OnLevelUp() {
         ShowText("Level Up!", 25, Color.green, player.transform.position, Vector3.up * 50, 1.0f);
-        player.OnLevelUp();
+        playerCurrentLevel += 1;
+        player.SetLevelHealth(playerCurrentLevel);
         OnHealthChange();
     }
     
@@ -206,10 +207,11 @@ public class GameManager : MonoBehaviour
             i++;
            
         }
-        int getCurrentLevel = GetCurrentLevel();
-        if (getCurrentLevel > 1) {
+        playerCurrentLevel = GetCurrentLevel() - 1;
+        if (playerCurrentLevel > 1) {
             //player health based on experience, -1 because level 1 counts as well to increase health
-            player.SetLevelHealth(getCurrentLevel - 1);
+            player.SetLevelHealth(playerCurrentLevel);
+            //OnHealthChange(); 
         }
        
     }

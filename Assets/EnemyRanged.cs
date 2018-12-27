@@ -7,11 +7,11 @@ public enum RangedType {
 };
 
 public class EnemyRanged : Mover {
-
-    
     public float enemyTriggerLength = 4f;
     public float enemyAttackingLength = 5;
+    
     public int xpValue = 1;
+    public int goldValue = 20;
     public RangedType rangeType;
     public bool playerInRange;
     //delays to control how frequent enemy moves or attacks
@@ -42,6 +42,7 @@ public class EnemyRanged : Mover {
 
     protected override void Start() {
         base.Start();
+        audioS = GetComponent<AudioSource>();
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
         delayForChangingPosition = Random.Range(delayChangePosition.x, delayChangePosition.y);
@@ -64,7 +65,7 @@ public class EnemyRanged : Mover {
         spawnPoint = transform.GetChild(2).transform;
         enemyShoot = GetComponent<EnemyShoot>();
         sr = GetComponent<SpriteRenderer>();
-        audioS = GetComponent<AudioSource>();
+        SetLevelHealth(GameManager.instance.playerCurrentLevel);
     }
 
     private void FixedUpdate() {
@@ -165,6 +166,8 @@ public class EnemyRanged : Mover {
         Destroy(gameObject);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+        GameManager.instance.gold += goldValue;
+        GameManager.instance.ShowText("+" + goldValue + " pesos!", 23, Color.yellow, transform.position, Vector3.up * 10, 1.5f);
     }
 
     private void Hurt() {
@@ -177,6 +180,13 @@ public class EnemyRanged : Mover {
     }
 
     private void PlayAudio() {
-        audioS.Play();
+        if(audioS.isActiveAndEnabled)
+            audioS.Play();
     }
+
+    public void OnLevelUp() {
+       
+    }
+
+
 }

@@ -130,7 +130,7 @@ public class Player : Mover {
         anim.runtimeAnimatorController = GameManager.instance.playerSkins[skinId];
     }
    
-    public void OnLevelUp() {
+    /*public void OnLevelUp() {
         //increasing health
         maxHealth++;
         health = maxHealth;
@@ -140,7 +140,7 @@ public class Player : Mover {
         //increase the health based on your level
         for (int i = 0; i < level; i++)
             OnLevelUp();
-    }
+    }*/
 
     public void Heal(int healAmount) {
         if (health == maxHealth)
