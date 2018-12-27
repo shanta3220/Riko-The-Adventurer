@@ -77,14 +77,18 @@ public class GameManager : MonoBehaviour
         
     }
     public void UnlockWeapon() {
-        int dataID = data.notCollectedWeapons[Random.Range(0, data.notCollectedWeapons.Count)];
+        if (data.notCollectedWeapons.Count == 0)
+            return;
+        int dataID;
+        dataID = data.notCollectedWeapons[Random.Range(0, data.notCollectedWeapons.Count)];
         data.collectedWeapons.Add(dataID);
-        data.notCollectedWeapons.Remove(dataID);
         Weapon playerWep = CheckWeapons(dataID, collectedWeapons.Count);
         data.weaponSelected = collectedWeapons.Count;
         collectedWeapons.Add(playerWep);
         playerWep.enabled = true;
         playerWep.ChangeSprites();
+
+        data.notCollectedWeapons.Remove(dataID);
     }
     public void SwitchWeapon() {
  
@@ -200,6 +204,7 @@ public class GameManager : MonoBehaviour
             collectedWeapons.Add(wep);
             wep.enabled = IsSelectedWeapon(wep);
             i++;
+           
         }
         int getCurrentLevel = GetCurrentLevel();
         if (getCurrentLevel > 1) {

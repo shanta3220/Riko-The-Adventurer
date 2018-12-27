@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour {
     public int weaponLevel = 1;
     public GameObject Bullet;
     public GameObject emptyShells;
+    public GameObject emptyShellsContainer;
     //damage States
     public int[] damagePoint = {1,2,3,4,5,6,7};
     public float[] pushForce = {2.0f,2.2f,2.6f,2.8f,3.0f,3.2f,3.4f};
@@ -21,6 +22,8 @@ public class Weapon : MonoBehaviour {
     protected virtual void Awake() { }
 
     protected virtual void Start() { }
+
+    protected virtual void Update() { }
 
     public void ChangeSprites() {
         if (GameManager.instance.data.weaponSelected != weaponID)
@@ -41,15 +44,12 @@ public class Weapon : MonoBehaviour {
 
     }
 
-    protected virtual void Update() { }
+ 
 
     public virtual void Shoot() { }
 
     public virtual void GetDirection(Vector3 dirFromMeToMouse) { }
-
-    private void OnCollisionEnter2D(Collision2D other) { }
-
-
+    
     public virtual void UpgradeWeapon() {
         weaponLevel++;
         GameManager.instance.data.weaponLevel[weaponID] = weaponLevel;

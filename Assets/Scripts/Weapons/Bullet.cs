@@ -6,7 +6,7 @@ public class Bullet : Collidable {
 
     private Rigidbody2D rBody;
     private Animator anim;
-
+    public int numberofbullets = 1;
     protected override void Start() {
         base.Start();
         rBody = GetComponent<Rigidbody2D>();
@@ -31,7 +31,7 @@ public class Bullet : Collidable {
             rBody.velocity = Vector2.zero;
             //create a new damage object then we will send it to the enemy we hit
             Damage dmg = new Damage {
-                damageAmount = GameManager.instance.weapon.damagePoint[GameManager.instance.weapon.weaponLevel],
+                damageAmount = GameManager.instance.weapon.damagePoint[GameManager.instance.weapon.weaponLevel] * numberofbullets,
                 origin = transform.position,
                 pushForce = GameManager.instance.weapon.pushForce[GameManager.instance.weapon.weaponLevel]
             };

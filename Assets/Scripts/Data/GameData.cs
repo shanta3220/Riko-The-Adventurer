@@ -16,7 +16,7 @@ public class GameData{
     public int weaponSelected;
     public int selectedSkin;
     public bool[] skins = { true, false, false };
-    public List<int> weaponLevel = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0 };
+    public List<int> weaponLevel = new List<int>() {0,0,0,0,0,0,0,0,0};
    
    
 }

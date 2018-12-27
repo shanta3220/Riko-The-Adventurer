@@ -21,6 +21,7 @@ public class FlameThrower : Weapon {
          GameObject projectile = Instantiate(Bullet, myPos, rotation);
          projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
          GameObject emptyShell = Instantiate(emptyShells, myPos, rotation);
+         emptyShell.transform.parent = emptyShellsContainer.transform;
          emptyShell.GetComponent<Rigidbody2D>().velocity = -direction * 1f;
     }
 
@@ -31,7 +32,7 @@ public class FlameThrower : Weapon {
         GunDown = Resources.Load<Sprite>(folderName + "down");
         GunDiagUp = Resources.Load<Sprite>(folderName + "diagup");
         GunDiagDown = Resources.Load<Sprite>(folderName + "diagdown");
-        Bullet = Resources.Load<GameObject>("flamethrower_bullet");
+        Bullet = Resources.Load<GameObject>("rocket_bullet");
     }
     /*
     private void OLD() {

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 28ab111a583da884e923153138c6d18d
-timeCreated: 1545565159
+timeCreated: 1545909922
 licenseType: Free
 MonoImporter:
   externalObjects: {}
@@ -11,11 +11,13 @@ MonoImporter:
   - GunDown: {fileID: 21300000, guid: 093aee4d4f39e1e40bda2088cd2f539f, type: 3}
   - GunDiagUp: {fileID: 21300000, guid: 78deceae8c615d349b2a2a5cfad30432, type: 3}
   - GunDiagDown: {fileID: 21300000, guid: d2c7638e4edc9bc4e918e672dd480698, type: 3}
-  - Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  - Bullet: {fileID: 1162231889447974, guid: b982b90e79d2e50448b3e42dd3eafec9, type: 2}
   - emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
       type: 2}
+  - emptyShellsContainer: {instanceID: 0}
   - bulletSpawnPoint: {instanceID: 0}
   - gunSpriteChanger: {instanceID: 0}
+  - audioS: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -3,7 +3,7 @@
 public class ShotGun : Weapon {
 
     public float bulletSpeed = 2;
-
+    public int numberofProjectiles = 2;
     protected override void Awake() {
         base.Awake();
         Presets();
@@ -15,10 +15,21 @@ public class ShotGun : Weapon {
         Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
         Vector2 myPos = new Vector2(bulletSpawnPoint.position.x, bulletSpawnPoint.position.y);
         Vector2 direction = target - myPos;
-        direction.Normalize();
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-        GameObject projectile = Instantiate(Bullet, myPos, rotation);
-        projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        GameObject emptyShell = Instantiate(emptyShells, myPos, rotation);
+        emptyShell.transform.parent = emptyShellsContainer.transform;
+        emptyShell.GetComponent<Rigidbody2D>().velocity = -direction * 1f;
+        direction.Normalize();
+        float offset = 0.25f;
+        for (int i = 0; i <= numberofProjectiles; i++) {
+            direction.x += Random.Range(-offset, offset);
+            direction.y += Random.Range(-offset, offset);
+            rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+            GameObject projectile = Instantiate(Bullet, myPos, rotation);
+            projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            projectile.GetComponent<Bullet>().numberofbullets = (numberofProjectiles + 1);
+  
+        }
     }
 
     private void Presets() {
@@ -28,6 +39,7 @@ public class ShotGun : Weapon {
         GunDown = Resources.Load<Sprite>(folderName + "down");
         GunDiagUp = Resources.Load<Sprite>(folderName + "diagup");
         GunDiagDown = Resources.Load<Sprite>(folderName + "diagdown");
-        Bullet = Resources.Load<GameObject>("canon_bullet");
+        Bullet = Resources.Load<GameObject>("white_bullet");
     }
+
 }
