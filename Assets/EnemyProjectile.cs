@@ -7,6 +7,7 @@ public class EnemyProjectile : Collidable {
     public int damagePoint = 2;
     public int[] damagePoints = { 1, 2, 3, 4, 5, 6, 7, 8 };
     public float pushForce = 2.0f;
+    public bool isRotatedProjectile;
     //references
     private Rigidbody2D rBody;
     private Animator anim;
@@ -20,6 +21,8 @@ public class EnemyProjectile : Collidable {
     private void FixedUpdate() {
         if (isSlowType)
             rBody.velocity = Vector2.Lerp (rBody.velocity, Vector2.zero, Random.value* Time.deltaTime);
+        if (isRotatedProjectile)
+            transform.Rotate(Vector3.forward * 60);
     }
 
     protected override void OnCollide(Collider2D col) {
