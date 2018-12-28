@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a7b2f93a7eda8df4f81cee786ba6fafc
-timeCreated: 1545919084
+timeCreated: 1546011792
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,12 +9,12 @@ TextureImporter:
     21300004: blueBullet_2
     21300006: blueBullet_3
     21300008: blue_thin_bullet
-    21300010: blueBullet_Explosion
-    21300012: M484BulletCollection1_6
+    21300010: blue_explosion
+    21300012: green_explosion
     21300014: red_explosion
-    21300016: M484BulletCollection1_8
+    21300016: yellowexplosion
     21300018: blue_bullet_2
-    21300020: M484BulletCollection1_10
+    21300020: redshooteffect3
     21300022: red_bullet
     21300024: green_thin_bullet
     21300026: orange_circularbullet
@@ -26,6 +26,19 @@ TextureImporter:
     21300038: pink_bullet1
     21300040: pink_bullet2
     21300042: pink_bullet3
+    21300044: redshooteffect
+    21300046: greenshooteffect
+    21300048: yellowshooteffect
+    21300050: yellowshooteffect2
+    21300052: blueshooteffect
+    21300054: yellow_redexplosion
+    21300056: redwhite
+    21300058: green_shoot_effect2
+    21300060: redshotoeffect2
+    21300062: yellow_shoot_effect2
+    21300064: red_starshooteffect2
+    21300066: red_starshooteffect1
+    21300068: red_starshooteffect0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -188,13 +201,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: blueBullet_Explosion
+      name: blue_explosion
       rect:
         serializedVersion: 2
         x: 251
-        y: 17
+        y: 18
         width: 20
-        height: 20
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,13 +215,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: M484BulletCollection1_6
+      name: green_explosion
       rect:
         serializedVersion: 2
         x: 272
-        y: 17
+        y: 18
         width: 20
-        height: 20
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,7 +235,7 @@ TextureImporter:
         x: 292
         y: 18
         width: 20
-        height: 20
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,13 +243,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: M484BulletCollection1_8
+      name: yellowexplosion
       rect:
         serializedVersion: 2
         x: 313
         y: 17
         width: 20
-        height: 20
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,7 +271,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: M484BulletCollection1_10
+      name: redshooteffect3
       rect:
         serializedVersion: 2
         x: 173
@@ -392,7 +405,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -406,7 +419,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -419,6 +432,188 @@ TextureImporter:
         y: 223
         width: 11
         height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: redshooteffect
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 151
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: greenshooteffect
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 151
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: yellowshooteffect
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 151
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: yellowshooteffect2
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 151
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueshooteffect
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 151
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: yellow_redexplosion
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 43
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: redwhite
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 43
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: green_shoot_effect2
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 47
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: redshotoeffect2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 47
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: yellow_shoot_effect2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 47
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: red_starshooteffect2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 340
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: red_starshooteffect1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 340
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: red_starshooteffect0
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 340
+        width: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
