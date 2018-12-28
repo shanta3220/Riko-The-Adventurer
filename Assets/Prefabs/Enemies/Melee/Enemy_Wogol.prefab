@@ -53,8 +53,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1105054467956648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.848, y: -0.336, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.697, y: 0.088973045, z: 0.0018310547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4704591581793892}
@@ -90,7 +90,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.2}
+    oldSize: {x: 0.17777778, y: 0.22222222}
     newSize: {x: 0.16, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -183,10 +183,10 @@ MonoBehaviour:
   health: 3
   maxHealth: 3
   PushRecoverySpeed: 0.2
-  healthLength: 050000000a0000000a0000000f00000014000000190000001e000000
+  healthLength: 0300000005000000070000000c0000000f0000001200000014000000
   ySpeed: 0.75
   xSpeed: 1
-  xpValue: 5
+  xpValue: 3
   triggerLength: 0.3
   chaseLength: 1
   goldValue: 15

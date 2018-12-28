@@ -66,8 +66,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536745777839436}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8100469, y: -0.1096733, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.08, y: -2.015, z: 0.0018310547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4113075138717842}
@@ -158,10 +158,10 @@ MonoBehaviour:
   healthLength: 050000000a0000000f000000190000001e0000003200000046000000
   ySpeed: 0.75
   xSpeed: 1
-  xpValue: 1
+  xpValue: 15
   triggerLength: 0.75
   chaseLength: 4
-  goldValue: 15
+  goldValue: 30
   filter:
     useTriggers: 0
     useLayerMask: 0
