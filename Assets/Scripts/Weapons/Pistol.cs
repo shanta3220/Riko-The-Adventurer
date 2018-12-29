@@ -11,7 +11,8 @@ public class Pistol : Weapon {
 
 
     public override void Shoot() {
-        Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        if (GameManager.instance.player.target == null)
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 myPos = new Vector2(bulletSpawnPoint.position.x, bulletSpawnPoint.position.y);
         Vector2 direction = target - myPos;
         direction.Normalize();

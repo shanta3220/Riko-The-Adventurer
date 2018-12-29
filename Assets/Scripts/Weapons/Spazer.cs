@@ -3,25 +3,15 @@
 public class Spazer : Weapon {
 
     public float bulletSpeed = 2;
-    string folderName = "Weapons/spazer/";
-
     protected override void Awake() {
         base.Awake();
-        GunSide = Resources.Load<Sprite>(folderName + "side");
-        GunUp = Resources.Load<Sprite>(folderName + "up");
-        GunDown = Resources.Load<Sprite>(folderName + "down");
-        GunDiagUp = Resources.Load<Sprite>(folderName + "diagup");
-        GunDiagDown = Resources.Load<Sprite>(folderName + "diagdown");
-        Bullet = Resources.Load<GameObject>("blue_bullet");
+        Presets();
     }
 
-    private void OnEnable() {
-        //ChangeSprites();
-
-    }
-
+    
     public override void Shoot() {
-        Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        if (GameManager.instance.player.target == null)
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 myPos = new Vector2(bulletSpawnPoint.position.x, bulletSpawnPoint.position.y);
         Vector2 direction = target - myPos;
         direction.Normalize();
@@ -31,5 +21,15 @@ public class Spazer : Weapon {
         GameObject emptyShell = Instantiate(emptyShells, myPos, rotation);
         emptyShell.transform.parent = emptyShellsContainer.transform;
         emptyShell.GetComponent<Rigidbody2D>().velocity = -direction * 1f;
+    }
+
+    private void Presets() {
+        string folderName = "Weapons/spazer/";
+        GunSide = Resources.Load<Sprite>(folderName + "side");
+        GunUp = Resources.Load<Sprite>(folderName + "up");
+        GunDown = Resources.Load<Sprite>(folderName + "down");
+        GunDiagUp = Resources.Load<Sprite>(folderName + "diagup");
+        GunDiagDown = Resources.Load<Sprite>(folderName + "diagdown");
+        Bullet = Resources.Load<GameObject>("blue_bullet");
     }
 }

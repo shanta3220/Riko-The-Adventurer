@@ -11,6 +11,8 @@ public abstract class Mover : Fighter {
     public float ySpeed = 0.75f;
     public float xSpeed = 1f;
     protected float localScaleSize;
+    [HideInInspector]
+    public bool hasEnemyTarget;
 
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -32,11 +34,16 @@ public abstract class Mover : Fighter {
             //moving the player
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
         }
-
+        else if (hit.collider != null && pushDirection != Vector3.zero) {
+            pushDirection = Vector3.zero;
+        }
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null) {
             //moving the player
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+        }
+        else if (hit.collider != null && pushDirection != Vector3.zero) {
+            pushDirection = Vector3.zero;
         }
     }
 
@@ -64,4 +71,5 @@ public abstract class Mover : Fighter {
         maxHealth = healthLength[currentPlayerLevel];
         health = maxHealth;
     }
+
 }

@@ -10,13 +10,13 @@ public class Player : Mover {
     public GameObject weaponContainer;
     public Weapon weapon;
     private Animator shootAnim;
-
+    [HideInInspector]
+    
     private bool isAlive = true;
    
     //public Joystick movementJoystick, shootJoystick;
     protected float coolDown = 0.2f;
     protected float lastShoot;
-
     private CameraShake screenShake;
 
     protected override void Start() {
@@ -29,8 +29,10 @@ public class Player : Mover {
     private void FixedUpdate() {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        if(isAlive)
+        if (isAlive) {
             UpdateMotor(new Vector3(x, y, 0));
+        }
+           
     }
 
 
@@ -49,28 +51,37 @@ public class Player : Mover {
 
 
     protected override void UpdateMotor(Vector3 input) {
-        moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed,0);
+        moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0);
         isRunning = input.x != 0 || input.y != 0 ? true : false;
-        TurningPC();
+        if (target == null) {
+            TurningPC();
+        }
+        else {
+            PlayerFaceEnemyAnim(target);
+        }
+
         //making sure we can move the player upward or downward by casting a box there beforehand
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null) {
             //moving the player
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
         }
-
+        else if (hit.collider != null && pushDirection != Vector3.zero) {
+            pushDirection = Vector3.zero;
+        }
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null) {
             //moving the player
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
         }
-        
+        else if (hit.collider != null && pushDirection != Vector3.zero) {
+            pushDirection = Vector3.zero;
+        }
     }
 
 
     private void TurningPC() {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y).normalized;
         Animate(direction.x, direction.y);
 
@@ -101,21 +112,9 @@ public class Player : Mover {
   
 
     private void PlayerFaceEnemyAnim(Transform target) {
-        float x, y;
         Vector2 localMove = (target.position - transform.position).normalized;
-        x = Mathf.RoundToInt(localMove.x);
-        y = Mathf.RoundToInt(localMove.y);
-
-        if (x > 0) {
-            transform.localScale = Vector3.one;
-        }
-        else if (x < 0) {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-        x = Mathf.Abs(x);
-        anim.SetFloat("FaceX", x);
-        anim.SetFloat("FaceY", y);
+        Animate(Mathf.RoundToInt(localMove.x), Mathf.RoundToInt(localMove.y));
+        weapon.target = target.transform.position;
     }
 
     protected override void ReceiveDamage(Damage dmg) {

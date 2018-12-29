@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     private Transform weaponContainer;
     public static GameManager instance;
     public int playerCurrentLevel;
+    public EnemyActivator enemyActivator;
+    public ScenePortal scenePortal;
+    public EnemyBatchHandler enemyBatchHandler;
     private void Awake()
     {
         if (instance == null)
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour
         return false;
         
     }
+
     public void UnlockWeapon() {
         if (data.notCollectedWeapons.Count == 0)
             return;
@@ -90,6 +94,7 @@ public class GameManager : MonoBehaviour
 
         data.notCollectedWeapons.Remove(dataID);
     }
+
     public void SwitchWeapon() {
  
         if (weapon.weaponID == collectedWeapons.Count - 1) {
@@ -230,7 +235,20 @@ public class GameManager : MonoBehaviour
         //PlayerPrefs.SetString("MySettingsEditor", "");
         //PlayerPrefs.SetString("MySettings", "");
     }
+   //enemy activation and opening doors if player completes the current level
 
+    public void ActivateEnemy() {
+        enemyActivator.ActivateFirstEnemyBatch();
+    }
+
+    public void OpenBarrier(int lockerID) {
+        if(enemyActivator != null)
+            enemyActivator.OpenBarrier(lockerID);
+    }
+
+    public void OpenDoor() {
+        scenePortal.OpenDoor();
+    }
 
 
     /*/// <summary>

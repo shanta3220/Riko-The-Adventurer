@@ -17,8 +17,8 @@ public class Weapon : MonoBehaviour {
     public Transform bulletSpawnPoint;
     public GunSpriteChanger gunSpriteChanger;
     public AudioSource audioS;
+    public Vector2 target;
     protected int damageStartValue = 1;
-    
     protected virtual void Awake() { }
 
     protected virtual void Start() { }

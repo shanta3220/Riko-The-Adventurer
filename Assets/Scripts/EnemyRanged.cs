@@ -71,10 +71,8 @@ public class EnemyRanged : Mover {
     private void FixedUpdate() {
 
         UpdateMotor(Move());
-        if (Vector3.Distance(playerTransform.position, startingPosition) < enemyAttackingLength) {
-            if (Vector3.Distance(playerTransform.position, startingPosition) < enemyTriggerLength) {
-                playerInRange = true;
-            }
+        if (hasEnemyTarget) {
+            playerInRange = true;
         }
         else {
             playerInRange = false;
@@ -164,6 +162,7 @@ public class EnemyRanged : Mover {
 
     protected override void Death() {
         Destroy(gameObject);
+        transform.parent.GetComponent<EnemyBatchHandler>().RemoveEnemy(transform);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
         GameManager.instance.gold += goldValue;
@@ -187,6 +186,17 @@ public class EnemyRanged : Mover {
     public void OnLevelUp() {
        
     }
+    /*
+        private void OldFixedUpdate() {
 
-
+        UpdateMotor(Move());
+        if (Vector3.Distance(playerTransform.position, startingPosition) < enemyAttackingLength) {
+            if (Vector3.Distance(playerTransform.position, startingPosition) < enemyTriggerLength) {
+                playerInRange = true;
+            }
+        }
+        else {
+            playerInRange = false;
+        }
+    */
 }
