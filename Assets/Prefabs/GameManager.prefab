@@ -390,7 +390,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 87a9a4d6725e77449a21b4dcbf158954, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
-  m_Pitch: 1
+  m_Pitch: 1.4
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -549,7 +549,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4d6fe2a3c412eb4499fdaf4ba9f33ad7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 91894d9ecd924e74e88f152130c329e7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.45
   m_Pitch: 1
@@ -630,7 +630,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a98aa2aeae5de69469bde3fd42e64192, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d0b35c568ac9f9b458d92521e4d5709d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
@@ -711,7 +711,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a98aa2aeae5de69469bde3fd42e64192, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 91894d9ecd924e74e88f152130c329e7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1.2
@@ -792,10 +792,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4d6fe2a3c412eb4499fdaf4ba9f33ad7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fdbc18edd950bf74ba6ef63190b4362c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
-  m_Pitch: 1.2
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -873,10 +873,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6c2bf94edd197ff4286a16d914095076, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a98aa2aeae5de69469bde3fd42e64192, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
-  m_Pitch: 2
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -954,7 +954,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6c2bf94edd197ff4286a16d914095076, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fdbc18edd950bf74ba6ef63190b4362c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1.59
@@ -1038,7 +1038,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 4d6fe2a3c412eb4499fdaf4ba9f33ad7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
-  m_Pitch: 0.83
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1123,13 +1123,13 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: bd6a0e4f334915a4881607b4c62647c7, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 6b59c6e43092615448736a0a246787b9, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: c8000000900100005802000020030000b0040000d0070000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  damagePoint: 0200000005000000070000000c000000100000001300000019000000
   pushForce:
   - 2
   - 2.2
@@ -1142,6 +1142,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 5
 --- !u!114 &114352530252953622
 MonoBehaviour:
@@ -1162,7 +1163,7 @@ MonoBehaviour:
   weaponID: 0
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 0
-  Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  Bullet: {fileID: 1162231889447974, guid: b982b90e79d2e50448b3e42dd3eafec9, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
@@ -1179,6 +1180,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!114 &114410922075493038
 MonoBehaviour:
@@ -1197,13 +1199,13 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: f57f662406053d74386aaa1eee705962, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 170f86618d2b3c84291300dc4ac0cef3, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: 4600000087000000c80000001301000090010000f4010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  damagePoint: 01000000030000000500000007000000090000000b0000000e000000
   pushForce:
   - 2
   - 2.2
@@ -1216,6 +1218,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!114 &114476928651194024
 MonoBehaviour:
@@ -1234,13 +1237,13 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 662d6cffd477a1c448c77d23973a9e25, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 7021cb94bdcd5224d8f7b9e80a491559, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: 5a0000002c010000c201000020030000b004000008070000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  damagePoint: 02000000080000000c00000011000000140000001600000019000000
   pushForce:
   - 2
   - 2.2
@@ -1253,7 +1256,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
-  bulletSpeed: 2
+  target: {x: 0, y: 0}
+  bulletSpeed: 4
 --- !u!114 &114598550817055844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1271,13 +1275,13 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 78deceae8c615d349b2a2a5cfad30432, type: 3}
   GunDiagDown: {fileID: 21300000, guid: d2c7638e4edc9bc4e918e672dd480698, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: b40000005e0100001c0200002003000084030000e8030000
   weaponLevel: 1
   Bullet: {fileID: 1162231889447974, guid: b982b90e79d2e50448b3e42dd3eafec9, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  damagePoint: 04000000080000000c0000001000000014000000180000001e000000
   pushForce:
   - 2
   - 2.2
@@ -1290,7 +1294,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
-  bulletSpeed: 2
+  target: {x: 0, y: 0}
+  bulletSpeed: 4
 --- !u!114 &114642098771417768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1308,13 +1313,13 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 0913d3012a74e3d45847237f46b5f7a5, type: 3}
   GunDiagDown: {fileID: 21300000, guid: e95452f741dbd3148ae56abbbe975e9d, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: 230000005a000000c800000022010000c201000058020000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  damagePoint: 010000000300000007000000090000000b0000000e00000011000000
   pushForce:
   - 2
   - 2.2
@@ -1327,6 +1332,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!114 &114764806598840516
 MonoBehaviour:
@@ -1347,7 +1353,7 @@ MonoBehaviour:
   weaponID: 0
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
-  Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  Bullet: {fileID: 1293831032896064, guid: 1f540ec2a5ac94f4c8c3eed0781b67ba, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
@@ -1364,7 +1370,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
-  bulletSpeed: 2
+  target: {x: 0, y: 0}
+  bulletSpeed: 3
 --- !u!114 &114789335956924054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1382,13 +1389,13 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 9e51cda82319e6447a123745696e3e96, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 7847b15eaf11f6f448919a98bd797ac9, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: 46000000b40000002c010000ea0100009e02000020030000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  damagePoint: 020000000400000006000000080000000a0000000c0000000e000000
   pushForce:
   - 2
   - 2.2
@@ -1401,7 +1408,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
-  bulletSpeed: 2
+  target: {x: 0, y: 0}
+  bulletSpeed: 3
 --- !u!114 &114913667784570014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1419,13 +1427,13 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: b6dc4bc02d1cf044bb5b6670d4f5acbc, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 7d12ea656de041348b9664512d5db464, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: f4010000e8030000dc050000d0070000c4090000b80b0000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 01000000020000000300000004000000050000000600000007000000
+  damagePoint: 01000000030000000500000008000000090000000c00000010000000
   pushForce:
   - 2
   - 2.2
@@ -1438,7 +1446,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   audioS: {fileID: 0}
-  bulletSpeed: 2
+  target: {x: 0, y: 0}
+  bulletSpeed: 3
   numberofProjectiles: 2
 --- !u!114 &114982934205576642
 MonoBehaviour:
@@ -1477,3 +1486,7 @@ MonoBehaviour:
     skins: 010000
     weaponLevel: 0000000000000000000000000000000000000000000000000000000000000000
   collectedWeapons: []
+  playerCurrentLevel: 0
+  enemyActivator: {fileID: 0}
+  scenePortal: {fileID: 0}
+  enemyBatchHandler: {fileID: 0}

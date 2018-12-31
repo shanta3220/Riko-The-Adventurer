@@ -54,11 +54,17 @@ public class EnemyBatchHandler : MonoBehaviour {
                    
             }
             else {
+                GameManager.instance.LevelComplete();
                 GameManager.instance.OpenDoor();
             }
             Destroy(gameObject);
         }
         for (int i = 0; i < enemies.Count; i++) {
+            if(enemies[i]== null) {
+                RemoveEnemy(enemies[i]);
+                continue;
+            }
+
             if (currentTarget == null) {
                 i = 0;
                 currentTarget = enemies[i];

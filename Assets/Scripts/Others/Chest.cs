@@ -16,7 +16,8 @@ public class Chest : Collectable {
             GetComponent<SpriteRenderer>().sprite = emptyChest;
             GameManager.instance.gold += pesosAmount;
             //over a second text goes 50 pixel up
-            GameManager.instance.ShowText("+" + pesosAmount + " pesos!", 23, Color.yellow, transform.position, Vector3.up * 25, 1.5f);
+            GameManager.instance.ShowText("+" + pesosAmount + " gold!", 23, Color.yellow, transform.position, Vector3.up * 25, 1.5f);
+            AudioController.instance.PlaySound(SoundClip.rewardCoin);
 
         }
     }

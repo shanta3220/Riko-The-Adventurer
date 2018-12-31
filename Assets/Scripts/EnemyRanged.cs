@@ -36,13 +36,11 @@ public class EnemyRanged : Mover {
 
     private Transform spawnPoint;
     private EnemyShoot enemyShoot;
-    private SpriteRenderer sr;
 
-    private AudioSource audioS;
+    private float lastAudioPlay;
 
     protected override void Start() {
         base.Start();
-        audioS = GetComponent<AudioSource>();
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
         delayForChangingPosition = Random.Range(delayChangePosition.x, delayChangePosition.y);
@@ -64,7 +62,6 @@ public class EnemyRanged : Mover {
         }
         spawnPoint = transform.GetChild(2).transform;
         enemyShoot = GetComponent<EnemyShoot>();
-        sr = GetComponent<SpriteRenderer>();
         SetLevelHealth(GameManager.instance.playerCurrentLevel);
     }
 
@@ -157,21 +154,25 @@ public class EnemyRanged : Mover {
     protected override void ReceiveDamage(Damage dmg) {
         base.ReceiveDamage(dmg);
         Hurt();
-        PlayAudio();
     }
 
     protected override void Death() {
-        Destroy(gameObject);
+        AudioController.instance.PlaySound(SoundClip.enemyDeath);
         transform.parent.GetComponent<EnemyBatchHandler>().RemoveEnemy(transform);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
         GameManager.instance.gold += goldValue;
-        GameManager.instance.ShowText("+" + goldValue + " pesos!", 23, Color.yellow, transform.position, Vector3.up * 10, 1.5f);
+        GameManager.instance.ShowText("+" + goldValue + " gold!", 23, Color.yellow, transform.position, Vector3.up * 10, 1.5f);
+        Destroy(gameObject);
     }
 
     private void Hurt() {
         sr.color = Color.magenta;
         Invoke("RestoreColor", 0.2f);
+        if (audioS.isActiveAndEnabled && Time.time - lastAudioPlay > 0.5f) {
+            lastAudioPlay = Time.time;
+            audioS.Play();
+        }
     }
 
     private void RestoreColor() {
@@ -179,8 +180,7 @@ public class EnemyRanged : Mover {
     }
 
     private void PlayAudio() {
-        if(audioS.isActiveAndEnabled)
-            audioS.Play();
+       
     }
 
     public void OnLevelUp() {

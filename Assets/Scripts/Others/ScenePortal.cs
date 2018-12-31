@@ -8,6 +8,7 @@ public class ScenePortal : Collidable {
 
     public void OpenDoor() {
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = doorLeafOpen;
+        AudioController.instance.PlaySound(SoundClip.gateOpen);
         canChangeScene = true;
     }
 

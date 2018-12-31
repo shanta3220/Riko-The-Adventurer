@@ -13,16 +13,18 @@ public class Enemy : Mover {
     private Vector3 startingPosition;
     private Collider2D[] hits = new Collider2D[10];
     private Vector3 motion;
-    public SpriteRenderer sr;
+   
     private float chaseSpeed = 0.8f; //the less the value the slower it is
     private bool startAnim = true;// just to show animespawn  anim;
+
+    private float lastAudioPlay;
+
     protected override void Start(){
         base.Start();
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
-        sr = GetComponent<SpriteRenderer>();
         sr.color = Color.black;
-        SetLevelHealth(GameManager.instance.playerCurrentLevel - 1);
+        SetLevelHealth(GameManager.instance.playerCurrentLevel);
     }
     
     private void FixedUpdate() {
@@ -70,22 +72,30 @@ public class Enemy : Mover {
     }
 
     protected override void Death(){
+        AudioController.instance.PlaySound(SoundClip.enemyDeath);
         transform.parent.GetComponent<EnemyBatchHandler>().RemoveEnemy(transform);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+"+ xpValue+" xp",30, Color.magenta,transform.position, Vector3.up * 40, 1.0f);
         GameManager.instance.gold += goldValue;
-        GameManager.instance.ShowText("+" + goldValue + " pesos!", 23, Color.yellow, transform.position, Vector3.up * 10, 1.5f);
+        GameManager.instance.ShowText("+" + goldValue + " gold!", 23, Color.yellow, transform.position, Vector3.up * 10, 1.5f);
         Destroy(gameObject);
     }
 
     private void Hurt() {
-        sr.color = Color.magenta;
+        if(sr != null)
+            sr.color = Color.magenta;
         Invoke("RestoreColor", 0.5f);
+        if (audioS.isActiveAndEnabled && Time.time - lastAudioPlay > 0.5f) {
+            lastAudioPlay = Time.time;
+            audioS.Play();
+        }
+           
     }
 
     private void RestoreColor() {
         sr.color = Color.white;
     }
+
     /*
             //logic
         public float triggerLength  = 0.3f;

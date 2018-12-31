@@ -13,10 +13,14 @@ public abstract class Mover : Fighter {
     protected float localScaleSize;
     [HideInInspector]
     public bool hasEnemyTarget;
+    protected AudioSource audioS;
+    protected SpriteRenderer sr;
 
     private void Awake() {
         anim = GetComponent<Animator>();
         localScaleSize = transform.localScale.x;
+        audioS = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     protected virtual void Start() {

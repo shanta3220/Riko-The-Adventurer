@@ -9,9 +9,9 @@ public class Player : Mover {
     public bool hasTarget;
     public GameObject weaponContainer;
     public Weapon weapon;
+    public AudioClip gameOverClip;
     private Animator shootAnim;
     [HideInInspector]
-    
     private bool isAlive = true;
    
     //public Joystick movementJoystick, shootJoystick;
@@ -23,6 +23,7 @@ public class Player : Mover {
         base.Start();
         shootAnim = GetComponent<GunSpriteChanger>().bulletSpawnPoint.GetComponent<Animator>();
         screenShake = Camera.main.GetComponent<CameraShake>();
+      
     }
 
 
@@ -122,6 +123,7 @@ public class Player : Mover {
             return;
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHealthChange();
+        Hurt();
     }
 
 
@@ -155,6 +157,8 @@ public class Player : Mover {
     protected override void Death() {
         GameManager.instance.deathMenuAnimator.SetTrigger("Show");
         isAlive = false;
+        audioS.clip = gameOverClip;
+        audioS.Play();
     }
 
     private void Respawn() {
@@ -162,8 +166,20 @@ public class Player : Mover {
         lastImmune = Time.time;
         Heal(maxHealth);
         isAlive = true;
+     
 
     }
+    private void Hurt() {
+        sr.color = Color.red;
+        Invoke("RestoreColor", 0.5f);
+        if (audioS != null && !audioS.isPlaying)
+            audioS.Play();
+    }
+
+    private void RestoreColor() {
+        sr.color = Color.white;
+    }
+
     /*public void TurningMobile() {
 
         if (shootJoystick.Horizontal != 0 || shootJoystick.Vertical != 0) {

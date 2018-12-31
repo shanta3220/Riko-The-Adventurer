@@ -13,6 +13,7 @@ public class EnemyActivator : MonoBehaviour {
             firstEnemyBatch.SetActive(true);
     }
     public void OpenBarrier(int lockerID) {
+        AudioController.instance.PlaySound(SoundClip.gateOpen);
         Destroy(LockedBarriers[lockerID]);
     }
 
