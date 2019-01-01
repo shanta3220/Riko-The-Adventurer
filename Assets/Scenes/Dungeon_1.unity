@@ -24777,6 +24777,16 @@ Prefab:
       propertyPath: m_Size.x
       value: 0.60669255
       objectReference: {fileID: 0}
+    - target: {fileID: 114601962430523340, guid: dc99061e059f8154baf709e1b501191c,
+        type: 2}
+      propertyPath: sceneNames.Array.data[0]
+      value: Dungeon_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601962430523340, guid: dc99061e059f8154baf709e1b501191c,
+        type: 2}
+      propertyPath: sceneNames.Array.data[1]
+      value: Dungeon_2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc99061e059f8154baf709e1b501191c, type: 2}
   m_IsPrefabParent: 0

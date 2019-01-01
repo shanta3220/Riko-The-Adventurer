@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Fight_01
+  m_Name: Townfolk-F_Idle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,9 +19,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 8ad972f8592dc8c42abfaa7a6ba1fb1d, type: 3}
+      value: {fileID: 21300000, guid: 308f427769171c640b8695bbc07b6d3f, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 130c6522df3ba7b4d9b91b581412a45f, type: 3}
+      value: {fileID: 21300000, guid: 0d17dc5893ff1ff4c8c758cac1cf01fe, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -41,8 +41,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 8ad972f8592dc8c42abfaa7a6ba1fb1d, type: 3}
-    - {fileID: 21300000, guid: 130c6522df3ba7b4d9b91b581412a45f, type: 3}
+    - {fileID: 21300000, guid: 308f427769171c640b8695bbc07b6d3f, type: 3}
+    - {fileID: 21300000, guid: 0d17dc5893ff1ff4c8c758cac1cf01fe, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

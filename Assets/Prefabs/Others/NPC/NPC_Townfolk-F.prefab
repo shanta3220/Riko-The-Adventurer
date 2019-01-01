@@ -9,46 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1563118933756564}
+  m_RootGameObject: {fileID: 1516914116711448}
   m_IsPrefabParent: 1
---- !u!1 &1563118933756564
+--- !u!1 &1516914116711448
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4921212376793640}
-  - component: {fileID: 212437336716306512}
-  - component: {fileID: 95212185254291948}
-  - component: {fileID: 61960255938324474}
-  - component: {fileID: 114624279290078682}
+  - component: {fileID: 4392272628312436}
+  - component: {fileID: 212263197837942092}
+  - component: {fileID: 95946523514794262}
+  - component: {fileID: 61996275471258200}
+  - component: {fileID: 114679012897427122}
   m_Layer: 0
-  m_Name: NPC_Fighter-F-01
+  m_Name: NPC_Townfolk-F
   m_TagString: Blocking
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4921212376793640
+--- !u!4 &4392272628312436
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563118933756564}
+  m_GameObject: {fileID: 1516914116711448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: 0.146, z: 0}
+  m_LocalPosition: {x: -3.912, y: -1.884, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61960255938324474
+--- !u!61 &61996275471258200
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563118933756564}
+  m_GameObject: {fileID: 1516914116711448}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -59,7 +59,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.17, y: 0.27}
+    oldSize: {x: 0.27, y: 0.27}
     newSize: {x: 0.17, y: 0.27}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -68,16 +68,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17, y: 0.27}
   m_EdgeRadius: 0
---- !u!95 &95212185254291948
+--- !u!95 &95946523514794262
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563118933756564}
+  m_GameObject: {fileID: 1516914116711448}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ed1faa8537ecbbd47b5733f5022b9844, type: 2}
+  m_Controller: {fileID: 9100000, guid: 884dfa3e3b9abf44fa856d1bd2be854a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -85,12 +85,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114624279290078682
+--- !u!114 &114679012897427122
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563118933756564}
+  m_GameObject: {fileID: 1516914116711448}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de550f6b28dd6e44abe981c7cf2f2059, type: 3}
@@ -111,16 +111,16 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   canvasDialogue: {fileID: 0}
-  CharacterAvatar: {fileID: 21300000, guid: 788c50ee08b87b24cac31848f8de2563, type: 3}
+  CharacterAvatar: {fileID: 21300000, guid: e6c273fa1c0e72a458c25ecfd65c64d5, type: 3}
   characterText: {fileID: 0}
-  Message: Hello Welcome to the land of Underworld. You can unlock other characters
+  Message: Hello! Welcome to the land of Underworld. You can unlock other characters
     with your gold if you haven't done it already!
---- !u!212 &212437336716306512
+--- !u!212 &212263197837942092
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563118933756564}
+  m_GameObject: {fileID: 1516914116711448}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 1803986221
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 130c6522df3ba7b4d9b91b581412a45f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 308f427769171c640b8695bbc07b6d3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
