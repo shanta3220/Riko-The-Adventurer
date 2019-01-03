@@ -1187,6 +1187,8 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 9ae2e1bb8a4d416429d96c6746e8852e, type: 2}
   - {fileID: 9100000, guid: 5aa301cb41795bd479497f4e53d07efb, type: 2}
   player: {fileID: 1147106340}
+  healthBar: {fileID: 0}
+  deathMenuAnimator: {fileID: 0}
   gold: 35
   experience: 3
   weapon: {fileID: 0}
@@ -1200,6 +1202,10 @@ MonoBehaviour:
     skins: 010000
     weaponLevel: 0000000000000000000000000000000000000000000000000000000000000000
   collectedWeapons: []
+  playerCurrentLevel: 0
+  enemyActivator: {fileID: 0}
+  scenePortal: {fileID: 0}
+  enemyBatchHandler: {fileID: 0}
 --- !u!4 &101363185
 Transform:
   m_ObjectHideFlags: 0
@@ -2369,6 +2375,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -2381,6 +2389,8 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!1 &368517215
 GameObject:
@@ -2512,10 +2522,15 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   PushRecoverySpeed: 0.2
+  healthLength: 050000000a0000000f000000190000001e0000003200000046000000
+  ySpeed: 0.75
+  xSpeed: 1
+  hasEnemyTarget: 0
   target: {fileID: 0}
   hasTarget: 0
   weaponContainer: {fileID: 730953688}
   weapon: {fileID: 0}
+  gameOverClip: {fileID: 0}
 --- !u!61 &379496901
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2770,6 +2785,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -2782,6 +2799,8 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!1 &391073176
 GameObject:
@@ -2932,6 +2951,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 0
   Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -2944,6 +2965,8 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!1 &437602880
 GameObject:
@@ -3272,6 +3295,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -3284,6 +3309,8 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!1 &665972906
 GameObject:
@@ -4102,10 +4129,15 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   PushRecoverySpeed: 0.2
+  healthLength: 050000000a0000000f000000190000001e0000003200000046000000
+  ySpeed: 0.75
+  xSpeed: 1
+  hasEnemyTarget: 0
   target: {fileID: 0}
   hasTarget: 0
   weaponContainer: {fileID: 730953688}
   weapon: {fileID: 0}
+  gameOverClip: {fileID: 0}
 --- !u!61 &962662762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4284,6 +4316,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -4296,6 +4330,8 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!1 &1067931381
 GameObject:
@@ -4453,6 +4489,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -4465,7 +4503,10 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
+  numberofProjectiles: 2
 --- !u!1 &1133461903
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,10 +4637,15 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   PushRecoverySpeed: 0.2
+  healthLength: 050000000a0000000f000000190000001e0000003200000046000000
+  ySpeed: 0.75
+  xSpeed: 1
+  hasEnemyTarget: 0
   target: {fileID: 0}
   hasTarget: 0
   weaponContainer: {fileID: 730953688}
   weapon: {fileID: 0}
+  gameOverClip: {fileID: 0}
 --- !u!61 &1147106341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4873,6 +4919,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -4885,6 +4933,8 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!1 &1311736875
 GameObject:
@@ -6580,6 +6630,7 @@ MonoBehaviour:
   sceneNames:
   - Main
   - Dungeon_1
+  doorLeafOpen: {fileID: 0}
 --- !u!61 &1781829874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7048,6 +7099,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -7060,6 +7113,8 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
 --- !u!1 &1867932793
 GameObject:
@@ -7535,6 +7590,7 @@ MonoBehaviour:
   lookAt: {fileID: 1147106344}
   boundX: 0.15
   boundY: 0.05
+  cameraSmoothing: 0.05
 --- !u!1 &2113795029
 GameObject:
   m_ObjectHideFlags: 0
@@ -14917,6 +14973,8 @@ MonoBehaviour:
   weaponPrinces: 230000004600000087000000c80000001301000090010000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
+  emptyShells: {fileID: 0}
+  emptyShellsContainer: {fileID: 0}
   damagePoint: 01000000020000000300000004000000050000000600000007000000
   pushForce:
   - 2
@@ -14929,4 +14987,6 @@ MonoBehaviour:
   rotateAngle: 0
   bulletSpawnPoint: {fileID: 1159068291}
   gunSpriteChanger: {fileID: 1147106339}
+  audioS: {fileID: 0}
+  target: {x: 0, y: 0}
   bulletSpeed: 2
