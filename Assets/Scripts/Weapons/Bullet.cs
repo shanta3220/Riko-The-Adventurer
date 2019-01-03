@@ -7,6 +7,7 @@ public class Bullet : Collidable {
     private Rigidbody2D rBody;
     private Animator anim;
     public int numberofbullets = 1;
+    private bool isDestroyCalled;
     protected override void Start() {
         base.Start();
         rBody = GetComponent<Rigidbody2D>();
@@ -17,13 +18,16 @@ public class Bullet : Collidable {
     private void FixedUpdate() {
        /* if (canMove)
             rBody.AddForce(transform.right * bulletSpeed);*/
+       if(rBody.velocity == Vector2.zero && !isDestroyCalled) {
+            isDestroyCalled = true;
+            anim.SetInteger("Anim", 1);
+            Destroy(gameObject, 0.2f);
+        }
     }
 
     protected override void OnCollide(Collider2D col) {
         if (col.tag == "Blocking"){
             rBody.velocity = Vector2.zero;
-            anim.SetInteger("Anim", 1);
-            Destroy(gameObject, 0.2f);
         }
             
         
@@ -37,8 +41,7 @@ public class Bullet : Collidable {
             };
             GetComponent<BoxCollider2D>().enabled = false;
             col.SendMessage("ReceiveDamage", dmg);
-            anim.SetInteger("Anim", 1);
-            Destroy(gameObject, 0.2f);
+           
 
         }
     }

@@ -7,9 +7,10 @@ public class CameraController : MonoBehaviour {
     public float boundX=0.3f, boundY = 0.15f;
     public float cameraSmoothing = 0.05f;
     Vector3 targetPosition;
+   // private Vector3 velocity = Vector3.zero;
+    //public float dampTime  = 15;
 
-
-    private void LateUpdate() {
+    private void FixedUpdate() {
         Vector3 delta = Vector3.zero;
         //this is to check if we are inside the bounds on the x axis
         float deltaX = lookAt.position.x - transform.position.x;
@@ -35,8 +36,21 @@ public class CameraController : MonoBehaviour {
         }
 
         Vector3 newPosition = new Vector3(delta.x, delta.y, 0f);
-        targetPosition = transform.position + newPosition;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSmoothing);
+       
+        transform.position += newPosition;
+        //targetPosition = transform.position + newPosition;
+        //transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSmoothing * Time.deltaTime);
+        //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, dampTime * Time.deltaTime);
+
     }
-    
+
+
+    /*public float pixelPerUnit = 40f;
+
+    public Vector3 PixelPerfectClamp(Vector3 moveVector) {
+        Vector3 vectorInPixels = new Vector3(
+           Mathf.Round(moveVector.x * pixelPerUnit) / pixelPerUnit,
+           Mathf.Round(moveVector.y * pixelPerUnit) / pixelPerUnit, moveVector.z);
+        return vectorInPixels;
+    }*/
 }

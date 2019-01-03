@@ -30,17 +30,20 @@ public class Enemy : Mover {
     private void FixedUpdate() {
         //is the player in range?
         if (startAnim) {
-            sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
+            sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime * 20);
             if (sr.color == Color.white)
                 startAnim = false;
+            return;
         }
         if (hasEnemyTarget) {
+            
             if (!collidingWithPlayer){
                 motion = (playerTransform.position - transform.position).normalized * chaseSpeed;
             }
             else {
                 //going back to where we were
                 motion = startingPosition - transform.position;
+               
             }
          
         }

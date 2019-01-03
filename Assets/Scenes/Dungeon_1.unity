@@ -671,7 +671,7 @@ MonoBehaviour:
   lookAt: {fileID: 1363939527}
   boundX: 0.3
   boundY: 0.15
-  cameraSmoothing: 0.05
+  cameraSmoothing: 20
 --- !u!4 &106034017 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4990343442512006, guid: 546b80b5979035d4983ddc3409b0e96b,
@@ -20836,7 +20836,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4921212376793640, guid: 00e47d7a15324a94aa69074f52b4208f, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 114624279290078682, guid: 00e47d7a15324a94aa69074f52b4208f,
         type: 2}
@@ -20851,8 +20851,8 @@ Prefab:
     - target: {fileID: 114624279290078682, guid: 00e47d7a15324a94aa69074f52b4208f,
         type: 2}
       propertyPath: Message
-      value: Hello! Welcome to the land of Underworld. You can unlock other characters
-        with your gold if you haven't done it already!
+      value: Hello! Welcome to the land of Lava. You can unlock other characters and
+        upgrade your weapons with your gold if you haven't done it already!
       objectReference: {fileID: 0}
     - target: {fileID: 1563118933756564, guid: 00e47d7a15324a94aa69074f52b4208f, type: 2}
       propertyPath: m_IsActive
@@ -22356,7 +22356,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4829420140320788, guid: 07fa88da6c05a8e4193bbb34007a6cb9, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 212570413868877742, guid: 07fa88da6c05a8e4193bbb34007a6cb9,
         type: 2}
@@ -24666,6 +24666,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114601962430523340, guid: dc99061e059f8154baf709e1b501191c,
+        type: 2}
+      propertyPath: sceneNames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4419186197532886, guid: dc99061e059f8154baf709e1b501191c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.538
@@ -24740,7 +24745,7 @@ Prefab:
         type: 2}
       propertyPath: doorLeafOpen
       value: 
-      objectReference: {fileID: 21300000, guid: f1ce7f12730e81d4dbd33dbbb8ec5a51,
+      objectReference: {fileID: 21300012, guid: 4298c9dbf12a1b54bb3e8e774d0c3a5d,
         type: 3}
     - target: {fileID: 212730874094557514, guid: dc99061e059f8154baf709e1b501191c,
         type: 2}
@@ -24786,6 +24791,11 @@ Prefab:
         type: 2}
       propertyPath: sceneNames.Array.data[1]
       value: Dungeon_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601962430523340, guid: dc99061e059f8154baf709e1b501191c,
+        type: 2}
+      propertyPath: sceneNames.Array.data[2]
+      value: Dungeon_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc99061e059f8154baf709e1b501191c, type: 2}
