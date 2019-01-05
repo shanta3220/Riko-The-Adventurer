@@ -5,6 +5,8 @@ public class ScenePortal : Collidable {
     public string[] sceneNames;
     public Sprite doorLeafOpen;
     private bool canChangeScene;
+    public bool isOnMenuScene;
+
 
     public void OpenDoor() {
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = doorLeafOpen;
@@ -16,9 +18,13 @@ public class ScenePortal : Collidable {
         if (!canChangeScene)
             return;
         if (col.tag =="Player") {
-            GameManager.instance.SaveData();
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            if (isOnMenuScene) {
+                MenuController.instance.SaveData();
+                return;
+            }
+            GameManager.instance.SaveData();
         }
     }
 }

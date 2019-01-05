@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: NotficationAnimatorController
+  m_Controller: {fileID: 9100000, guid: e3e615d8ba557c445a148560f43dd6ec, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5fb8a327eca2fd546b42b7d84052d897, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c87c386919c2d4c40b73ab374778a6a0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7e984e4291b1fc641a9304b0217bd236, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b3a9d6cf2995a4746913f7a5d586ae00, type: 2}
