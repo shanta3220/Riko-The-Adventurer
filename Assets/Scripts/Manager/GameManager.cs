@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
     //Resources
     public List<Sprite> playerSprites;
     public Sprite weaponSprite;
-    public List<int> xpTable;
+    // public List<int> xpTable = new List<int>() { 8,17,25,35,45,55,65};
+    [HideInInspector]
+    public List<int> xpTable = new List<int>() { 8, 25, 40, 65, 90, 110, 135 };
     //only changing animators change the player skins
     public RuntimeAnimatorController[] playerSkins = new RuntimeAnimatorController[3];
-
     //References
     public Player player;
     public RectTransform healthBar;
@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public EnemyActivator enemyActivator;
     public ScenePortal scenePortal;
     public EnemyBatchHandler enemyBatchHandler;
+    public Image switchWepImage;
+    public bool isLevelCompleted; //to avoid Bug
+    public Joystick movementJoystick;
+
     private void Awake()
     {
         if (instance == null)
@@ -45,6 +49,8 @@ public class GameManager : MonoBehaviour
     //floatingText;
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
+        if (!player.isOnPc)
+            fontSize += 5;
         FloatingTextManager.instance.Show(msg, fontSize, color, position, motion, duration);
 
     }
@@ -110,12 +116,19 @@ public class GameManager : MonoBehaviour
             wep.enabled = true;
             weaponSprite = wep.GunSide;
             wep.ChangeSprites();
+          
         }
     }
+
+    public void ChangeSwitchWeaponButtonImage() {
+        switchWepImage.sprite = weaponSprite;
+    }
+
     //if weapon is lastselected weapon before closing game enable else disable
     private bool IsSelectedWeapon(Weapon weapon) {
         if (weapon.weaponID == data.weaponSelected) {
             weapon.ChangeSprites();
+            switchWepImage.sprite = weapon.GunSide;
             return true;
         }
         return false;
@@ -179,18 +192,14 @@ public class GameManager : MonoBehaviour
         healthBar.localScale = new Vector2(ratio, 1);
     }
 
-    //Death Menu And Respawn
-    public void Respawn() {
-        SceneManager.LoadScene("Main");
-    }
-
-    public void RestartLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    
+ 
     public void LevelComplete() {
-        AudioController.instance.PlaySound(SoundClip.victory);
-        ShowText("Level Complete", 23, Color.blue, player.transform.position + (Vector3.up * 0.16f), Vector3.zero, 5f);
+        if (!isLevelCompleted) {
+            isLevelCompleted = true;
+            AudioController.instance.PlaySound(SoundClip.victory);
+            ShowText("Level Complete", 23, Color.blue, player.transform.position + (Vector3.up * 0.16f), Vector3.zero, 5f);
+        }
+       
     }
 
     // Save  Data
@@ -223,20 +232,17 @@ public class GameManager : MonoBehaviour
             player.SetLevelHealth(playerCurrentLevel);
             //OnHealthChange(); 
         }
-       
+     
     }
-    
-    public void QuitGame() {
-        Application.Quit();
-    }
-
+  
+ 
     public void ClearData() {
         SaveData();
     }
 
     public void OnDestroy() {
 
-        SaveData();
+        //SaveData();
         //PlayerPrefs.SetString("MySettingsEditor", "");
         //PlayerPrefs.SetString("MySettings", "");
     }

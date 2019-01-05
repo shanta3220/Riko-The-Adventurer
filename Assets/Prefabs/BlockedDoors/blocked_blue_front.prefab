@@ -115,7 +115,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4101612899681038}
-  - component: {fileID: 114540658044396940}
   - component: {fileID: 114307253185282934}
   m_Layer: 0
   m_Name: blocked_blue_front
@@ -287,33 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e05a66708ef644afdc2d0876cc26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBatch: []
+  firstEnemyBatch: {fileID: 0}
   LockedBarriers: []
---- !u!114 &114540658044396940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1550738439655664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0efdc9a7ca89b4d8b63658b689fa63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
 --- !u!212 &212281107729649738
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -19,7 +19,14 @@ public class Weapon : MonoBehaviour {
     public AudioSource audioS;
     public Vector2 target;
     protected int damageStartValue = 1;
-    protected virtual void Awake() { }
+    protected bool isOnPc;
+    protected Joystick movementJoystick;
+    protected virtual void Awake() {
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+            isOnPc = true;
+        else if (Application.platform == RuntimePlatform.Android)
+            isOnPc = false;
+    }
 
     protected virtual void Start() { }
 
@@ -40,16 +47,23 @@ public class Weapon : MonoBehaviour {
         if (GameManager.instance != null) {
             GameManager.instance.weapon = this;
             GameManager.instance.weaponSprite = GunSide;
+            movementJoystick = GameManager.instance.movementJoystick;
         }
+
 
     }
 
  
 
-    public virtual void Shoot() { }
-
-    public virtual void GetDirection(Vector3 dirFromMeToMouse) { }
-    
+    public virtual void Shoot() {
+        if (GameManager.instance.player.target == null) {
+            if (isOnPc)
+                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            else {
+                target = movementJoystick.Direction.normalized;
+            }
+        }
+    }
     public virtual void UpgradeWeapon() {
         weaponLevel++;
         GameManager.instance.data.weaponLevel[weaponID] = weaponLevel;

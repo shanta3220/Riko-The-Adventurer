@@ -15,31 +15,45 @@ public class Player : Mover {
     private bool isAlive = true;
    
     //public Joystick movementJoystick, shootJoystick;
-    protected float coolDown = 0.2f;
+    protected float coolDown = 0.1f;
     protected float lastShoot;
     private CameraShake screenShake;
+    public Joystick movementJoystick;
+    public bool isOnPc;
 
     protected override void Start() {
         base.Start();
         shootAnim = GetComponent<GunSpriteChanger>().bulletSpawnPoint.GetComponent<Animator>();
         screenShake = Camera.main.GetComponent<CameraShake>();
-      
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+            isOnPc = true;
+        else if (Application.platform == RuntimePlatform.Android)
+            isOnPc = false;
+
     }
 
 
     private void FixedUpdate() {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        if (isAlive) {
-            UpdateMotor(new Vector3(x, y, 0));
+        if (isOnPc) {
+            float x = Input.GetAxisRaw("Horizontal");
+            float y = Input.GetAxisRaw("Vertical");
+            if (isAlive) {
+                UpdateMotor(new Vector3(x, y, 0));
+            }
+        }
+        else {
+            float x = movementJoystick.Horizontal;
+            float y = movementJoystick.Vertical;
+            if (isAlive) {
+                UpdateMotor(new Vector3(x, y, 0));
+            }
         }
            
     }
 
 
-    void Update() {
-
-        if (Input.GetMouseButton(0) && isAlive) {
+    public void Shoot() {
+        if (isAlive) {
             if (Time.time - lastShoot > coolDown) {
                 lastShoot = Time.time;
                 shootAnim.SetTrigger("Shoot");
@@ -50,17 +64,21 @@ public class Player : Mover {
         }
     }
 
-
     protected override void UpdateMotor(Vector3 input) {
         moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0);
         isRunning = input.x != 0 || input.y != 0 ? true : false;
         if (target == null) {
-            TurningPC();
+            if (isOnPc) {
+                TurningPC();
+            }
+            else {
+                TurningMobile();
+            }
+           
         }
         else {
             PlayerFaceEnemyAnim(target);
         }
-
         //making sure we can move the player upward or downward by casting a box there beforehand
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null) {
@@ -180,20 +198,10 @@ public class Player : Mover {
         sr.color = Color.white;
     }
 
-    /*public void TurningMobile() {
-
-        if (shootJoystick.Horizontal != 0 || shootJoystick.Vertical != 0) {
-            isShooting = true;
-            transform.forward = new Vector3(shootJoystick.Horizontal, 0f, shootJoystick.Vertical);
-        }
-        else if (movementJoystick.Horizontal != 0 || movementJoystick.Vertical != 0) {
-            transform.forward = new Vector3(horizontal, 0f, vertical);
-            isShooting = false;
-        }
-        else {
-            isShooting = false;
-        }
-    }*/
+    public void TurningMobile() {
+        Vector2 direction =  movementJoystick.Direction.normalized;
+        Animate(direction.x, direction.y);
+    }
 
     /* private void OldPlayerSwitch() {
          /*if (!isPlayerAdvanced)

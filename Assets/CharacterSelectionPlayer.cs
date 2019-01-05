@@ -15,10 +15,13 @@ public class CharacterSelectionPlayer : MonoBehaviour{
     public Sprite defaultCharacterSprite;
     private bool isDisabled = true;
     public bool isOnPanel;
+    public Joystick movementJoystick;
+    public bool isOnPc;
     private void Start () {
         boxCollider = GetComponent<BoxCollider2D>();
         localScaleSize = transform.localScale.x;
     }
+
     private void OnEnable() {
         if(sr == null)
             sr = GetComponent<SpriteRenderer>();
@@ -27,14 +30,26 @@ public class CharacterSelectionPlayer : MonoBehaviour{
             anim = GetComponent<Animator>();
         anim.enabled = true;
         isDisabled = false;
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+            isOnPc = true;
+        else if (Application.platform == RuntimePlatform.Android)
+            isOnPc = false;
     }
 
     private void FixedUpdate() {
         if (isDisabled)
             return;
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        UpdateMotor(new Vector3(x, y, 0));
+        if (isOnPc) {
+            float x = Input.GetAxisRaw("Horizontal");
+            float y = Input.GetAxisRaw("Vertical");
+            UpdateMotor(new Vector3(x, y, 0));
+        }
+
+        else {
+            float x = movementJoystick.Horizontal;
+            float y = movementJoystick.Vertical;
+            UpdateMotor(new Vector3(x, y, 0));
+        }
     }
 
 
@@ -42,7 +57,12 @@ public class CharacterSelectionPlayer : MonoBehaviour{
         if (isOnPanel)
             return;
         moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0);
-        TurningPC();
+        if (isOnPc) {
+            TurningPC();
+        }
+        else {
+            TurningMobile();
+        }
 
         //making sure we can move the player upward or downward by casting a box there beforehand
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
@@ -81,6 +101,10 @@ public class CharacterSelectionPlayer : MonoBehaviour{
         Animate(direction.x, direction.y);
     }
 
+    public void TurningMobile() {
+        Vector2 direction = movementJoystick.Direction.normalized;
+        Animate(direction.x, direction.y);
+    }
 
     private void OnDisable() {
         isDisabled = true;
@@ -88,5 +112,7 @@ public class CharacterSelectionPlayer : MonoBehaviour{
         sr.color = Color.gray;
         anim.enabled = false;
     }
+
+
 
 }

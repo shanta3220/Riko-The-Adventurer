@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class UI {
     public Animator notificationAnimator;
     public Animator characterFocusAnimator;
+    public Animator quitPanelAnimator;
     public Text goldText;
     public Text btnCharacterSelectorText;
+    public GameObject joyStickPanel;
+   
 }
 
 public class MenuController : MonoBehaviour {
@@ -25,7 +28,7 @@ public class MenuController : MonoBehaviour {
     private int currentCharacterFocus;
     private int[] skinPrices =  { 0, 300, 1000 };
     public bool isOnPanel;
-
+    public bool isOnPc;
     private void Awake() {
         if (instance == null)
             instance = this;
@@ -37,11 +40,33 @@ public class MenuController : MonoBehaviour {
         CharSelectCamera = cam.GetComponent<CharacterSelectionCamera>();
         LoadData();
         ui.notificationAnimator.SetBool("ShowPanel", isNotificationShown);
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+            isOnPc = true;
+        else if (Application.platform == RuntimePlatform.Android) {
+            isOnPc = false;
+        }
+           
     }
 
     private void Update() {
-        if (Input.GetMouseButtonDown(0)&& !isOnPanel) {
-            ChoosePlayer();
+        if (isOnPc) {
+            if (Input.GetMouseButtonDown(0)) {
+                if (!isOnPanel) {
+                    ChoosePlayer(Input.mousePosition);
+                }
+            }
+        }
+
+        else if (!isOnPc) {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+                ChoosePlayer(Input.GetTouch(0).position);
+            }
+
+        }
+       
+      
+        if (Input.GetButtonDown("Cancel")) {
+            ShowQuitPanel();
         }
     }
 
@@ -50,15 +75,20 @@ public class MenuController : MonoBehaviour {
         ui.goldText.text = "Total Gold: " + gold;
     }
 
-
     public void SaveData() {
         data.gold = gold;
         data.selectedSkin = selectedSkin;
         DataController.instance.SaveData(data);
     }
 
-    public void ChoosePlayer() {
-        Collider2D hitCollider = Physics2D.OverlapPoint(cam.ScreenToWorldPoint(Input.mousePosition));
+    public void ChoosePlayer(Vector3 pos) {
+        Collider2D hitCollider = Physics2D.OverlapPoint(cam.ScreenToWorldPoint(pos));
+        /* if (isPC)
+             hitCollider = Physics2D.OverlapPoint(cam.ScreenToWorldPoint(Input.mousePosition));
+         else {
+             RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(pos).x, cam.ScreenToWorldPoint(pos).y), Vector2.zero, 0);
+             hitCollider = hit.collider;
+         }*/
         if (hitCollider != null && hitCollider.CompareTag("Player")) {
             if(hitCollider.name == "player_1") {
                 currentCharacterFocus = 0;
@@ -80,6 +110,8 @@ public class MenuController : MonoBehaviour {
                 ui.notificationAnimator.SetBool("ShowPanel", isNotificationShown);
             }
             isOnPanel = true;
+            if (!isOnPc)
+                ui.joyStickPanel.SetActive(false);
         }
     }
 
@@ -180,9 +212,20 @@ public class MenuController : MonoBehaviour {
         ui.characterFocusAnimator.SetTrigger("Hide");
         isOnPanel = false;
         characterSelectPlayer[currentCharacterFocus].isOnPanel = false;
+        if(!isOnPc)
+            ui.joyStickPanel.SetActive(true);
     }
 
-    /* private void CheckForInput() {
+    public void QuitGame() {
+        Application.Quit();
+    }
+
+    public void ShowQuitPanel() {
+        if(!ui.quitPanelAnimator.GetCurrentAnimatorStateInfo(0).IsName("DeathMenu_showing"))
+            ui.quitPanelAnimator.SetTrigger("Show");
+    }
+/*
+    private void CheckForInput() {
 
        if (Application.platform == RuntimePlatform.Android) {
            if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began)) {

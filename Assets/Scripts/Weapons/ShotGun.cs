@@ -12,8 +12,7 @@ public class ShotGun : Weapon {
 
 
     public override void Shoot() {
-        if (GameManager.instance.player.target == null)
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        base.Shoot();
         Vector2 myPos = new Vector2(bulletSpawnPoint.position.x, bulletSpawnPoint.position.y);
         Vector2 direction = target - myPos;
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
