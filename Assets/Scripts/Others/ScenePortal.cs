@@ -7,7 +7,6 @@ public class ScenePortal : Collidable {
     private bool canChangeScene;
     public bool isOnMenuScene;
 
-
     public void OpenDoor() {
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = doorLeafOpen;
         AudioController.instance.PlaySound(SoundClip.gateOpen);
@@ -22,8 +21,10 @@ public class ScenePortal : Collidable {
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
             if (isOnMenuScene) {
                 MenuController.instance.SaveData();
+                MenuController.instance.ui.panel_Loading.SetActive(true);
                 return;
             }
+            GameManager.instance.panelLoading.SetActive(true);
             GameManager.instance.SaveData();
         }
     }

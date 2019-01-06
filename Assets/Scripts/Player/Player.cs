@@ -15,7 +15,7 @@ public class Player : Mover {
     private bool isAlive = true;
    
     //public Joystick movementJoystick, shootJoystick;
-    protected float coolDown = 0.1f;
+    protected float coolDown = 0.2f;
     protected float lastShoot;
     private CameraShake screenShake;
     public Joystick movementJoystick;
@@ -42,8 +42,8 @@ public class Player : Mover {
             }
         }
         else {
-            float x = movementJoystick.Horizontal;
-            float y = movementJoystick.Vertical;
+            float x = Mathf.RoundToInt(movementJoystick.Horizontal);
+            float y = Mathf.RoundToInt(movementJoystick.Vertical);
             if (isAlive) {
                 UpdateMotor(new Vector3(x, y, 0));
             }

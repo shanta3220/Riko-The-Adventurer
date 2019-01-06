@@ -69,7 +69,7 @@ public class CharacterMenu : MonoBehaviour {
         int currentLevel = GameManager.instance.GetCurrentLevel();
         //if max level
         if (currentLevel == GameManager.instance.xpTable.Count) {
-            xpText.text = GameManager.instance.experience.ToString() + "Total Experience Points";//displaying total xp
+            xpText.text = GameManager.instance.experience.ToString() + " Total Experience Points";//displaying total xp
             xpBar.localScale = new Vector2(1f, 1f);
         }
         else {

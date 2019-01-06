@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public Image switchWepImage;
     public bool isLevelCompleted; //to avoid Bug
     public Joystick movementJoystick;
-
+    public GameObject panelLoading;
     private void Awake()
     {
         if (instance == null)
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
         if (!player.isOnPc)
-            fontSize += 5;
+            fontSize += 7;
         FloatingTextManager.instance.Show(msg, fontSize, color, position, motion, duration);
 
     }
@@ -86,9 +86,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UnlockWeapon() {
+    public bool UnlockWeapon() {
         if (data.notCollectedWeapons.Count == 0)
-            return;
+            return false;
         int dataID;
         dataID = data.notCollectedWeapons[Random.Range(0, data.notCollectedWeapons.Count)];
         data.collectedWeapons.Add(dataID);
@@ -97,8 +97,9 @@ public class GameManager : MonoBehaviour
         collectedWeapons.Add(playerWep);
         playerWep.enabled = true;
         playerWep.ChangeSprites();
-
         data.notCollectedWeapons.Remove(dataID);
+        ChangeSwitchWeaponButtonImage();
+        return true;
     }
 
     public void SwitchWeapon() {
@@ -232,7 +233,7 @@ public class GameManager : MonoBehaviour
             player.SetLevelHealth(playerCurrentLevel);
             //OnHealthChange(); 
         }
-     
+        ActivateEnemy();
     }
   
  

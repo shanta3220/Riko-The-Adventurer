@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 [Serializable]
 public class UI {
     public Animator notificationAnimator;
@@ -9,7 +10,7 @@ public class UI {
     public Text goldText;
     public Text btnCharacterSelectorText;
     public GameObject joyStickPanel;
-   
+    public GameObject panel_Loading;
 }
 
 public class MenuController : MonoBehaviour {
@@ -24,28 +25,32 @@ public class MenuController : MonoBehaviour {
 
     private Camera cam;
     private CharacterSelectionCamera CharSelectCamera;
-    private bool isNotificationShown = true;
+    private bool isNotificationShown;
     private int currentCharacterFocus;
     private int[] skinPrices =  { 0, 300, 1000 };
     public bool isOnPanel;
     public bool isOnPc;
+    public bool canFocus;//this is to avoid the title panel from going away when the scene first loads
+
     private void Awake() {
         if (instance == null)
             instance = this;
     }
-
     private void Start() {
         data = DataController.instance.data;
         cam = Camera.main;
         CharSelectCamera = cam.GetComponent<CharacterSelectionCamera>();
         LoadData();
-        ui.notificationAnimator.SetBool("ShowPanel", isNotificationShown);
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
             isOnPc = true;
         else if (Application.platform == RuntimePlatform.Android) {
             isOnPc = false;
         }
-           
+        Invoke("EnableFocus", 0.5f);
+    }
+
+    private void EnableFocus() {
+        canFocus = true;
     }
 
     private void Update() {
@@ -224,30 +229,45 @@ public class MenuController : MonoBehaviour {
         if(!ui.quitPanelAnimator.GetCurrentAnimatorStateInfo(0).IsName("DeathMenu_showing"))
             ui.quitPanelAnimator.SetTrigger("Show");
     }
-/*
-    private void CheckForInput() {
 
-       if (Application.platform == RuntimePlatform.Android) {
-           if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began)) {
-               RaycastHit2D raycastHit = Physics2D.Raycast(new Vector2(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).x, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).y), Vector2.zero, 0);
-               if (raycastHit && raycastHit.collider.CompareTag("Player")) {
-                   Debug.Log("Player");
+
+    public void ShowNotification() {
+        isNotificationShown = true;
+        ui.notificationAnimator.SetBool("ShowPanel", isNotificationShown);
+    }
+
+    public void HideTitlePanel(Animator anim) {
+        if (canFocus) {
+            anim.SetTrigger("Hide");
+            CharSelectCamera.StartFocusFromGameTitle();
+            ShowNotification();
+        }
+    }
+
+    /*
+        private void CheckForInput() {
+
+           if (Application.platform == RuntimePlatform.Android) {
+               if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began)) {
+                   RaycastHit2D raycastHit = Physics2D.Raycast(new Vector2(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).x, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).y), Vector2.zero, 0);
+                   if (raycastHit && raycastHit.collider.CompareTag("Player")) {
+                       Debug.Log("Player");
+                   }
+
                }
 
            }
 
-       }
 
-
-       else if (Application.platform == RuntimePlatform.WindowsEditor) {
-           if (Input.GetMouseButtonDown(0)) {
-               Collider2D hitCollider = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-               if (hitCollider != null && hitCollider.CompareTag("Player")) {
-                   Debug.Log("This is Player");
+           else if (Application.platform == RuntimePlatform.WindowsEditor) {
+               if (Input.GetMouseButtonDown(0)) {
+                   Collider2D hitCollider = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                   if (hitCollider != null && hitCollider.CompareTag("Player")) {
+                       Debug.Log("This is Player");
+                   }
                }
            }
-       }
 
-   }*/
+       }*/
 
 }

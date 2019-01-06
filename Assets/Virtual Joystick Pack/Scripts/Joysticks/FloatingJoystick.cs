@@ -6,10 +6,11 @@ public class FloatingJoystick : Joystick
     Vector2 joystickCenter = Vector2.zero;
     public GameObject animArrow;
     private Vector2 intialPos;
+
     void Start()
     {
         //background.gameObject.SetActive(false);
-        intialPos = background.anchoredPosition;
+        intialPos = background.position;
     }
 
     public override void OnDrag(PointerEventData eventData)

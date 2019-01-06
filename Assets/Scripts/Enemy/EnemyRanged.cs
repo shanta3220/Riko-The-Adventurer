@@ -38,7 +38,7 @@ public class EnemyRanged : Mover {
     private EnemyShoot enemyShoot;
 
     private float lastAudioPlay;
-
+    private bool isDeath;
     protected override void Start() {
         base.Start();
         playerTransform = GameManager.instance.player.transform;
@@ -66,7 +66,8 @@ public class EnemyRanged : Mover {
     }
 
     private void FixedUpdate() {
-
+        if (isDeath)
+            return;
         UpdateMotor(Move());
         if (hasEnemyTarget) {
             playerInRange = true;
@@ -152,23 +153,27 @@ public class EnemyRanged : Mover {
     }
 
     protected override void ReceiveDamage(Damage dmg) {
+        if (isDeath)
+            return;
         base.ReceiveDamage(dmg);
         Hurt();
     }
 
     protected override void Death() {
+        isDeath = true;
+        anim.Play("EnemyDeathEffect");
         AudioController.instance.PlaySound(SoundClip.enemyDeath);
         transform.parent.GetComponent<EnemyBatchHandler>().RemoveEnemy(transform);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
         GameManager.instance.gold += goldValue;
         GameManager.instance.ShowText("+" + goldValue + " gold!", 23, Color.yellow, transform.position, Vector3.up * 10, 1.5f);
-        Destroy(gameObject);
+        Destroy(gameObject, 0.7f);
     }
 
     private void Hurt() {
         sr.color = Color.magenta;
-        Invoke("RestoreColor", 0.2f);
+        Invoke("RestoreColor", 0.5f);
         if (audioS.isActiveAndEnabled && Time.time - lastAudioPlay > 0.5f) {
             lastAudioPlay = Time.time;
             audioS.Play();
@@ -176,16 +181,10 @@ public class EnemyRanged : Mover {
     }
 
     private void RestoreColor() {
+    
         sr.color = Color.white;
     }
 
-    private void PlayAudio() {
-       
-    }
-
-    public void OnLevelUp() {
-       
-    }
     /*
         private void OldFixedUpdate() {
 

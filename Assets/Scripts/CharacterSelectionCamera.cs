@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterSelectionCamera : MonoBehaviour {
     private bool onFocus;
+    private bool isStartFocus;
     private bool isDoneAnimating;
 
     public bool hasTarget;
@@ -23,6 +24,14 @@ public class CharacterSelectionCamera : MonoBehaviour {
         targetPosition = new Vector3(lookAt.position.x, lookAt.position.y, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSmoothing * Time.deltaTime);
         if (!isDoneAnimating) {
+            if (isStartFocus) {
+                Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 1f, cameraSmoothing/2 * Time.deltaTime);
+                if (Camera.main.orthographicSize == 1f) {
+                    isDoneAnimating = true;
+                    isStartFocus = false;
+                }
+                   
+            }
             if (onFocus) {
                 Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 0.3f, cameraSmoothing * Time.deltaTime);
                 if (Camera.main.orthographicSize == 0.3f)
@@ -61,5 +70,11 @@ public class CharacterSelectionCamera : MonoBehaviour {
 
     public void ResetLookAt() {
         lookAt = permanentLookAt;
+    }
+
+    public void StartFocusFromGameTitle() {
+        lookAt = MenuController.instance.transform;
+        hasTarget = true;
+        isStartFocus = true;
     }
 }

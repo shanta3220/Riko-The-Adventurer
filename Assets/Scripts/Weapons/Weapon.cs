@@ -53,16 +53,7 @@ public class Weapon : MonoBehaviour {
 
     }
 
- 
-
     public virtual void Shoot() {
-        if (GameManager.instance.player.target == null) {
-            if (isOnPc)
-                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            else {
-                target = movementJoystick.Direction.normalized;
-            }
-        }
     }
     public virtual void UpgradeWeapon() {
         weaponLevel++;
@@ -85,5 +76,21 @@ public class Weapon : MonoBehaviour {
 
     public void PlayShootAudio() {
         audioS.Play();
+    }
+
+    protected Vector2 PCShootDirection(Vector2 myPos) {
+        if (GameManager.instance.player.target == null) {
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        return (target - myPos).normalized;
+    }
+
+    protected Vector2 MobileShootDirection(Vector2 myPos) {
+        if (GameManager.instance.player.target == null) {
+            return movementJoystick.Direction.normalized;
+        }
+        else {
+            return (target - myPos).normalized;
+        }
     }
 }

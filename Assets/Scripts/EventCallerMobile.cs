@@ -26,6 +26,7 @@ public class EventCallerMobile : MonoBehaviour {
 
     public void Respawn() {
         GameManager.instance.SaveData();
+        GameManager.instance.panelLoading.SetActive(true);
         SceneManager.LoadScene("MainMenu");
     }
 

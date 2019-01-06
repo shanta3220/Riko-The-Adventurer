@@ -13,8 +13,14 @@ public class ShotGun : Weapon {
 
     public override void Shoot() {
         base.Shoot();
+        Vector2 direction;
         Vector2 myPos = new Vector2(bulletSpawnPoint.position.x, bulletSpawnPoint.position.y);
-        Vector2 direction = target - myPos;
+        if (isOnPc) {
+            direction = PCShootDirection(myPos);
+        }
+        else {
+            direction = MobileShootDirection(myPos);
+        }
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
         GameObject emptyShell = Instantiate(emptyShells, myPos, rotation);
         emptyShell.transform.parent = emptyShellsContainer.transform;

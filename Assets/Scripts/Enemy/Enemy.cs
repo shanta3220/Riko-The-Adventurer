@@ -18,7 +18,7 @@ public class Enemy : Mover {
     private bool startAnim = true;// just to show animespawn  anim;
 
     private float lastAudioPlay;
-
+    private bool isDeath;
     protected override void Start(){
         base.Start();
         playerTransform = GameManager.instance.player.transform;
@@ -29,6 +29,8 @@ public class Enemy : Mover {
     
     private void FixedUpdate() {
         //is the player in range?
+        if (isDeath)
+            return;
         if (startAnim) {
             sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime * 20);
             if (sr.color == Color.white)
@@ -70,18 +72,23 @@ public class Enemy : Mover {
     }
 
     protected override void ReceiveDamage(Damage dmg) {
+        if (isDeath)
+            return;
         base.ReceiveDamage(dmg);
         Hurt();
     }
 
     protected override void Death(){
+        isDeath = true;
+        anim.SetTrigger("EnemyDeath");
         AudioController.instance.PlaySound(SoundClip.enemyDeath);
         transform.parent.GetComponent<EnemyBatchHandler>().RemoveEnemy(transform);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+"+ xpValue+" xp",30, Color.magenta,transform.position, Vector3.up * 40, 1.0f);
         GameManager.instance.gold += goldValue;
         GameManager.instance.ShowText("+" + goldValue + " gold!", 23, Color.yellow, transform.position, Vector3.up * 10, 1.5f);
-        Destroy(gameObject);
+        Destroy(gameObject, 0.7f);
+        
     }
 
     private void Hurt() {

@@ -12,9 +12,14 @@ public class Pistol : Weapon {
 
     public override void Shoot() {
         base.Shoot();
+        Vector2 direction;
         Vector2 myPos = new Vector2(bulletSpawnPoint.position.x, bulletSpawnPoint.position.y);
-        Vector2 direction = target - myPos;
-        direction.Normalize();
+        if (isOnPc) {
+            direction = PCShootDirection(myPos);
+        }
+        else {
+            direction = MobileShootDirection(myPos);
+        }
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
         GameObject projectile = Instantiate(Bullet, myPos, rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
