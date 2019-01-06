@@ -10,9 +10,9 @@ Work Progress:
 
 [![Image from Gyazo](https://i.gyazo.com/37ac59cf292d783de26ab5e27695b140.gif)](https://gyazo.com/37ac59cf292d783de26ab5e27695b140)
 
-Assets Used: [Without these Artists beautiful assets this game wouldn't exist right now]
+Assets Used:
 =======
-
+Without these Artists beautiful assets this game wouldn't exist right now. Thank so much for being so awesome and kind to share your assets!
 <a href="https://0x72.itch.io/dungeontileset-ii">16x16 DungeonTileset II</a>
 
 <a href="https://0x72.itch.io/16x16-dungeon-tileset">16x16 Dungeon Tileset</a>
@@ -33,8 +33,9 @@ Assets Used: [Without these Artists beautiful assets this game wouldn't exist ri
 
 <a href="https://opengameart.org/content/little-servant-devil-animation">Little Servant Devil Animation</a>
 
-BG Music: [Without these Artists beautiful assets this game wouldn't exist right now]
+BG Music:
 =======
+These Glitch Hop music are absolutely addictive to ears, by any means if you don't like your track to be on this game please email me. I'm sorry for using these on my game with your permission, this game is not added in commercial platform yet.
 Auvic - Heal Me
 Brainwave - Contingency Of Pink
 Glitch HopAuvic ft. Pipo Fernandez - Indignation
