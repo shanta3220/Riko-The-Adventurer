@@ -10,7 +10,7 @@ Work Progress:
 
 [![Image from Gyazo](https://i.gyazo.com/37ac59cf292d783de26ab5e27695b140.gif)](https://gyazo.com/37ac59cf292d783de26ab5e27695b140)
 
-Assets Used:
+Free Assets Used:
 =======
 Without these Artists beautiful assets this game wouldn't exist right now. Thank you so much for being so awesome and kind to share your assets!
 
