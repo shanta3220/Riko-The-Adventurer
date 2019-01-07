@@ -13,6 +13,7 @@ Work Progress:
 Assets Used:
 =======
 Without these Artists beautiful assets this game wouldn't exist right now. Thank so much for being so awesome and kind to share your assets!
+
 <a href="https://0x72.itch.io/dungeontileset-ii">16x16 DungeonTileset II</a>
 
 <a href="https://0x72.itch.io/16x16-dungeon-tileset">16x16 Dungeon Tileset</a>
@@ -56,6 +57,6 @@ Thaehan - Pixelated
 Wontolla - Up To No Good [Royalty Free Music]
 
 
-Sound: [Without these Artists beautiful assets this game wouldn't exist right now]
+Sound: 
 =======
 
