@@ -12,7 +12,7 @@ Work Progress:
 
 Assets Used:
 =======
-Without these Artists beautiful assets this game wouldn't exist right now. Thank so much for being so awesome and kind to share your assets!
+Without these Artists beautiful assets this game wouldn't exist right now. Thank you so much for being so awesome and kind to share your assets!
 
 <a href="https://0x72.itch.io/dungeontileset-ii">16x16 DungeonTileset II</a>
 
@@ -36,7 +36,7 @@ Without these Artists beautiful assets this game wouldn't exist right now. Thank
 
 BG Music:
 =======
-These Glitch Hop music are absolutely addictive to ears, by any means if you don't like your track to be on this game please email me. I'm sorry for using these on my game with your permission, this game is not added in commercial platform yet.
+These Glitch Hop music are absolutely addictive to ears, by any means if you don't like your track to be on this game please email me. I'm sorry for using these on my game with your permission, this game is not added in commercial platform yet, so please bear with me.
 
 Auvic - Heal Me
 
