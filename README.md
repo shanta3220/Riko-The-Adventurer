@@ -34,6 +34,8 @@ Without these Artists beautiful assets this game wouldn't exist right now. Thank
 
 <a href="https://opengameart.org/content/little-servant-devil-animation">Little Servant Devil Animation</a>
 
+<a href="https://opengameart.org/content/free-ui-asset-pack-1">FREE UI ASSET PACK 1</a>
+
 <a href="https://opengameart.org/content/onscreen-controls-8-styles">Onscreen controls (8 styles)</a>
 
 <a href="https://opengameart.org/content/golden-ui-bigger-than-ever-edition">(Buch)Golden UI - Bigger Than Ever edition</a>
