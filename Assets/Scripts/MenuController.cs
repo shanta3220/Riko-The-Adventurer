@@ -54,11 +54,11 @@ public class MenuController : MonoBehaviour {
     }
 
     private void Update() {
+        if(isOnPanel)
+            return;
         if (isOnPc) {
             if (Input.GetMouseButtonDown(0)) {
-                if (!isOnPanel) {
-                    ChoosePlayer(Input.mousePosition);
-                }
+                ChoosePlayer(Input.mousePosition);
             }
         }
 
@@ -184,8 +184,9 @@ public class MenuController : MonoBehaviour {
 
     public void UnlockOrSelectSkin() {
         if (TryUnlockSkin(currentCharacterFocus, skinPrices[currentCharacterFocus])) {
-            ui.btnCharacterSelectorText.text = "Selected";
+           // ui.btnCharacterSelectorText.text = "Selected";
             ui.goldText.text = "Total Gold: " + gold;
+            SwitchCharacter();
         }
         else ui.btnCharacterSelectorText.text = skinPrices[currentCharacterFocus].ToString();
 

@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 212170575679214856}
   - component: {fileID: 114957903547443502}
   - component: {fileID: 61888697757156520}
+  - component: {fileID: 82911933957152332}
+  - component: {fileID: 95888873154058154}
   m_Layer: 10
   m_Name: Boss_One_Eye
   m_TagString: Enemy
@@ -114,9 +116,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327034288618786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.531585, y: 0.14796028, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4499998, y: 0.6385908, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4559371548731892}
   - {fileID: 4664309984166606}
@@ -237,6 +239,104 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17183638, y: 0.1761892}
   m_EdgeRadius: 0
+--- !u!82 &82911933957152332
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327034288618786}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 354cf4c9d85a23e468eb30b00d73f75e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &95888873154058154
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327034288618786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b89876dc5be9684f864ad62cd35dbf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114164153103433286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +364,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   damage: 3
   pushForce: 6
+  damagePoints: 0100000002000000030000000400000005000000060000000700000008000000
 --- !u!114 &114289013960962430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,6 +392,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   damage: 1
   pushForce: 2
+  damagePoints: 0100000002000000030000000400000005000000060000000700000008000000
 --- !u!114 &114328572728061962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +420,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   damage: 1
   pushForce: 2
+  damagePoints: 0100000002000000030000000400000005000000060000000700000008000000
 --- !u!114 &114957903547443502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,11 +435,12 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   PushRecoverySpeed: 0.2
+  healthLength: 050000000a0000000f000000190000001e0000003200000046000000
   ySpeed: 0.375
   xSpeed: 0.5
+  hasEnemyTarget: 0
   xpValue: 10
-  triggerLength: 0.75
-  chaseLength: 4
+  goldValue: 15
   filter:
     useTriggers: 0
     useLayerMask: 0
