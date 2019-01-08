@@ -15,12 +15,15 @@ public abstract class Mover : Fighter {
     public bool hasEnemyTarget;
     protected AudioSource audioS;
     protected SpriteRenderer sr;
+    protected bool flipx = false;
 
     private void Awake() {
         anim = GetComponent<Animator>();
         localScaleSize = transform.localScale.x;
         audioS = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
+        if (sr.flipX)
+            flipx = true;
     }
 
     protected virtual void Start() {
@@ -31,7 +34,8 @@ public abstract class Mover : Fighter {
     protected virtual void UpdateMotor(Vector3 input) {
         moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed,0);
         isRunning = input.x != 0 || input.y != 0 ? true : false;
-        Animate(moveDelta.x);
+        if(moveDelta.x != 0)
+            Animate(moveDelta.x);
         //making sure we can move the player upward or downward by casting a box there beforehand
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null) {
@@ -56,24 +60,19 @@ public abstract class Mover : Fighter {
             return;
         //swap sprite direction whether moving left or right and animation
         if (x > 0) {
-            transform.localScale = Vector3.one * localScaleSize;
+            //transform.localScale = Vector3.one * localScaleSize;
+            sr.flipX = flipx == false ? false : true;
         }
 
         else if (x < 0) {
-            transform.localScale = new Vector3(-localScaleSize, localScaleSize, localScaleSize);
+            //transform.localScale = new Vector3(-localScaleSize, localScaleSize, localScaleSize);
+            sr.flipX = flipx == true ? false : true;
         }
         moveDelta += pushDirection;
         //reduce pushForce everyframe, based on recoveryspeed
         pushDirection = Vector3.Lerp(pushDirection,Vector3.zero,PushRecoverySpeed);
         if(anim != null)
             anim.SetBool("IsRunning", isRunning);
-    }
-
-
-    public void SetLevelHealth(int currentPlayerLevel) {
-        //increasing health
-        maxHealth = healthLength[currentPlayerLevel];
-        health = maxHealth;
     }
 
 }

@@ -5,26 +5,30 @@ using UnityEngine;
 public class Enemy : Mover {
     //Experience
     public int xpValue = 1;
-
     public int goldValue = 15;
+    public float turningTimeDelay = 1f;
     public ContactFilter2D filter;
     private bool collidingWithPlayer;//for animating
     private Transform playerTransform;
     private Vector3 startingPosition;
     private Collider2D[] hits = new Collider2D[10];
     private Vector3 motion;
-   
     private float chaseSpeed = 0.8f; //the less the value the slower it is
     private bool startAnim = true;// just to show animespawn  anim;
-
     private float lastAudioPlay;
     private bool isDeath;
+    private Transform enemyHealthBar;
+    private Vector3 playerLastTrackedPos;
+    private float lastFollowTime;
+
     protected override void Start(){
         base.Start();
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
         sr.color = Color.black;
-        SetLevelHealth(GameManager.instance.playerCurrentLevel);
+        enemyHealthBar = transform.GetChild(1).GetChild(0).transform;
+        lastFollowTime = Time.time;
+        playerLastTrackedPos = playerTransform.position;
     }
     
     private void FixedUpdate() {
@@ -38,16 +42,16 @@ public class Enemy : Mover {
             return;
         }
         if (hasEnemyTarget) {
-            
+           
             if (!collidingWithPlayer){
-                motion = (playerTransform.position - transform.position).normalized * chaseSpeed;
+                ChasePlayer();
             }
             else {
                 //going back to where we were
                 motion = startingPosition - transform.position;
                
             }
-         
+            
         }
         else{
             //reseting
@@ -69,12 +73,15 @@ public class Enemy : Mover {
         if (collidingWithPlayer)
             UpdateMotor(Vector3.zero);
         else UpdateMotor(motion);
+      
+        
     }
 
     protected override void ReceiveDamage(Damage dmg) {
         if (isDeath)
             return;
         base.ReceiveDamage(dmg);
+        UpdateHealthBar();
         Hurt();
     }
 
@@ -99,12 +106,45 @@ public class Enemy : Mover {
             lastAudioPlay = Time.time;
             audioS.Play();
         }
-           
     }
 
     private void RestoreColor() {
         sr.color = Color.white;
     }
+
+    private void UpdateHealthBar() {
+        float localScaleX = (float)health / (float)maxHealth;
+        enemyHealthBar.localScale = new Vector3(localScaleX, enemyHealthBar.localScale.y, enemyHealthBar.localScale.z);
+        if (localScaleX == 0)
+            enemyHealthBar.parent.localScale = Vector3.zero;
+    }
+
+    private void ChasePlayer() {
+        /*
+         * public float followPlayerTime=2f;
+           public float turningTimeDelay = 1f;
+           private float lastFollowTime;
+           private float lastTurningDelay;
+         * if (Time.time - lastFollowTime < followPlayerTime) {
+                motion = (playerTransform.position -transform.position).normalized * chaseSpeed;
+                lastTurningDelay = Time.time;
+            }
+            else {
+                if(Time.time - lastTurningDelay > turningTimeDelay) {
+                    lastFollowTime = Time.time;
+                    motion = Vector2.zero;
+                }
+         }*/
+        if (Time.time - lastFollowTime > turningTimeDelay) {
+            playerLastTrackedPos = playerTransform.position;
+            lastFollowTime = Time.time;
+        }
+        //we are putting this Vector3.Distance(transform.position, playerLastTrackedPos) > 0.016f to avoid glitches fliping
+        if (Vector3.Distance(transform.position, playerLastTrackedPos) > 0.016f)
+            motion = (playerLastTrackedPos - transform.position).normalized * chaseSpeed;
+        else motion = Vector3.zero;
+    }
+
 
     /*
             //logic

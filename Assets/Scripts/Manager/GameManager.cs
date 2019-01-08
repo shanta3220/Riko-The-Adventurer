@@ -235,8 +235,8 @@ public class GameManager : MonoBehaviour
         }
         ActivateEnemy();
     }
+
   
- 
     public void ClearData() {
         SaveData();
     }

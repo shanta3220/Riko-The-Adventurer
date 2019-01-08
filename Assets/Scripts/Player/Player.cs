@@ -203,6 +203,13 @@ public class Player : Mover {
         Animate(direction.x, direction.y);
     }
 
+    public void SetLevelHealth(int currentPlayerLevel) {
+        //increasing health
+        maxHealth = healthLength[currentPlayerLevel];
+        health = maxHealth;
+    }
+
+
     /* private void OldPlayerSwitch() {
          /*if (!isPlayerAdvanced)
            Animate(moveDelta.x);

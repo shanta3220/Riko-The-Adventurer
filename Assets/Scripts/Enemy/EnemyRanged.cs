@@ -39,6 +39,8 @@ public class EnemyRanged : Mover {
 
     private float lastAudioPlay;
     private bool isDeath;
+    private Transform enemyHealthBar;
+
     protected override void Start() {
         base.Start();
         playerTransform = GameManager.instance.player.transform;
@@ -62,7 +64,8 @@ public class EnemyRanged : Mover {
         }
         spawnPoint = transform.GetChild(2).transform;
         enemyShoot = GetComponent<EnemyShoot>();
-        SetLevelHealth(GameManager.instance.playerCurrentLevel);
+        enemyHealthBar = transform.GetChild(3).GetChild(0).transform;
+        
     }
 
     private void FixedUpdate() {
@@ -126,11 +129,13 @@ public class EnemyRanged : Mover {
     protected override void Animate(float x) {
         //swap sprite direction whether moving left or right and animation
         if (x > 0) {
-            transform.localScale = Vector3.one * localScaleSize;
+            //transform.localScale = Vector3.one * localScaleSize;
+            sr.flipX = flipx == false ? false : true;
         }
 
         else if (x < 0) {
-            transform.localScale = new Vector3(-localScaleSize, localScaleSize, localScaleSize);
+            //transform.localScale = new Vector3(-localScaleSize, localScaleSize, localScaleSize);
+            sr.flipX = flipx == true ? false : true;
         }
         moveDelta += pushDirection;
         //reduce pushForce everyframe, based on recoveryspeed
@@ -178,12 +183,23 @@ public class EnemyRanged : Mover {
             lastAudioPlay = Time.time;
             audioS.Play();
         }
+        UpdateHealthBar();
     }
 
     private void RestoreColor() {
     
         sr.color = Color.white;
     }
+
+    private void UpdateHealthBar() {
+        float localScaleX = (float)health / (float)maxHealth;
+        enemyHealthBar.localScale = new Vector3(localScaleX, enemyHealthBar.localScale.y, enemyHealthBar.localScale.z);
+        if(localScaleX == 0)
+            enemyHealthBar.parent.localScale = Vector3.zero;
+    }
+
+
+ 
 
     /*
         private void OldFixedUpdate() {
