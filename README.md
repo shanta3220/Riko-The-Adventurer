@@ -10,7 +10,7 @@ Work Progress:
 
 [![Image from Gyazo](https://i.gyazo.com/37ac59cf292d783de26ab5e27695b140.gif)](https://gyazo.com/37ac59cf292d783de26ab5e27695b140)
 
-Assets Used:
+Free Assets Used:
 =======
 Without these Artists beautiful assets this game wouldn't exist right now. Thank you so much for being so awesome and kind to share your assets!
 
@@ -34,9 +34,15 @@ Without these Artists beautiful assets this game wouldn't exist right now. Thank
 
 <a href="https://opengameart.org/content/little-servant-devil-animation">Little Servant Devil Animation</a>
 
+<a href="https://opengameart.org/content/free-ui-asset-pack-1">FREE UI ASSET PACK 1</a>
+
+<a href="https://opengameart.org/content/onscreen-controls-8-styles">Onscreen controls (8 styles)</a>
+
+<a href="https://opengameart.org/content/golden-ui-bigger-than-ever-edition">(Buch)Golden UI - Bigger Than Ever edition</a>
+
 BG Music:
 =======
-These Glitch Hop music are absolutely addictive to ears, by any means if you don't like your track to be on this game please email me. I'm sorry for using these on my game without your permission, this game is not added in commercial platform yet, so please bear with me.
+These Glitch Hop music are absolutely addictive to ears, by any means if you don't like your track to be on this game please email me. I'm sorry for using these in my game without your permission, this game is not added in commercial platform yet, so please bear with me.
 
 Auvic - Heal Me
 
