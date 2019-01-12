@@ -10,11 +10,13 @@ public class EventEnableManager : MonoBehaviour {
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor) {
             GetComponent<EventCallerPC>().enabled = true;
             HudMobile.SetActive(false);
+            GetComponent<EventCallerPC>().player.isOnPc = true;
         }
             
         else if (Application.platform == RuntimePlatform.Android) {
             GetComponent<EventCallerMobile>().enabled = true;
             HudMobile.SetActive(true);
+            GetComponent<EventCallerPC>().player.isOnPc = false;
         }
             
     }

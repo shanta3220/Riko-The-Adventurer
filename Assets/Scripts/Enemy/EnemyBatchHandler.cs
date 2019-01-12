@@ -21,6 +21,7 @@ public class EnemyBatchHandler : MonoBehaviour {
     public GameObject enemyTargetDisable;
     private bool isEnemeyTargetEnabled;
     public bool isSecondBatchOfSameArea;
+
     void Start () {
         player = GameManager.instance.player;
         playerTransform = player.transform;
@@ -35,6 +36,8 @@ public class EnemyBatchHandler : MonoBehaviour {
     }
 	
 	private void Update () {
+        if (GameManager.instance.isPaused)
+            return;
         if (!isEnemeyTargetEnabled){
             if(player.target != null)
                 player.target = null;

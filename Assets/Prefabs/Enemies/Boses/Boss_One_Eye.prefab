@@ -521,15 +521,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52048b30a282db4abf69a270eaeda91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  maxHealth: 10
+  health: 50
+  maxHealth: 50
   PushRecoverySpeed: 0.2
   healthLength: 050000000a0000000f000000190000001e0000003200000046000000
-  ySpeed: 0.375
-  xSpeed: 0.5
+  ySpeed: 0.75
+  xSpeed: 0.9
   hasEnemyTarget: 0
   xpValue: 10
   goldValue: 15
+  turningDelayRate: 0.8
   filter:
     useTriggers: 0
     useLayerMask: 0
@@ -545,9 +546,9 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   fireballSpeed:
-  - 2
-  - -2
-  distance: 0.2
+  - 3
+  - -3
+  distance: 0.3
   fireBalls:
   - {fileID: 4664309984166606}
   - {fileID: 4960337952901612}

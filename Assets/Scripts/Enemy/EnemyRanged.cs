@@ -69,7 +69,7 @@ public class EnemyRanged : Mover {
     }
 
     private void FixedUpdate() {
-        if (isDeath)
+        if (isDeath || GameManager.instance.isPaused)
             return;
         UpdateMotor(Move());
         if (hasEnemyTarget) {
@@ -158,14 +158,15 @@ public class EnemyRanged : Mover {
     }
 
     protected override void ReceiveDamage(Damage dmg) {
-        if (isDeath)
-            return;
+        if (isDeath ||GameManager.instance.isPaused)
+             return;
         base.ReceiveDamage(dmg);
         Hurt();
     }
 
     protected override void Death() {
         isDeath = true;
+        GameManager.instance.UpdateEnemyKillText();
         anim.Play("EnemyDeathEffect");
         AudioController.instance.PlaySound(SoundClip.enemyDeath);
         transform.parent.GetComponent<EnemyBatchHandler>().RemoveEnemy(transform);

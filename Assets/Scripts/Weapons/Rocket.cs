@@ -23,9 +23,6 @@ public class Rocket : Weapon {
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
         GameObject projectile = Instantiate(Bullet, myPos, rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-        GameObject emptyShell = Instantiate(emptyShells, myPos, rotation);
-        emptyShell.transform.parent = emptyShellsContainer.transform;
-        emptyShell.GetComponent<Rigidbody2D>().velocity = -direction * 1f;
     }
 
     private void Presets() {

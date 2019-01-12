@@ -30,17 +30,17 @@ public class DataController : MonoBehaviour {
         }
     }
 
-    public void SaveData() {
+    public void SaveData(bool isResetClicked = false) {
+        //Convert to Json
+        string jsonData = JsonUtility.ToJson(data);
+        if (isResetClicked)
+            jsonData = "";
         if (Application.isEditor) {
-            //Convert to Json
-            string jsonData = JsonUtility.ToJson(data);
             //Save Json string
             PlayerPrefs.SetString("MySettingsEditor", jsonData);
             PlayerPrefs.Save();
         }
         else {
-            //Convert to Json
-            string jsonData = JsonUtility.ToJson(data);
             //Save Json string
             PlayerPrefs.SetString("MySettings", jsonData);
             PlayerPrefs.Save();
@@ -48,16 +48,14 @@ public class DataController : MonoBehaviour {
     }
 
     public void SaveData(GameData data) {
+        //Convert to Json
+        string jsonData = JsonUtility.ToJson(data);
         if (Application.isEditor) {
-            //Convert to Json
-            string jsonData = JsonUtility.ToJson(data);
             //Save Json string
             PlayerPrefs.SetString("MySettingsEditor", jsonData);
             PlayerPrefs.Save();
         }
         else {
-            //Convert to Json
-            string jsonData = JsonUtility.ToJson(data);
             //Save Json string
             PlayerPrefs.SetString("MySettings", jsonData);
             PlayerPrefs.Save();

@@ -31,7 +31,7 @@ public class MenuController : MonoBehaviour {
     public bool isOnPanel;
     public bool isOnPc;
     public bool canFocus;//this is to avoid the title panel from going away when the scene first loads
-
+    private bool isResetClicked;
     private void Awake() {
         if (instance == null)
             instance = this;
@@ -77,10 +77,19 @@ public class MenuController : MonoBehaviour {
 
     private void LoadData() {
         gold = data.gold;
+        
         ui.goldText.text = "Total Gold: " + gold;
     }
 
+    public void ResetDataSave() {
+        isResetClicked = true;
+        DataController.instance.data.ResetEverything();
+    }
+
     public void SaveData() {
+        if (isResetClicked) {
+            return;
+        }
         data.gold = gold;
         data.selectedSkin = selectedSkin;
         DataController.instance.SaveData(data);

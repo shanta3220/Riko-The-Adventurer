@@ -389,7 +389,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 87a9a4d6725e77449a21b4dcbf158954, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.7
   m_Pitch: 1.4
   Loop: 0
   Mute: 0
@@ -470,7 +470,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 87a9a4d6725e77449a21b4dcbf158954, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.7
   m_Pitch: 0.8
   Loop: 0
   Mute: 0
@@ -551,7 +551,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 91894d9ecd924e74e88f152130c329e7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.45
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -632,7 +632,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d0b35c568ac9f9b458d92521e4d5709d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -713,7 +713,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 91894d9ecd924e74e88f152130c329e7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.7
   m_Pitch: 1.2
   Loop: 0
   Mute: 0
@@ -794,7 +794,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fdbc18edd950bf74ba6ef63190b4362c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -875,7 +875,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a98aa2aeae5de69469bde3fd42e64192, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -956,7 +956,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fdbc18edd950bf74ba6ef63190b4362c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.7
   m_Pitch: 1.59
   Loop: 0
   Mute: 0
@@ -1037,7 +1037,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4d6fe2a3c412eb4499fdaf4ba9f33ad7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1138,12 +1138,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.2
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 5
+  bulletSpeed: 3
 --- !u!114 &114352530252953622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1176,12 +1175,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.1
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 2
+  bulletSpeed: 3
 --- !u!114 &114410922075493038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,12 +1212,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.15
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 2
+  bulletSpeed: 6
 --- !u!114 &114476928651194024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1243,7 +1240,7 @@ MonoBehaviour:
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
     type: 2}
   emptyShellsContainer: {fileID: 1948156497971974}
-  damagePoint: 02000000080000000c00000011000000140000001600000019000000
+  damagePoint: 0200000004000000070000000a0000000d0000000f00000012000000
   pushForce:
   - 2
   - 2.2
@@ -1252,12 +1249,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.15
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 4
+  bulletSpeed: 2
 --- !u!114 &114598550817055844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1290,10 +1286,9 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.3
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
   bulletSpeed: 4
 --- !u!114 &114642098771417768
@@ -1328,12 +1323,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.1
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 2
+  bulletSpeed: 4
 --- !u!114 &114764806598840516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1366,12 +1360,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.05
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 3
+  bulletSpeed: 1
 --- !u!114 &114789335956924054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1404,12 +1397,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.1
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 3
+  bulletSpeed: 2
 --- !u!114 &114913667784570014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1442,10 +1434,9 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  rotateAngle: 0
+  shootCoolDown: 0.15
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
-  audioS: {fileID: 0}
   target: {x: 0, y: 0}
   bulletSpeed: 3
   numberofProjectiles: 2
@@ -1473,6 +1464,7 @@ MonoBehaviour:
   player: {fileID: 0}
   healthBar: {fileID: 0}
   deathMenuAnimator: {fileID: 0}
+  pauseMenuAnimator: {fileID: 0}
   gold: 35
   experience: 3
   weapon: {fileID: 0}
@@ -1490,3 +1482,8 @@ MonoBehaviour:
   enemyActivator: {fileID: 0}
   scenePortal: {fileID: 0}
   enemyBatchHandler: {fileID: 0}
+  switchWepImage: {fileID: 0}
+  isLevelCompleted: 0
+  movementJoystick: {fileID: 0}
+  panelLoading: {fileID: 0}
+  isPaused: 0

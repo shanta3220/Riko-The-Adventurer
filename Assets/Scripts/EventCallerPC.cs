@@ -32,6 +32,8 @@ public class EventCallerPC : MonoBehaviour {
             player.Shoot();
         }
         */
+        if (GameManager.instance.isPaused)
+            return;
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
         if(scrollWheel != 0) {
             SwitchWeapon();

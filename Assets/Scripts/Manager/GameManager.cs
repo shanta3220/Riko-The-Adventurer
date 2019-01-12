@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
@@ -17,13 +16,19 @@ public class GameManager : MonoBehaviour
     public Player player;
     public RectTransform healthBar;
     public Animator deathMenuAnimator;
+    public Animator pauseMenuAnimator;
+    public Text enemyKillText;
+    [HideInInspector]
     public int gold;
+    [HideInInspector]
     public int experience;
     [HideInInspector]
     public Weapon weapon;
     public GameData data;
     public List<Weapon> collectedWeapons;
-    private Transform weaponContainer;
+
+    public bool isPaused;
+   
     public static GameManager instance;
     public int playerCurrentLevel;
     public EnemyActivator enemyActivator;
@@ -33,6 +38,10 @@ public class GameManager : MonoBehaviour
     public bool isLevelCompleted; //to avoid Bug
     public Joystick movementJoystick;
     public GameObject panelLoading;
+    public int totalEnemies = 19;
+
+    private Transform weaponContainer;
+    private int currentenemyKill = -1;
     private void Awake()
     {
         if (instance == null)
@@ -44,6 +53,7 @@ public class GameManager : MonoBehaviour
         weaponContainer = player.weaponContainer.transform;
         data = DataController.instance.data;
         LoadData();
+        UpdateEnemyKillText();
     }
     
     //floatingText;
@@ -81,6 +91,7 @@ public class GameManager : MonoBehaviour
             gold -= weapon.weaponPrinces[weapon.weaponLevel];
             weapon.UpgradeWeapon();
             return true;
+            SaveData();
         }
         return false;
         
@@ -99,6 +110,7 @@ public class GameManager : MonoBehaviour
         playerWep.ChangeSprites();
         data.notCollectedWeapons.Remove(dataID);
         ChangeSwitchWeaponButtonImage();
+        SaveData();
         return true;
     }
 
@@ -142,9 +154,11 @@ public class GameManager : MonoBehaviour
         temp.enabled = IsSelectedWeapon(temp);
         return temp;
     }
+
     public int GetCurrentWeaponDamage() {
         return weapon.damagePoint[weapon.weaponLevel];
     }
+
     public float GetCurrentWeaponPushForce() {
         return weapon.pushForce[weapon.weaponLevel];
     }
@@ -193,7 +207,16 @@ public class GameManager : MonoBehaviour
         healthBar.localScale = new Vector2(ratio, 1);
     }
 
- 
+    public void ShowPauseMenu() {
+        pauseMenuAnimator.SetTrigger("Show");
+        isPaused = true;
+    }
+
+    public void HidePauseMenu() {
+        pauseMenuAnimator.SetTrigger("Hide");
+        isPaused = false;
+    }
+
     public void LevelComplete() {
         if (!isLevelCompleted) {
             isLevelCompleted = true;
@@ -236,7 +259,13 @@ public class GameManager : MonoBehaviour
         ActivateEnemy();
     }
 
-  
+    public void UpdateEnemyKillText() {
+        currentenemyKill += 1;
+        if (currentenemyKill < 10)
+            enemyKillText.text = "0" + currentenemyKill + "/" + totalEnemies;
+        else enemyKillText.text = "" + currentenemyKill + "/" + totalEnemies;
+    }
+
     public void ClearData() {
         SaveData();
     }

@@ -15,7 +15,7 @@ public class Player : Mover {
     private bool isAlive = true;
    
     //public Joystick movementJoystick, shootJoystick;
-    protected float coolDown = 0.2f;
+    public float coolDown = 0.2f;
     protected float lastShoot;
     private CameraShake screenShake;
     public Joystick movementJoystick;
@@ -25,15 +25,12 @@ public class Player : Mover {
         base.Start();
         shootAnim = GetComponent<GunSpriteChanger>().bulletSpawnPoint.GetComponent<Animator>();
         screenShake = Camera.main.GetComponent<CameraShake>();
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-            isOnPc = true;
-        else if (Application.platform == RuntimePlatform.Android)
-            isOnPc = false;
-
     }
 
 
     private void FixedUpdate() {
+        if (GameManager.instance.isPaused)
+            return;
         if (isOnPc) {
             float x = Input.GetAxisRaw("Horizontal");
             float y = Input.GetAxisRaw("Vertical");
@@ -137,7 +134,7 @@ public class Player : Mover {
     }
 
     protected override void ReceiveDamage(Damage dmg) {
-        if (!isAlive)
+        if (!isAlive || GameManager.instance.isPaused)
             return;
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHealthChange();

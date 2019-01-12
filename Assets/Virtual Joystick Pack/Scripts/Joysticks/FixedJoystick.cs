@@ -4,12 +4,6 @@ using UnityEngine.EventSystems;
 public class FixedJoystick : Joystick
 {
     Vector2 joystickPosition = Vector2.zero;
-    private Player player;
-
-    void Start()
-    {
-        player = GameManager.instance.player.GetComponent<Player>();
-    }
 
     public override void OnDrag(PointerEventData eventData)
     {

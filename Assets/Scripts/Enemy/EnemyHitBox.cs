@@ -10,8 +10,11 @@ public class EnemyHitBox : Collidable {
 	public int damage = 1;
 	public int pushForce = 2;
     public int[] damagePoints = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
 	protected override void OnCollide(Collider2D col){
-		if(col.tag == "Player"){
+        if (GameManager.instance.isPaused)
+            return;
+        if (col.tag == "Player"){
 			/// create new dmg
 			Damage dmg = new Damage{
 				damageAmount = damage,

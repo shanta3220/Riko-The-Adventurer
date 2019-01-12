@@ -13,44 +13,52 @@ public class Weapon : MonoBehaviour {
     //damage States
     public int[] damagePoint = {1,2,3,4,5,6,7};
     public float[] pushForce = {2.0f,2.2f,2.6f,2.8f,3.0f,3.2f,3.4f};
-    public float rotateAngle = 0;
+    public float shootCoolDown = 0.2f;
     public Transform bulletSpawnPoint;
     public GunSpriteChanger gunSpriteChanger;
-    public AudioSource audioS;
     public Vector2 target;
+
+    protected AudioSource audioS;
     protected int damageStartValue = 1;
     protected bool isOnPc;
     protected Joystick movementJoystick;
+
+    private Player player;
+
     protected virtual void Awake() {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-            isOnPc = true;
-        else if (Application.platform == RuntimePlatform.Android)
-            isOnPc = false;
+        /* if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+             isOnPc = true;
+         else if (Application.platform == RuntimePlatform.Android)
+             isOnPc = false;*/
+        audioS = GetComponent<AudioSource>();
     }
 
-    protected virtual void Start() { }
+    protected virtual void Start() {
+       
+    }
 
     protected virtual void Update() { }
 
     public void ChangeSprites() {
         if (GameManager.instance.data.weaponSelected != weaponID)
             return;
-        audioS = GetComponent<AudioSource>();
+        if(player == null)
+         player = gunSpriteChanger.GetComponent<Player>();
+        isOnPc = player.isOnPc;
         gunSpriteChanger.GunSide.sprite = GunSide;
         gunSpriteChanger.GunUp.sprite = GunUp;
         gunSpriteChanger.GunDown.sprite = GunDown;
         gunSpriteChanger.GunDiagUp.sprite = GunDiagUp;
         gunSpriteChanger.GunDiagDown.sprite = GunDiagDown;
-        if (gunSpriteChanger.GetComponent<Player>().weapon != null && gunSpriteChanger.GetComponent<Player>().weapon != this)
-            gunSpriteChanger.GetComponent<Player>().weapon.enabled = false;
-        gunSpriteChanger.GetComponent<Player>().weapon = this;
+        if (player.weapon != null && player.weapon != this)
+            player.weapon.enabled = false;
+        player.weapon = this;
         if (GameManager.instance != null) {
             GameManager.instance.weapon = this;
             GameManager.instance.weaponSprite = GunSide;
             movementJoystick = GameManager.instance.movementJoystick;
+            player.coolDown = shootCoolDown;
         }
-
-
     }
 
     public virtual void Shoot() {

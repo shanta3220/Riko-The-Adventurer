@@ -22,9 +22,9 @@ public class ShotGun : Weapon {
             direction = MobileShootDirection(myPos);
         }
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-        GameObject emptyShell = Instantiate(emptyShells, myPos, rotation);
+        /*GameObject emptyShell = Instantiate(emptyShells, myPos, rotation);
         emptyShell.transform.parent = emptyShellsContainer.transform;
-        emptyShell.GetComponent<Rigidbody2D>().velocity = -direction * 1f;
+        emptyShell.GetComponent<Rigidbody2D>().velocity = -direction * 1f;*/
         direction.Normalize();
         float offset = 0.25f;
         for (int i = 0; i <= numberofProjectiles; i++) {

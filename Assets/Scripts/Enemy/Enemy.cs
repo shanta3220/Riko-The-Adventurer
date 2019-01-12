@@ -6,7 +6,7 @@ public class Enemy : Mover {
     //Experience
     public int xpValue = 1;
     public int goldValue = 15;
-    public float turningTimeDelay = 1f;
+    public float turningDelayRate = 1;
     public ContactFilter2D filter;
     private bool collidingWithPlayer;//for animating
     private Transform playerTransform;
@@ -20,6 +20,7 @@ public class Enemy : Mover {
     private Transform enemyHealthBar;
     private Vector3 playerLastTrackedPos;
     private float lastFollowTime;
+    private float turningTimeDelay = 1f;
 
     protected override void Start(){
         base.Start();
@@ -29,11 +30,14 @@ public class Enemy : Mover {
         enemyHealthBar = transform.GetChild(1).GetChild(0).transform;
         lastFollowTime = Time.time;
         playerLastTrackedPos = playerTransform.position;
+        turningTimeDelay = ((float)1f- (float)xSpeed);
+        turningTimeDelay += 1f * turningDelayRate;
+        //Debug.Log(turningTimeDelay);
     }
     
     private void FixedUpdate() {
-        //is the player in range?
-        if (isDeath)
+        
+        if (isDeath || GameManager.instance.isPaused)
             return;
         if (startAnim) {
             sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime * 20);
@@ -41,6 +45,7 @@ public class Enemy : Mover {
                 startAnim = false;
             return;
         }
+        //is the player in range?
         if (hasEnemyTarget) {
            
             if (!collidingWithPlayer){
@@ -88,6 +93,7 @@ public class Enemy : Mover {
     protected override void Death(){
         isDeath = true;
         anim.SetTrigger("EnemyDeath");
+        GameManager.instance.UpdateEnemyKillText();
         AudioController.instance.PlaySound(SoundClip.enemyDeath);
         transform.parent.GetComponent<EnemyBatchHandler>().RemoveEnemy(transform);
         GameManager.instance.GrantXp(xpValue);

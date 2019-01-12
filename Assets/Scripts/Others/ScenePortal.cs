@@ -17,7 +17,10 @@ public class ScenePortal : Collidable {
         if (!canChangeScene)
             return;
         if (col.tag =="Player") {
+        
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
+            if (DataController.instance.data.experience < 8)
+                sceneName = "Dungeon_1";
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
             if (isOnMenuScene) {
                 MenuController.instance.SaveData();
