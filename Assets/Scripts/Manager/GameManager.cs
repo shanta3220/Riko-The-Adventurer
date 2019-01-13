@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public RectTransform healthBar;
     public Animator deathMenuAnimator;
     public Animator pauseMenuAnimator;
+    public Animator toastMessageAnimator;
+    public Text textToastMessage;
     public Text enemyKillText;
     [HideInInspector]
     public int gold;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     private Transform weaponContainer;
     private int currentenemyKill = -1;
+
     private void Awake()
     {
         if (instance == null)
@@ -63,6 +66,16 @@ public class GameManager : MonoBehaviour
             fontSize += 7;
         FloatingTextManager.instance.Show(msg, fontSize, color, position, motion, duration);
 
+    }
+
+    public void ShowToastMessage(string message, float duration) {
+        textToastMessage.text = message;
+        toastMessageAnimator.SetBool("ShowPanel", true);
+        Invoke("HideToastMessage", duration);
+    }
+
+    private void HideToastMessage() {
+        toastMessageAnimator.SetBool("ShowPanel", false);
     }
 
     //Unlock Characters
@@ -90,8 +103,9 @@ public class GameManager : MonoBehaviour
         else if(gold >= weapon.weaponPrinces[weapon.weaponLevel]){
             gold -= weapon.weaponPrinces[weapon.weaponLevel];
             weapon.UpgradeWeapon();
-            return true;
             SaveData();
+            return true;
+           
         }
         return false;
         
@@ -221,7 +235,8 @@ public class GameManager : MonoBehaviour
         if (!isLevelCompleted) {
             isLevelCompleted = true;
             AudioController.instance.PlaySound(SoundClip.victory);
-            ShowText("Level Complete", 23, Color.blue, player.transform.position + (Vector3.up * 0.16f), Vector3.zero, 5f);
+            //ShowText("Level Complete", 23, Color.blue, player.transform.position + (Vector3.up * 0.16f), Vector3.zero, 5f);
+            ShowToastMessage("Level Complete!", 5f);
         }
        
     }

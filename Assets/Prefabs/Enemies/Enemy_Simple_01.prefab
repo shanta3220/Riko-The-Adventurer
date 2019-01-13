@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930503211934576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.848, y: -0.336, z: 0}
+  m_LocalPosition: {x: -0.848, y: -1.023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4268179358298290}
@@ -351,8 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78adcffaec33aa3439cbdb89d6044651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 3
+  health: 10
+  maxHealth: 10
   PushRecoverySpeed: 0.2
   healthLength: 050000000a0000000a0000000f00000014000000190000001e000000
   ySpeed: 0.7
@@ -360,6 +360,7 @@ MonoBehaviour:
   hasEnemyTarget: 0
   xpValue: 5
   goldValue: 15
+  turningDelayRate: 1
   filter:
     useTriggers: 0
     useLayerMask: 0

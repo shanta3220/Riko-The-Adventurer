@@ -1142,7 +1142,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 3
+  bulletSpeed: 3.5
 --- !u!114 &114352530252953622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 3
+  bulletSpeed: 2.5
 --- !u!114 &114410922075493038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1323,11 +1323,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  shootCoolDown: 0.1
+  shootCoolDown: 0.13
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 4
+  bulletSpeed: 4.5
 --- !u!114 &114764806598840516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1397,11 +1397,11 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  shootCoolDown: 0.1
+  shootCoolDown: 0.12
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   target: {x: 0, y: 0}
-  bulletSpeed: 2
+  bulletSpeed: 3.5
 --- !u!114 &114913667784570014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   - 3
   - 3.2
   - 3.4
-  shootCoolDown: 0.15
+  shootCoolDown: 0.25
   bulletSpawnPoint: {fileID: 0}
   gunSpriteChanger: {fileID: 0}
   target: {x: 0, y: 0}
@@ -1465,6 +1465,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   deathMenuAnimator: {fileID: 0}
   pauseMenuAnimator: {fileID: 0}
+  toastMessageAnimator: {fileID: 0}
+  textToastMessage: {fileID: 0}
+  enemyKillText: {fileID: 0}
   gold: 35
   experience: 3
   weapon: {fileID: 0}
@@ -1478,6 +1481,7 @@ MonoBehaviour:
     skins: 010000
     weaponLevel: 0000000000000000000000000000000000000000000000000000000000000000
   collectedWeapons: []
+  isPaused: 0
   playerCurrentLevel: 0
   enemyActivator: {fileID: 0}
   scenePortal: {fileID: 0}
@@ -1486,4 +1490,4 @@ MonoBehaviour:
   isLevelCompleted: 0
   movementJoystick: {fileID: 0}
   panelLoading: {fileID: 0}
-  isPaused: 0
+  totalEnemies: 19

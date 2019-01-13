@@ -119,6 +119,8 @@ public class Enemy : Mover {
     }
 
     private void UpdateHealthBar() {
+        if (enemyHealthBar == null)
+            return;
         float localScaleX = (float)health / (float)maxHealth;
         enemyHealthBar.localScale = new Vector3(localScaleX, enemyHealthBar.localScale.y, enemyHealthBar.localScale.z);
         if (localScaleX == 0)
