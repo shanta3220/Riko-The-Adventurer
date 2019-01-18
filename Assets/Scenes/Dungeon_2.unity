@@ -15778,7 +15778,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 706706368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9221706744fc1214e9d99fb5dbb177d3, type: 3}
   m_Name: 
@@ -19963,6 +19963,12 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 397.62207
       objectReference: {fileID: 0}
+    - target: {fileID: 114604746525348068, guid: 08573078048e167478107ea35eea1b31,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bd3a5e25bfdf1254084aab8e852a6d3c,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08573078048e167478107ea35eea1b31, type: 2}
   m_IsPrefabParent: 0
