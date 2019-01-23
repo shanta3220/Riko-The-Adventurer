@@ -13,6 +13,12 @@ public class ShotGun : Weapon {
 
     public override void Shoot() {
         base.Shoot();
+        if (GameManager.instance.player.numOfActiveBullets == 10) {
+            GameManager.instance.player.numOfActiveBullets -= 1;
+            return;
+        }
+           
+        GameManager.instance.player.numOfActiveBullets += 2;
         Vector2 direction;
         Vector2 myPos = new Vector2(bulletSpawnPoint.position.x, bulletSpawnPoint.position.y);
         if (isOnPc) {

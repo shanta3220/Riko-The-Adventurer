@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 [Serializable]
 public class UI {
     public Animator notificationAnimator;
@@ -10,14 +9,15 @@ public class UI {
     public Text goldText;
     public Text btnCharacterSelectorText;
     public GameObject joyStickPanel;
-    public GameObject panel_Loading;
+    public GameObject exitButton;
+    public GameObject resetButton;
+    public SceneLoadingBarController loadLevel;
 }
 
 public class MenuController : MonoBehaviour {
     public GameData data;
     public UI ui;
     public CharacterSelectionPlayer[] characterSelectPlayer;
- 
     public int gold;
     public int selectedSkin;
     public Transform lastSelecterPlayer;
@@ -32,6 +32,7 @@ public class MenuController : MonoBehaviour {
     public bool isOnPc;
     public bool canFocus;//this is to avoid the title panel from going away when the scene first loads
     private bool isResetClicked;
+
     private void Awake() {
         if (instance == null)
             instance = this;
@@ -97,12 +98,6 @@ public class MenuController : MonoBehaviour {
 
     public void ChoosePlayer(Vector3 pos) {
         Collider2D hitCollider = Physics2D.OverlapPoint(cam.ScreenToWorldPoint(pos));
-        /* if (isPC)
-             hitCollider = Physics2D.OverlapPoint(cam.ScreenToWorldPoint(Input.mousePosition));
-         else {
-             RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(pos).x, cam.ScreenToWorldPoint(pos).y), Vector2.zero, 0);
-             hitCollider = hit.collider;
-         }*/
         if (hitCollider != null && hitCollider.CompareTag("Player")) {
             if(hitCollider.name == "player_1") {
                 currentCharacterFocus = 0;
@@ -251,7 +246,15 @@ public class MenuController : MonoBehaviour {
             anim.SetTrigger("Hide");
             CharSelectCamera.StartFocusFromGameTitle();
             ShowNotification();
+            ui.exitButton.SetActive(true);
+            ui.resetButton.SetActive(true);
         }
+    }
+
+    public void LoadLevel(string name) {
+        SaveData();
+        ui.loadLevel.gameObject.SetActive(true);
+        ui.loadLevel.LoadLevel(name);
     }
 
     /*

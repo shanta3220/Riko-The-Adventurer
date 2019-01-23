@@ -307,7 +307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4062562946434294
 Transform:
   m_ObjectHideFlags: 1
@@ -1005,8 +1005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78adcffaec33aa3439cbdb89d6044651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 3
+  health: 10
+  maxHealth: 10
   PushRecoverySpeed: 0.2
   healthLength: 0200000003000000040000000500000006000000070000003200000032000000
   ySpeed: 0.65
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   hasEnemyTarget: 0
   xpValue: 5
   goldValue: 10
-  turningTimeDelay: 0.8
+  turningDelayRate: 1
   filter:
     useTriggers: 0
     useLayerMask: 0
@@ -1040,8 +1040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb90f557c734d7c41bc63243645802e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  maxHealth: 10
+  health: 30
+  maxHealth: 30
   PushRecoverySpeed: 0.2
   healthLength: 070000000f0000001e0000002d0000003200000041000000500000007d000000
   ySpeed: 0.75
@@ -1067,8 +1067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78adcffaec33aa3439cbdb89d6044651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 3
+  health: 10
+  maxHealth: 10
   PushRecoverySpeed: 0.2
   healthLength: 02000000030000000400000005000000070000000a0000003200000032000000
   ySpeed: 0.8
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   hasEnemyTarget: 0
   xpValue: 2
   goldValue: 10
-  turningTimeDelay: 1
+  turningDelayRate: 1
   filter:
     useTriggers: 0
     useLayerMask: 0
@@ -1245,7 +1245,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 044f27397242b4341a279d95903f7089, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1289,7 +1289,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 044f27397242b4341a279d95903f7089, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1553,7 +1553,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 044f27397242b4341a279d95903f7089, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

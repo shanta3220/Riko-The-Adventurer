@@ -22,17 +22,20 @@ public class Bullet : Collidable {
             isDestroyCalled = true;
             anim.SetInteger("Anim", 1);
             Destroy(gameObject, 0.2f);
+            GameManager.instance.player.numOfActiveBullets--;
         }
     }
 
     protected override void OnCollide(Collider2D col) {
         if (col.tag == "Blocking"){
             rBody.velocity = Vector2.zero;
+       
         }
             
         
         if (col.tag == "Enemy") {
             rBody.velocity = Vector2.zero;
+           
             //create a new damage object then we will send it to the enemy we hit
             Damage dmg = new Damage {
                 damageAmount = GameManager.instance.weapon.damagePoint[GameManager.instance.weapon.weaponLevel] * numberofbullets,
@@ -42,7 +45,6 @@ public class Bullet : Collidable {
             GetComponent<BoxCollider2D>().enabled = false;
             col.SendMessage("ReceiveDamage", dmg);
            
-
         }
     }
 }

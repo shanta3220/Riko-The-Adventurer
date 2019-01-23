@@ -11,15 +11,18 @@ public class Player : Mover {
     public Weapon weapon;
     public AudioClip gameOverClip;
     private Animator shootAnim;
-    [HideInInspector]
-    private bool isAlive = true;
-   
+    public int maxNumberOfActiveBullets = 10;
+    public int numOfActiveBullets=0;
+
     //public Joystick movementJoystick, shootJoystick;
     public float coolDown = 0.2f;
     protected float lastShoot;
-    private CameraShake screenShake;
+
+    [HideInInspector]
     public Joystick movementJoystick;
     public bool isOnPc;
+    private bool isAlive = true;
+    private CameraShake screenShake;
 
     protected override void Start() {
         base.Start();
@@ -29,34 +32,32 @@ public class Player : Mover {
 
 
     private void FixedUpdate() {
-        if (GameManager.instance.isPaused)
+        if (GameManager.instance.isPaused||!isAlive)
             return;
+        float x, y;
         if (isOnPc) {
-            float x = Input.GetAxisRaw("Horizontal");
-            float y = Input.GetAxisRaw("Vertical");
-            if (isAlive) {
-                UpdateMotor(new Vector3(x, y, 0));
-            }
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
         }
         else {
-            float x = Mathf.RoundToInt(movementJoystick.Horizontal);
-            float y = Mathf.RoundToInt(movementJoystick.Vertical);
-            if (isAlive) {
-                UpdateMotor(new Vector3(x, y, 0));
-            }
-        }
+            x = Mathf.RoundToInt(movementJoystick.Horizontal);
+            y = Mathf.RoundToInt(movementJoystick.Vertical);
            
+        }
+        UpdateMotor(new Vector3(x, y, 0));
     }
 
 
-    public void Shoot() {
-        if (isAlive) {
+   public void Shoot() {
+        if (isAlive && numOfActiveBullets<maxNumberOfActiveBullets) {
             if (Time.time - lastShoot > coolDown) {
+                numOfActiveBullets++;
                 lastShoot = Time.time;
                 shootAnim.SetTrigger("Shoot");
                 screenShake.ShakeIt(coolDown);
                 weapon.Shoot();
                 weapon.PlayShootAudio();
+                
             }
         }
     }

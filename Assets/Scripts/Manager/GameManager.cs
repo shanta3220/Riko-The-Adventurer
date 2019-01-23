@@ -39,9 +39,8 @@ public class GameManager : MonoBehaviour
     public Image switchWepImage;
     public bool isLevelCompleted; //to avoid Bug
     public Joystick movementJoystick;
-    public GameObject panelLoading;
     public int totalEnemies = 19;
-
+    public SceneLoadingBarController loadLevel;
     private Transform weaponContainer;
     private int currentenemyKill = -1;
 
@@ -285,12 +284,13 @@ public class GameManager : MonoBehaviour
         SaveData();
     }
 
-    public void OnDestroy() {
+  /*  public void OnDestroy() {
 
-        //SaveData();
-        //PlayerPrefs.SetString("MySettingsEditor", "");
-        //PlayerPrefs.SetString("MySettings", "");
-    }
+        SaveData();
+        PlayerPrefs.SetString("MySettingsEditor", "");
+        PlayerPrefs.SetString("MySettings", "");
+    }*/
+
    //enemy activation and opening doors if player completes the current level
 
     public void ActivateEnemy() {
@@ -308,6 +308,11 @@ public class GameManager : MonoBehaviour
         scenePortal.OpenDoor();
     }
 
+    public void LoadLevel(string name) {
+        SaveData();
+        loadLevel.gameObject.SetActive(true);
+        loadLevel.LoadLevel(name);
+    }
 
     /*/// <summary>
 /// int preferedSkin,

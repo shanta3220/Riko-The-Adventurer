@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class EventCallerPC : MonoBehaviour {
 
     public Player player;
@@ -22,16 +23,10 @@ public class EventCallerPC : MonoBehaviour {
     //Death Menu And Respawn
 
      public void Respawn() {
-        GameManager.instance.SaveData();
-        GameManager.instance.panelLoading.SetActive(true);
-        SceneManager.LoadScene("MainMenu");
+        GameManager.instance.LoadLevel("MainMenu");
     }
 
-    void Update() {
-        /*if (Input.GetMouseButton(0)) {
-            player.Shoot();
-        }
-        */
+    private void Update() {
         if (GameManager.instance.isPaused)
             return;
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");

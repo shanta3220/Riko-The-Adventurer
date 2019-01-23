@@ -26,10 +26,6 @@ public class Weapon : MonoBehaviour {
     private Player player;
 
     protected virtual void Awake() {
-        /* if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-             isOnPc = true;
-         else if (Application.platform == RuntimePlatform.Android)
-             isOnPc = false;*/
         audioS = GetComponent<AudioSource>();
     }
 
@@ -61,7 +57,7 @@ public class Weapon : MonoBehaviour {
         }
     }
 
-    public virtual void Shoot() {
+   public virtual void Shoot() {
     }
     public virtual void UpgradeWeapon() {
         weaponLevel++;
@@ -95,8 +91,12 @@ public class Weapon : MonoBehaviour {
 
     protected Vector2 MobileShootDirection(Vector2 myPos) {
         if (GameManager.instance.player.target == null) {
-            return movementJoystick.Direction.normalized;
+            Vector2 direction = movementJoystick.Direction.normalized;
+            if (direction != Vector2.zero)
+                 return direction;
+            return -Vector2.up;
         }
+
         else {
             return (target - myPos).normalized;
         }

@@ -2,11 +2,20 @@
 
 public class ScenePortal : Collidable {
 
+    
     public string[] sceneNames;
     public Sprite doorLeafOpen;
     private bool canChangeScene;
-    public bool isOnMenuScene;
+    private delegate void LoadLevel(string sceneName);
+    LoadLevel loadLevel;
 
+    protected override void Start() {
+        base.Start();
+        if (GameManager.instance != null)
+            loadLevel = GameManager.instance.LoadLevel;
+        else loadLevel = MenuController.instance.LoadLevel;
+
+    }
     public void OpenDoor() {
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = doorLeafOpen;
         AudioController.instance.PlaySound(SoundClip.gateOpen);
@@ -21,14 +30,8 @@ public class ScenePortal : Collidable {
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
             if (DataController.instance.data.experience < 8)
                 sceneName = "Dungeon_1";
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-            if (isOnMenuScene) {
-                MenuController.instance.SaveData();
-                MenuController.instance.ui.panel_Loading.SetActive(true);
-                return;
-            }
-            GameManager.instance.panelLoading.SetActive(true);
-            GameManager.instance.SaveData();
+            canChangeScene = false;
+            loadLevel(sceneName);
         }
     }
 }

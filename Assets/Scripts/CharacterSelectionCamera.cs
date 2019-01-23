@@ -13,12 +13,8 @@ public class CharacterSelectionCamera : MonoBehaviour {
     private Vector3 targetPosition;
     public float cameraSmoothing = 10f;
     private Transform permanentLookAt;
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+ 
+	private void Update () {
         if (!hasTarget)
             return;
         targetPosition = new Vector3(lookAt.position.x, lookAt.position.y, transform.position.z);
