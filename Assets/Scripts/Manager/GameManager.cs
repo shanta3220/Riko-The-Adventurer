@@ -96,18 +96,32 @@ public class GameManager : MonoBehaviour
     public bool TryUpgradeWeapon()
     {
         //is the weapon max level
-        if (weapon.weaponPrinces.Count == weapon.weaponLevel)
+        if (weapon.weaponPrices.Count == weapon.weaponLevel)
             return false;
         //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
-        else if(gold >= weapon.weaponPrinces[weapon.weaponLevel]){
-            gold -= weapon.weaponPrinces[weapon.weaponLevel];
+        else if(gold >= weapon.weaponPrices[weapon.weaponLevel]){
+            gold -= weapon.weaponPrices[weapon.weaponLevel];
             weapon.UpgradeWeapon();
             SaveData();
             return true;
            
         }
         return false;
-        
+    }
+    //Weapon System
+    public bool TryUpgradeWeapon(Weapon wep) {
+        //is the weapon max level
+        if (wep.weaponPrices.Count == wep.weaponLevel)
+            return false;
+        //do we have enough gold? if so upgrade and decrement the weaponprice from the gold
+        else if (gold >= wep.weaponPrices[wep.weaponLevel]) {
+            gold -= wep.weaponPrices[wep.weaponLevel];
+            wep.UpgradeWeapon();
+            SaveData();
+            return true;
+
+        }
+        return false;
     }
 
     public bool UnlockWeapon() {
@@ -169,10 +183,14 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetCurrentWeaponDamage() {
+        if(weapon.weaponLevel == weapon.weaponPrices.Count)
+            return weapon.damagePoint[weapon.weaponLevel -1];
         return weapon.damagePoint[weapon.weaponLevel];
     }
 
     public float GetCurrentWeaponPushForce() {
+        if (weapon.weaponLevel == weapon.weaponPrices.Count)
+            return weapon.pushForce[weapon.weaponLevel-1];
         return weapon.pushForce[weapon.weaponLevel];
     }
 

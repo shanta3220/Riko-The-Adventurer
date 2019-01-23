@@ -5,7 +5,7 @@ public class Weapon : MonoBehaviour {
     //required sprites
     public Sprite GunSide, GunUp, GunDown, GunDiagUp, GunDiagDown;
     public int weaponID;
-    public List<int> weaponPrinces = new List<int>(){35,70,135,200,275,400};
+    public List<int> weaponPrices = new List<int>(){35,70,135,200,275,400};
     public int weaponLevel = 1;
     public GameObject Bullet;
     public GameObject emptyShells;

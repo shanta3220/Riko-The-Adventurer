@@ -1123,7 +1123,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: bd6a0e4f334915a4881607b4c62647c7, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 6b59c6e43092615448736a0a246787b9, type: 3}
   weaponID: 0
-  weaponPrinces: c8000000900100005802000020030000b0040000d0070000
+  weaponPrinces: c8000000900100005802000020030000b0040000d007000060090000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 4894318d18dc240488aabdb64d057a45, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 27a8e293a7b786548b3188d1c774ffab, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 1ba58336c5e632c42aea5cdd01370773, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: 230000004600000087000000c80000001301000090010000bc020000
   weaponLevel: 0
   Bullet: {fileID: 1162231889447974, guid: b982b90e79d2e50448b3e42dd3eafec9, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: f57f662406053d74386aaa1eee705962, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 170f86618d2b3c84291300dc4ac0cef3, type: 3}
   weaponID: 0
-  weaponPrinces: 4600000087000000c80000001301000090010000f4010000
+  weaponPrinces: 4600000087000000c80000001301000090010000f401000020030000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 662d6cffd477a1c448c77d23973a9e25, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 7021cb94bdcd5224d8f7b9e80a491559, type: 3}
   weaponID: 0
-  weaponPrinces: 5a0000002c010000c201000020030000b004000008070000
+  weaponPrinces: 5a0000002c010000c201000020030000b004000008070000d0070000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1271,7 +1271,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 78deceae8c615d349b2a2a5cfad30432, type: 3}
   GunDiagDown: {fileID: 21300000, guid: d2c7638e4edc9bc4e918e672dd480698, type: 3}
   weaponID: 0
-  weaponPrinces: b40000005e0100001c0200002003000084030000e8030000
+  weaponPrinces: b40000005e0100001c0200002003000084030000e8030000b0040000
   weaponLevel: 1
   Bullet: {fileID: 1162231889447974, guid: b982b90e79d2e50448b3e42dd3eafec9, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 0913d3012a74e3d45847237f46b5f7a5, type: 3}
   GunDiagDown: {fileID: 21300000, guid: e95452f741dbd3148ae56abbbe975e9d, type: 3}
   weaponID: 0
-  weaponPrinces: 230000005a000000c800000022010000c201000058020000
+  weaponPrinces: 230000005a000000c800000022010000c20100005802000020030000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 73b943549f82084448bcf440a6651c7f, type: 3}
   GunDiagDown: {fileID: 21300000, guid: c187f697a47586946bd5a16022d427c5, type: 3}
   weaponID: 0
-  weaponPrinces: 230000004600000087000000c80000001301000090010000
+  weaponPrinces: 230000004600000087000000c80000001301000090010000f4010000
   weaponLevel: 1
   Bullet: {fileID: 1293831032896064, guid: 1f540ec2a5ac94f4c8c3eed0781b67ba, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1382,7 +1382,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: 9e51cda82319e6447a123745696e3e96, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 7847b15eaf11f6f448919a98bd797ac9, type: 3}
   weaponID: 0
-  weaponPrinces: 46000000b40000002c010000ea0100009e02000020030000
+  weaponPrinces: 46000000b40000002c010000ea0100009e02000020030000e8030000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   GunDiagUp: {fileID: 21300000, guid: b6dc4bc02d1cf044bb5b6670d4f5acbc, type: 3}
   GunDiagDown: {fileID: 21300000, guid: 7d12ea656de041348b9664512d5db464, type: 3}
   weaponID: 0
-  weaponPrinces: f4010000e8030000dc050000d0070000c4090000b80b0000
+  weaponPrinces: f4010000e8030000dc050000d0070000c4090000b80b0000800c0000
   weaponLevel: 1
   Bullet: {fileID: 1208095908852676, guid: 677a6474f244ae949a850c186fb490fb, type: 2}
   emptyShells: {fileID: 1180546044843530, guid: 67f1aa6f91dfce541beb32cc24a79a47,
@@ -1489,5 +1489,5 @@ MonoBehaviour:
   switchWepImage: {fileID: 0}
   isLevelCompleted: 0
   movementJoystick: {fileID: 0}
-  panelLoading: {fileID: 0}
   totalEnemies: 19
+  loadLevel: {fileID: 0}
