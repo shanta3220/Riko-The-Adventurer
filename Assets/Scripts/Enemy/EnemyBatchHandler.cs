@@ -38,6 +38,7 @@ public class EnemyBatchHandler : MonoBehaviour {
 	private void Update () {
         if (GameManager.instance.isPaused)
             return;
+
         if (!isEnemeyTargetEnabled){
             if(player.target != null)
                 player.target = null;

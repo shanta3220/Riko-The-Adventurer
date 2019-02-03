@@ -40,7 +40,7 @@ public class Enemy : Mover {
         if (isDeath || GameManager.instance.isPaused)
             return;
         if (startAnim) {
-            sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime * 20);
+            sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime * 10);
             if (sr.color == Color.white)
                 startAnim = false;
             return;
@@ -78,12 +78,10 @@ public class Enemy : Mover {
         if (collidingWithPlayer)
             UpdateMotor(Vector3.zero);
         else UpdateMotor(motion);
-      
-        
     }
 
     protected override void ReceiveDamage(Damage dmg) {
-        if (isDeath)
+        if (isDeath || startAnim)
             return;
         base.ReceiveDamage(dmg);
         UpdateHealthBar();

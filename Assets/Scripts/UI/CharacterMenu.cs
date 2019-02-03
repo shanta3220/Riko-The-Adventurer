@@ -18,8 +18,6 @@ public class CharacterMenu : MonoBehaviour {
     private int[] skinPrices = { 0, 300, 1000 };
     private Weapon wep;
     private int currentWeaponID = 0;
-    private delegate void ChangeWeaponUpgradeMethod();
-    ChangeWeaponUpgradeMethod changeWeaponUpgradeMethod;
 
     private void Start() {
         Invoke("DeleyValue", 0.5f);

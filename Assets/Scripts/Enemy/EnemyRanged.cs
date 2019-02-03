@@ -40,6 +40,7 @@ public class EnemyRanged : Mover {
     private float lastAudioPlay;
     private bool isDeath;
     private Transform enemyHealthBar;
+    private bool startAnim = true;// just to show animespawn  anim;
 
     protected override void Start() {
         base.Start();
@@ -65,13 +66,22 @@ public class EnemyRanged : Mover {
         spawnPoint = transform.GetChild(2).transform;
         enemyShoot = GetComponent<EnemyShoot>();
         enemyHealthBar = transform.GetChild(3).GetChild(0).transform;
-        
+        sr.color = Color.black;
     }
 
     private void FixedUpdate() {
         if (isDeath || GameManager.instance.isPaused)
             return;
+
+        if (startAnim) {
+            sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime * 10);
+            if (sr.color == Color.white)
+                startAnim = false;
+            return;
+        }
+
         UpdateMotor(Move());
+
         if (hasEnemyTarget) {
             playerInRange = true;
         }
@@ -158,7 +168,7 @@ public class EnemyRanged : Mover {
     }
 
     protected override void ReceiveDamage(Damage dmg) {
-        if (isDeath ||GameManager.instance.isPaused)
+        if (isDeath || GameManager.instance.isPaused || startAnim)
              return;
         base.ReceiveDamage(dmg);
         Hurt();
